@@ -1,0 +1,166 @@
+[
+  {
+  "nodes": [
+    {
+      "id": "material_prep_us_001",
+      "label": "MaterialPreparation",
+      "properties": {
+        "country": "US",
+        "level": ["undergrad", "graduate"],
+        "required_documents": [
+          "Official Transcript（官方成绩单）",
+          "Letters of Recommendation（推荐信，通常2-3封）",
+          "Resume / CV",
+          "Statement of Purpose / Personal Statement",
+          "Standardized Test Scores（TOEFL/IELTS + SAT/ACT/GRE/GMAT，根据项目要求）",
+          "Financial Documents（部分学校要求，用于I-20）",
+          "Portfolio（艺术、建筑、设计等专业）"
+        ],
+        "preparation_timeline": {
+          "undergrad": "高三上学期开始准备成绩单和推荐信，语言考试建议高二结束前考出",
+          "graduate": "大三下学期开始准备，语言考试和大四上学期考出，推荐信至少提前2个月联系老师"
+        },
+        "common_issues_for_chinese_students": [
+          "成绩单需要学校教务处开具中英文对照版，并加盖公章",
+          "推荐信必须用学校邮箱发送，很多学生用个人邮箱被拒",
+          "部分顶尖项目要求WES或类似学历认证",
+          "资金证明通常在拿到录取后才需要（用于I-20）"
+        ],
+        "key_tips": [
+          "推荐信优先找真正了解你的老师或项目导师，提前提供 bullet points",
+          "简历控制在1页（本科）或2页（研究生），突出量化成果",
+          "艺术/设计/建筑专业必须准备高质量 Portfolio"
+        ],
+        "school_type_notes": {
+          "top_research_universities": "更看重研究相关材料和推荐信质量",
+          "public_universities": "材料要求相对标准，但仍需注意推荐信和成绩单规范性"
+        }
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "material_prep_uk_001",
+      "label": "MaterialPreparation",
+      "properties": {
+        "country": "UK",
+        "level": ["undergrad", "graduate"],
+        "required_documents": [
+          "Academic Transcript（成绩单，中英文）",
+          "Personal Statement",
+          "Letters of Recommendation（通常2封）",
+          "Resume / CV（部分学校要求）",
+          "English Proficiency（IELTS/TOEFL，通常本科6.5+，研究生6.5-7.0+）",
+          "Portfolio（艺术、设计、建筑专业）",
+          "Degree Certificate（研究生需要本科毕业证和学位证）"
+        ],
+        "preparation_timeline": {
+          "undergrad": "高三上学期准备成绩单和推荐信，语言考试建议高三上学期考出",
+          "graduate": "大四上学期开始准备，语言考试至少提前3个月考出"
+        },
+        "common_issues_for_chinese_students": [
+          "成绩单和毕业证需要中英文对照并公证",
+          "很多学校要求推荐信用学校邮箱发送",
+          "部分学校要求提交高中成绩单（尤其是本科申请）",
+          "资金证明通常在签证阶段才需要（CAS后）"
+        ],
+        "key_tips": [
+          "推荐信内容要具体，避免模板化",
+          "Personal Statement严格控制4000字符",
+          "艺术设计类专业Portfolio质量非常重要"
+        ],
+        "school_type_notes": {
+          "Oxbridge": "材料要求更严格，推荐信和成绩单必须非常规范",
+          "Russell Group": "材料要求标准，但竞争激烈，细节不能出错"
+        }
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "material_prep_ca_001",
+      "label": "MaterialPreparation",
+      "properties": {
+        "country": "Canada",
+        "level": ["undergrad", "graduate"],
+        "required_documents": [
+          "Official Transcript（官方成绩单）",
+          "Letters of Recommendation（通常2-3封）",
+          "Personal Statement / Statement of Interest",
+          "Resume / CV",
+          "English Proficiency（IELTS/TOEFL）",
+          "Portfolio（部分专业）",
+          "Financial Documents（签证阶段需要）"
+        ],
+        "preparation_timeline": {
+          "undergrad": "高三上学期开始准备，语言考试建议高二结束前完成",
+          "graduate": "大三下到大四上开始准备，语言考试和大四上学期考出"
+        },
+        "common_issues_for_chinese_students": [
+          "成绩单需要中英文对照并公证",
+          "部分学校要求WES学历认证（尤其是研究生）",
+          "推荐信要用学校或公司邮箱发送",
+          "资金证明在申请阶段部分学校会要求，签证阶段必须提供"
+        ],
+        "key_tips": [
+          "研究生申请建议提前联系教授（尤其是研究型项目）",
+          "Co-op项目学校可以适当在文书中体现实践意愿",
+          "材料要体现对加拿大多元文化的适应能力"
+        ],
+        "school_type_notes": {
+          "U15研究型大学": "研究生更看重研究匹配材料和推荐信质量",
+          "有Co-op项目学校": "材料中可适当体现实践和就业意愿"
+        }
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "material_prep_au_001",
+      "label": "MaterialPreparation",
+      "properties": {
+        "country": "Australia",
+        "level": ["undergrad", "graduate"],
+        "required_documents": [
+          "Academic Transcript（成绩单）",
+          "Personal Statement / Statement of Purpose",
+          "Letters of Recommendation（部分学校要求）",
+          "Resume / CV",
+          "English Proficiency（IELTS/TOEFL/PTE）",
+          "Portfolio（艺术、设计、建筑专业）",
+          "Degree Certificate（研究生需要）"
+        ],
+        "preparation_timeline": {
+          "undergrad": "高三上学期准备成绩单和语言考试",
+          "graduate": "大四上学期开始准备，语言考试至少提前3个月完成"
+        },
+        "common_issues_for_chinese_students": [
+          "成绩单和毕业证需要中英文对照并公证",
+          "部分学校要求学历认证（尤其是Group of Eight）",
+          "资金证明在签证阶段需要（GTE审核）",
+          "很多学校材料要求相对简单，但竞争学校仍需认真准备"
+        ],
+        "key_tips": [
+          "文书要简洁，突出职业规划和课程匹配",
+          "艺术设计类专业Portfolio质量决定录取概率",
+          "资金证明和GTE（Genuine Temporary Entrant）审核是签证重点"
+        ],
+        "school_type_notes": {
+          "Group of Eight": "材料要求更规范，竞争激烈",
+          "其他大学": "材料要求相对宽松，但仍需保证规范性"
+        }
+      }
+    }
+  ],
+  "relationships": []
+}
+]

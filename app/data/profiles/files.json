@@ -1,0 +1,633 @@
+[
+  {
+  "nodes": [
+    {
+      "id": "essay_req_us_001",
+      "label": "EssayRequirement",
+      "properties": {
+        "country": "US",
+        "document_type": "Statement of Purpose (SOP)",
+        "level": ["undergrad", "graduate"],
+        "typical_length": "500-1000 words (undergrad 500-650, graduate 800-1200)",
+        "core_focus": [
+          "个人故事与成长弧线（Problem → Struggle → Growth）",
+          "学术/研究兴趣 + 具体项目经历",
+          "为什么选择这个项目/学校（具体教授、课程、资源）",
+          "未来职业目标与该项目的匹配度"
+        ],
+        "key_differences_from_other_countries": "美国SOP最强调“个人叙事”和“自我成长”，比英国PS更故事化，比加拿大和澳洲更看重未来规划。",
+        "china_student_pain_points": [
+          "容易写成简历堆砌或技术报告，缺乏情感和故事线",
+          "不敢写失败经历或真实挣扎，显得过于完美",
+          "对“为什么这个学校”写得太泛（只说排名高）"
+        ],
+        "effective_strategies_from_real_cases": [
+          "用一个具体项目或经历作为主线，贯穿整篇SOP",
+          "把失败或挫折写成“转折点”，展示反思和成长",
+          "对目标学校的研究要具体到课程、教授研究方向或实验室",
+          "未来目标要和项目强关联，而不是泛泛说“想回国发展”"
+        ],
+        "school_type_differences": {
+          "top_research_universities": "更看重研究匹配度和学术深度，SOP中研究经历占比要高",
+          "public_flagship_universities": "平衡学术与领导力/社区贡献，故事性更重要",
+          "liberal_arts_colleges": "更看重个人特质、价值观和社区贡献"
+        },
+        "common_mistakes": [
+          "开头直接陈述“我从小就喜欢编程”",
+          "把所有经历平铺直叙，没有主线",
+          "对学校研究太浅（只说“贵校CS很强”）"
+        ],
+        "recommended_structure": "引言（个人动机）→ 学术/项目经历（带故事）→ 为什么这个项目 → 未来规划 → 结尾（升华）"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_req_uk_001",
+      "label": "EssayRequirement",
+      "properties": {
+        "country": "UK",
+        "document_type": "Personal Statement (PS)",
+        "level": ["undergrad", "graduate"],
+        "typical_length": "4000 characters (约500-600 words)，严格字数限制",
+        "core_focus": [
+          "学术兴趣与专业匹配度",
+          "相关学术背景和经历（强调相关性）",
+          "为什么选择这个课程（具体课程内容、教学方式）",
+          "未来学术或职业目标"
+        ],
+        "key_differences_from_other_countries": "英国PS更学术化、更直接、更注重“课程匹配度”，故事性比美国弱很多。不能像美国SOP那样大篇幅写个人成长故事。",
+        "china_student_pain_points": [
+          "把美国SOP的写法直接搬到英国，过于故事化",
+          "对课程研究不深，只写“英国教育质量高”",
+          "字数超限或内容太散"
+        ],
+        "effective_strategies_from_real_cases": [
+          "每一段都要和申请课程强相关，避免无关经历",
+          "具体提到课程名称、模块或教授研究方向",
+          "用学术语言表达兴趣，而不是过多情感描述",
+          "本科PS更看重A-Level/竞赛/项目与课程的关联；研究生PS更看重本科研究/实习与课程的匹配"
+        ],
+        "school_type_differences": {
+          "Oxbridge": "极度看重学术匹配和独立思考能力，PS要体现极强的学术热情和深度",
+          "Russell Group": "平衡学术能力和相关经历，课程匹配度最重要",
+          "其他大学": "更看重整体匹配和清晰的职业规划"
+        },
+        "common_mistakes": [
+          "写太多个人故事，学术内容不足",
+          "对课程了解太浅",
+          "把PS写成简历扩展版"
+        ],
+        "recommended_structure": "学术兴趣起源 → 相关学术/实践经历 → 为什么这个课程（具体） → 未来规划 → 结尾"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_req_ca_001",
+      "label": "EssayRequirement",
+      "properties": {
+        "country": "Canada",
+        "document_type": ["Personal Statement", "Statement of Interest", "Statement of Purpose"],
+        "level": ["undergrad", "graduate"],
+        "typical_length": "500-1000 words（不同学校差异大）",
+        "core_focus": [
+          "学术/职业目标与课程匹配",
+          "相关经历（研究、实习、项目）",
+          "为什么选择加拿大/这所学校",
+          "对多元文化和社区的适应能力（部分学校看重）"
+        ],
+        "key_differences_from_other_countries": "加拿大文书风格介于美国和英国之间。比美国故事性弱，比英国学术性强一些。很多学校用“Personal Statement”或“Statement of Interest”，研究生更看重研究匹配。",
+        "china_student_pain_points": [
+          "不知道加拿大更看重“适应能力”和“长期规划”",
+          "文书风格摇摆（有时太美式，有时太英式）",
+          "对加拿大本地就业和移民路径结合不够"
+        ],
+        "effective_strategies_from_real_cases": [
+          "明确体现对加拿大教育和多元文化的理解",
+          "研究生申请要突出研究兴趣与教授/实验室的匹配",
+          "可以自然融入长期职业规划（PGWP + 移民路径）",
+          "本科申请可适当体现领导力或社区贡献"
+        ],
+        "school_type_differences": {
+          "U15研究型大学": "研究生强烈看重研究匹配，本科看重整体素质",
+          "教学型大学": "更看重学生适应能力和职业规划",
+          "有Co-op项目学校": "要体现对实践和就业的重视"
+        },
+        "common_mistakes": [
+          "完全照搬美国SOP写法",
+          "忽略加拿大对“长期规划”的关注",
+          "对学校和课程研究不够具体"
+        ],
+        "recommended_structure": "背景与兴趣 → 相关经历 → 为什么加拿大/这所学校 → 未来规划（含PGWP思考） → 结尾"
+      }
+    }
+  ],
+  "relationships": []
+},
+{
+  "nodes": [
+    {
+      "id": "essay_req_au_001",
+      "label": "EssayRequirement",
+      "properties": {
+        "country": "Australia",
+        "document_type": ["Personal Statement", "Statement of Purpose"],
+        "level": ["undergrad", "graduate"],
+        "typical_length": "300-500 words（部分学校要求较短）",
+        "core_focus": [
+          "学术背景与课程匹配",
+          "职业目标与课程的关联",
+          "为什么选择澳大利亚和这所学校",
+          "英语能力和适应能力"
+        ],
+        "key_differences_from_other_countries": "澳洲文书通常最短、最直接。故事性最弱，更看重“职业导向”和“课程实用性”。很多学校不要求长篇文书，或只要求简短的Statement。",
+        "china_student_pain_points": [
+          "写得太长、太故事化",
+          "对澳洲课程的实用性和就业导向理解不够",
+          "忽略部分学校对“英语能力和适应能力”的关注"
+        ],
+        "effective_strategies_from_real_cases": [
+          "语言简洁直接，突出职业目标和课程实用性",
+          "强调为什么选择澳大利亚（生活环境、教育质量、就业机会）",
+          "研究生申请要体现本科专业与目标课程的衔接",
+          "可以简要提及对澳洲生活和文化的适应意愿"
+        ],
+        "school_type_differences": {
+          "Group of Eight (Go8)": "更看重学术背景和课程匹配，竞争激烈",
+          "其他大学": "更看重职业规划和整体匹配度",
+          "有实习/工作嵌入课程学校": "要体现对实践经验的重视"
+        },
+        "common_mistakes": [
+          "写成美国式长故事",
+          "对课程和职业目标关联写得太弱",
+          "文书过于模板化"
+        ],
+        "recommended_structure": "学术/职业背景 → 为什么选择这个课程 → 为什么澳大利亚 → 未来规划 → 简短结尾"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_structure_us_001",
+      "label": "EssayStructure",
+      "properties": {
+        "country": "US",
+        "document_type": "Statement of Purpose (SOP)",
+        "recommended_structure": "英雄旅程式（Hero's Journey）",
+        "structure_template": {
+          "paragraph_1": "引言 - 问题/动机（Problem）：用一个具体事件或经历引出你对这个领域的兴趣或痛点",
+          "paragraph_2-3": "挣扎与尝试（Struggle）：详细描述你在解决这个问题过程中的困难、失败和反思",
+          "paragraph_4": "解决方案与成长（Solution & Growth）：你如何解决问题，以及这个过程带给你的能力和认知变化",
+          "paragraph_5": "为什么这个项目（Why this program）：把你的成长和目标与目标项目的具体资源、课程、教授联系起来",
+          "paragraph_6": "未来规划与升华（Future & Reflection）：说明这个项目如何帮助你实现长期目标，并升华主题"
+        },
+        "china_student_pain_points": [
+          "喜欢把结构写成“从小就喜欢XX → 做了很多事 → 想申请XX”，缺乏真实挣扎和转折",
+          "害怕写失败经历，担心显得不够优秀",
+          "对目标学校的“Why this program”部分写得太泛"
+        ],
+        "effective_case_breakdown_example": {
+          "background": "GPA 3.6，普通一本，AI研究经历一般，但有一个从失败项目中成长的故事",
+          "problem": "在大二参加的AI项目中，模型一直无法达到预期精度，团队多次尝试失败",
+          "struggle": "连续三个月每天只睡5小时调试，多次被导师否定，甚至想放弃",
+          "solution_growth": "最终通过调整特征工程和数据增强方法把精度提升了18%，并在组内分享了失败教训",
+          "why_program": "目标学校的XX教授正在做类似的可解释AI研究，且有丰富的工业界合作资源",
+          "lesson": "这段经历让我明白，真正的成长来自于直面失败并系统性反思，而不是一味追求成功结果"
+        },
+        "school_type_advice": {
+          "top_research": "成长故事要和研究深度结合，强调学术韧性",
+          "public_flagship": "可以适当加入团队协作或领导力元素",
+          "liberal_arts": "更强调个人价值观和社区影响的成长"
+        },
+        "key_tips": "美国SOP最吃“真实 + 反思 + 成长弧线”。失败经历写得好，反而是加分项。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_structure_uk_001",
+      "label": "EssayStructure",
+      "properties": {
+        "country": "UK",
+        "document_type": "Personal Statement (PS)",
+        "recommended_structure": "学术匹配式（Academic Fit Focused）",
+        "structure_template": {
+          "paragraph_1": "学术兴趣起源（Academic Interest）：用具体学术经历或问题引出对该专业的兴趣",
+          "paragraph_2": "相关学术/实践经历（Relevant Experience）：重点写与申请课程高度相关的经历",
+          "paragraph_3": "为什么这个课程（Why this course）：具体提到课程名称、模块或研究方向",
+          "paragraph_4": "未来学术/职业目标（Future Goals）：说明这个课程如何帮助你达成目标",
+          "paragraph_5": "结尾升华（Conclusion）：简短总结你的匹配度和贡献意愿"
+        },
+        "china_student_pain_points": [
+          "把美国式成长故事硬塞进来，导致学术内容不足",
+          "对课程研究太浅，只写“课程设置很好”",
+          "字数控制不好，经常超限"
+        ],
+        "effective_case_breakdown_example": {
+          "background": "计算机本科，想申请英国AI硕士",
+          "problem": "本科期间对传统机器学习方法在复杂场景下的局限性产生疑问",
+          "struggle": "尝试用传统方法解决多模态任务时遇到瓶颈",
+          "solution_growth": "自学深度学习和Transformer结构，在课程项目中实现了一个多模态分类模型",
+          "why_course": "申请的课程有专门的“Multimodal Learning”和“Trustworthy AI”模块，且有多位教授在做相关研究",
+          "lesson": "这段经历让我明确了自己希望在可解释多模态AI方向深耕，而该课程能提供最匹配的训练"
+        },
+        "school_type_advice": {
+          "Oxbridge": "学术兴趣和独立思考能力要写得非常突出",
+          "Russell Group": "经历要和课程强相关，研究匹配度最重要",
+          "其他学校": "可以适当加入职业规划内容"
+        },
+        "key_tips": "英国PS最吃“学术匹配度”和“具体性”。故事可以有，但必须服务于学术兴趣表达。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_structure_ca_001",
+      "label": "EssayStructure",
+      "properties": {
+        "country": "Canada",
+        "document_type": ["Personal Statement", "Statement of Interest"],
+        "recommended_structure": "成长 + 匹配混合式（Growth + Fit Hybrid）",
+        "structure_template": {
+          "paragraph_1": "背景与动机（Background & Motivation）：用经历引出兴趣或目标",
+          "paragraph_2": "关键经历与成长（Key Experience & Growth）：用问题→解决→成长的框架写1-2个重要经历",
+          "paragraph_3": "为什么加拿大和这所学校（Why Canada & Program）：结合课程、研究或Co-op机会",
+          "paragraph_4": "长期规划（Long-term Vision）：自然融入PGWP和职业发展想法",
+          "paragraph_5": "结尾（Conclusion）：总结匹配度和贡献意愿"
+        },
+        "china_student_pain_points": [
+          "不知道加拿大文书可以适度加入成长故事",
+          "对PGWP和长期规划写得太生硬或完全不提",
+          "风格在美式和英式之间摇摆"
+        ],
+        "effective_case_breakdown_example": {
+          "background": "普通一本，GPA 3.5，有一个从失败社团项目中成长的故事",
+          "problem": "作为学生会项目负责人，策划的校园AI科普活动参与度极低",
+          "struggle": "第一次活动只有20人参加，团队士气低落",
+          "solution_growth": "重新调研需求，调整形式为工作坊+比赛，最终参与人数达到300+，并获得学校支持",
+          "why_program": "目标学校的课程强调“技术+社会影响”，且有丰富的社区项目资源",
+          "long_term": "希望通过加拿大的Co-op和PGWP积累实际经验，未来从事AI教育或社会影响类产品"
+        },
+        "school_type_advice": {
+          "U15研究型": "成长故事要和研究或学术韧性结合",
+          "有Co-op学校": "要体现对实践和就业的重视",
+          "教学型大学": "更看重适应能力和社区贡献"
+        },
+        "key_tips": "加拿大文书可以比英国更有故事性，但不能像美国那么长篇叙事。长期规划可以自然带入。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_structure_au_001",
+      "label": "EssayStructure",
+      "properties": {
+        "country": "Australia",
+        "document_type": ["Personal Statement", "Statement of Purpose"],
+        "recommended_structure": "职业导向简洁式（Career-Oriented Concise）",
+        "structure_template": {
+          "paragraph_1": "学术与职业背景（Background）：简要说明当前背景和职业目标",
+          "paragraph_2": "相关经历（Relevant Experience）：重点写与目标课程相关的经历",
+          "paragraph_3": "为什么这个课程和澳大利亚（Why this program & Australia）：强调课程实用性和就业导向",
+          "paragraph_4": "未来规划（Future Plans）：说明毕业后的职业打算",
+          "paragraph_5": "结尾（Conclusion）：简短总结匹配度"
+        },
+        "china_student_pain_points": [
+          "写得太长、太故事化（澳洲文书通常偏短）",
+          "对课程的“实用性”和“就业导向”强调不够",
+          "模板化严重，缺乏个人特色"
+        ],
+        "effective_case_breakdown_example": {
+          "background": "计算机本科，想申请澳洲数据科学硕士",
+          "problem": "本科实习时发现公司数据分析流程效率低下",
+          "struggle": "尝试用Python自动化部分流程，但遇到数据质量和业务理解难题",
+          "solution_growth": "通过自学SQL和数据可视化工具，成功把报告生成时间从3天缩短到半天",
+          "why_program": "申请的课程有大量实际项目和行业合作，且位于悉尼，实习机会多",
+          "future": "希望毕业后在澳洲积累2-3年数据分析经验，再回国或继续深造"
+        },
+        "school_type_advice": {
+          "Group of Eight": "更看重学术背景和课程匹配",
+          "其他大学": "更看重职业规划和实用技能",
+          "有实习嵌入课程学校": "要体现对实践经验的重视"
+        },
+        "key_tips": "澳洲文书最吃“简洁 + 职业关联”。少写故事，多写“做了什么、产生了什么结果、为什么选这个课程”。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "china_essay_issues_us_001",
+      "label": "ChinaStudentEssayIssues",
+      "properties": {
+        "country": "US",
+        "document_type": "Statement of Purpose (SOP)",
+        "common_pain_points": [
+          "模板化严重：开头永远是“我从小就对XX感兴趣”，结尾永远是“贵校是我的不二之选”",
+          "卖惨式叙事：把家庭困难、经济压力、疫情影响等写得过于沉重，缺乏反思和成长",
+          "缺乏真实故事线：把经历平铺直叙，像简历扩展版，没有“问题→挣扎→解决→成长”的弧线",
+          "Why this program 太泛：只写“学校排名高、资源丰富、专业强”，没有具体到课程、教授或实验室",
+          "过度追求完美：不敢写失败或挫折经历，显得不真实"
+        ],
+        "root_causes": [
+          "中国教育强调“报喜不报忧”和“完美叙事”",
+          "学生普遍缺乏“讲故事”的训练，更习惯陈述事实",
+          "对美国SOP的核心（个人成长+反思）理解不够深入"
+        ],
+        "improvement_methods": [
+          "使用“英雄旅程”结构：必须包含一个核心事件（问题→挣扎→解决→成长）",
+          "失败经历可以写，但必须有清晰的反思和行动改变",
+          "Why this program 至少要提到2-3个具体点（课程名称、教授研究方向、实验室、 alumni 网络等）",
+          "把“卖惨”改成“转折”：把困难写成让你成长的催化剂，而不是单纯博同情",
+          "多使用具体数据和细节（例如“精度从62%提升到80%”），少用空洞形容词"
+        ],
+        "bad_vs_good_example": {
+          "bad": "我从小就喜欢编程，从小学开始自学，一直很努力，所以想申请贵校。",
+          "good": "大二时我尝试用传统机器学习解决一个实际业务问题，却因为数据稀疏导致模型失效。这次失败让我意识到自己对模型可解释性的缺失，也促使我深入学习因果推断，并在后续项目中将精度提升了18%。这段经历让我明确了想在可解释AI方向深耕，而贵校XX教授在这一领域的研究与我高度契合。"
+        },
+        "school_type_notes": "Top研究型大学更吃真实研究经历和学术韧性；普通学校可以适当加入领导力和社区贡献故事。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "china_essay_issues_uk_001",
+      "label": "ChinaStudentEssayIssues",
+      "properties": {
+        "country": "UK",
+        "document_type": "Personal Statement (PS)",
+        "common_pain_points": [
+          "把美国SOP的写法直接搬过来，故事太多、学术太少",
+          "对课程研究极度浅薄，只写“英国教学质量高、课程设置好”",
+          "模板化严重：大量学生用同一套句式和结构",
+          "经历堆砌但缺乏相关性：把所有获奖、实习都写进去，和申请课程关联度低",
+          "字数控制差，经常超限或内容太散"
+        ],
+        "root_causes": [
+          "学生对英国PS“学术匹配度优先”的核心逻辑理解不足",
+          "习惯用中国式“全面展示自己”的思维写文书",
+          "对具体课程内容研究不够深入"
+        ],
+        "improvement_methods": [
+          "每一段都要和申请课程强相关，无关经历坚决删掉",
+          "必须提到至少2-3个具体课程名称或模块",
+          "把“故事”压缩，用学术语言表达兴趣（例如用“对XX理论的疑问”代替“从小就喜欢”）",
+          "采用“学术兴趣→相关经历→课程匹配→未来目标”的简洁结构",
+          "写完后严格删减，确保4000字符以内且每句都有价值"
+        ],
+        "bad_vs_good_example": {
+          "bad": "我从小就对人工智能感兴趣，参加了很多竞赛，也做了很多项目，英国的教育质量很高，所以我想申请贵校的人工智能硕士。",
+          "good": "本科期间，我在解决多模态情感分析任务时发现传统特征融合方法存在明显局限。这促使我深入研究Transformer-based多模态模型，并在课程项目中取得了较好效果。贵校的“Multimodal Machine Learning”和“Trustworthy AI”模块与我的研究兴趣高度契合，且课程强调理论与实践结合，这正是我希望深入学习的方向。"
+        },
+        "school_type_notes": "Oxbridge极度看重学术深度和独立思考；Russell Group更看重课程匹配度；其他学校可适当加入职业规划。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "china_essay_issues_ca_001",
+      "label": "ChinaStudentEssayIssues",
+      "properties": {
+        "country": "Canada",
+        "document_type": ["Personal Statement", "Statement of Interest"],
+        "common_pain_points": [
+          "风格摇摆：在美式故事性和英式学术性之间摇摆不定",
+          "对PGWP和长期规划写得太生硬或完全缺失",
+          "把加拿大文书当成美国SOP的简化版，成长故事过长",
+          "对加拿大教育理念和多元文化适应能力的体现不足",
+          "研究匹配度写得不够具体（尤其是研究生）"
+        ],
+        "root_causes": [
+          "对加拿大文书“成长+匹配+长期规划”混合风格理解不够",
+          "学生普遍对PGWP和移民路径的结合缺乏思考",
+          "习惯用最熟悉的美国文书模板"
+        ],
+        "improvement_methods": [
+          "采用“成长故事 + 课程/研究匹配 + 长期规划”的混合结构",
+          "成长故事要控制长度，重点放在反思和能力提升上",
+          "可以自然融入对PGWP和职业发展的思考（不要太功利）",
+          "体现对加拿大多元文化和社区的理解与适应意愿",
+          "研究生申请必须具体提到教授、实验室或研究方向"
+        ],
+        "bad_vs_good_example": {
+          "bad": "我有很强的领导力，想来加拿大读书，加拿大很包容，我想以后在这里工作。",
+          "good": "作为学生会项目负责人，我曾策划一场校园AI科普活动但首次参与度极低。这次失败让我学会从用户需求出发重新设计活动形式，最终参与人数提升至300人。这段经历让我意识到技术需要与社会需求结合，而贵校强调“技术向善”和社区影响的课程理念与我的价值观高度契合。我也希望通过加拿大的Co-op项目积累实际经验，未来在AI教育或社会影响产品领域发展。"
+        },
+        "school_type_notes": "U15研究型大学更看重研究匹配；有Co-op的学校要体现实践意愿；教学型大学更看重适应能力和社区贡献。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "china_essay_issues_au_001",
+      "label": "ChinaStudentEssayIssues",
+      "properties": {
+        "country": "Australia",
+        "document_type": ["Personal Statement", "Statement of Purpose"],
+        "common_pain_points": [
+          "写得太长、太故事化（澳洲文书普遍偏短）",
+          "对课程的“实用性”和“就业导向”强调不足",
+          "模板化严重，缺乏个人特色",
+          "对澳洲生活环境和就业机会的描述过于表面",
+          "把经历平铺直叙，没有结果和反思"
+        ],
+        "root_causes": [
+          "学生习惯写长篇故事，对澳洲文书“简洁+职业导向”的要求理解不足",
+          "对澳洲课程强调实用技能和就业的特性研究不够"
+        ],
+        "improvement_methods": [
+          "严格控制长度，多数学校300-500字即可",
+          "少写故事，多写“做了什么 + 产生了什么结果 + 为什么选这个课程”",
+          "强调课程的实用性和就业相关性",
+          "可以简要说明对澳洲生活和文化的适应意愿",
+          "用具体成果（数据、项目影响）代替空洞描述"
+        ],
+        "bad_vs_good_example": {
+          "bad": "我从小就喜欢数据分析，做了很多项目，澳大利亚的教育质量很高，生活环境也好，所以我想申请贵校的数据科学专业。",
+          "good": "本科实习期间，我发现公司数据分析流程效率低下，于是自学Python和SQL开发自动化工具，将报告生成时间从3天缩短至半天。这段经历让我明确了希望在数据工程与业务结合的方向发展。贵校的数据科学课程包含大量真实行业项目和实习机会，且位于悉尼这一就业资源丰富的城市，这与我的职业目标高度匹配。"
+        },
+        "school_type_notes": "Go8更看重学术背景和课程匹配；其他大学更看重职业规划和实用技能；有实习嵌入课程的学校要体现实践意愿。"
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_strategy_us_001",
+      "label": "EssayStrategyByBackground",
+      "properties": {
+        "country": "US",
+        "document_type": "Statement of Purpose (SOP)",
+        "research_oriented": {
+          "core_angle": "用一个核心研究问题贯穿全文，强调学术韧性和深度思考",
+          "recommended_structure": "研究问题提出 → 多次失败尝试 → 方法改进与突破 → 对未来研究的思考 → 与目标教授/实验室匹配",
+          "key_tips": "多写具体的研究过程和反思，而不是只堆技术术语。失败经历如果写得好，是极大加分项。",
+          "china_student_advice": "很多中国学生研究经历一般，但可以把本科毕业设计或课程项目做深做透，重点写思考过程。"
+        },
+        "project_oriented": {
+          "core_angle": "把项目做成“从0到1”的故事，强调用户影响、数据结果和个人成长",
+          "recommended_structure": "项目背景与问题 → 技术实现难点 → 迭代过程 → 量化成果（用户数、精度提升等） → 未来技术方向",
+          "key_tips": "美国最吃“可量化影响”。一定要有具体数据支撑。",
+          "china_student_advice": "普通项目也能写出彩，关键是讲清楚“解决了什么真实问题 + 产生了什么影响”。"
+        },
+        "comeback_underdog": {
+          "core_angle": "把“逆袭”写成真实成长故事，重点在反思和能力跃迁",
+          "recommended_structure": "早期挫折/低谷 → 关键转折事件 → 系统性努力与改变 → 能力与认知的显著提升 → 未来目标",
+          "key_tips": "失败可以写，但必须有清晰的“行动改变”和“反思”。纯卖惨会减分。",
+          "china_student_advice": "这是很多中等背景学生的最大机会。真实、反思、成长是核心。"
+        },
+        "leadership_oriented": {
+          "core_angle": "把领导力写成“影响他人 + 产生结果”的过程，而非单纯职位头衔",
+          "recommended_structure": "团队问题 → 个人行动与组织 → 团队成果与个人反思 → 如何在未来项目中应用领导力",
+          "key_tips": "美国越来越看重领导力和社区影响，尤其在本科申请中。",
+          "china_student_advice": "学生会/社团经历可以写，但一定要有具体成果和反思，避免空洞的“组织能力强”。"
+        }
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_strategy_uk_001",
+      "label": "EssayStrategyByBackground",
+      "properties": {
+        "country": "UK",
+        "document_type": "Personal Statement (PS)",
+        "research_oriented": {
+          "core_angle": "极致强调学术匹配和研究兴趣深度，故事要服务于学术表达",
+          "recommended_structure": "学术兴趣起源 → 相关研究/课程经历 → 对具体理论或方法的疑问 → 目标课程的学术匹配 → 未来研究方向",
+          "key_tips": "英国最吃学术深度。研究经历要和申请课程高度相关。",
+          "china_student_advice": "把研究经历写得更学术化，少写个人情感，多写对某个学术问题的思考。"
+        },
+        "project_oriented": {
+          "core_angle": "把项目经历学术化，强调方法论和理论贡献",
+          "recommended_structure": "项目背景 → 采用的方法与理论依据 → 遇到的学术难点 → 解决过程 → 与目标课程的关联",
+          "key_tips": "项目经历要服务于学术兴趣表达，而不是只讲结果。",
+          "china_student_advice": "即使是工程项目，也要尝试挖掘背后的理论问题或方法创新点。"
+        },
+        "comeback_underdog": {
+          "core_angle": "逆袭故事要简短，且必须服务于学术匹配",
+          "recommended_structure": "早期挫折 → 关键努力与改变 → 学术能力提升 → 申请课程如何帮助继续成长",
+          "key_tips": "英国PS对逆袭故事的容忍度低于美国，要写得克制且学术化。",
+          "china_student_advice": "可以写，但篇幅控制在20-25%以内，重点放在学术成长上。"
+        },
+        "leadership_oriented": {
+          "core_angle": "领导力要和学术/专业能力结合，单纯的社团经历加分有限",
+          "recommended_structure": "团队学术/项目问题 → 领导角色与行动 → 团队学术成果 → 对未来学术合作的启发",
+          "key_tips": "英国更看重学术相关领导力，而非泛泛的组织能力。",
+          "china_student_advice": "如果领导力经历和专业强相关（如组织学术竞赛、科研团队），可以重点写。"
+        }
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_strategy_ca_001",
+      "label": "EssayStrategyByBackground",
+      "properties": {
+        "country": "Canada",
+        "document_type": ["Personal Statement", "Statement of Interest"],
+        "research_oriented": {
+          "core_angle": "研究匹配 + 学术韧性 + 长期规划结合",
+          "recommended_structure": "研究兴趣起源 → 研究经历与挑战 → 成长与方法论提升 → 与目标教授/课程匹配 → PGWP与职业规划",
+          "key_tips": "加拿大研究生文书可以适度加入成长故事，但最终要落到研究匹配上。",
+          "china_student_advice": "可以把研究过程中的挫折写成学术韧性的体现，并自然带入长期规划。"
+        },
+        "project_oriented": {
+          "core_angle": "项目影响 + 实践能力 + 社会价值",
+          "recommended_structure": "项目问题 → 解决方案与迭代 → 量化影响 → 与课程实践导向匹配 → 未来应用方向",
+          "key_tips": "加拿大越来越看重技术与社会影响的结合。",
+          "china_student_advice": "如果项目有社会价值或用户影响，可以重点突出，这是加分点。"
+        },
+        "comeback_underdog": {
+          "core_angle": "逆袭故事在加拿大接受度较高，但要和长期规划结合",
+          "recommended_structure": "早期挫折 → 关键改变与成长 → 能力跃迁 → 加拿大教育如何帮助继续发展 → PGWP规划",
+          "key_tips": "加拿大对逆袭故事的包容度比英国高，可以适当展开。",
+          "china_student_advice": "这是中等背景学生的重要机会，真实 + 反思 + 长期规划是核心。"
+        },
+        "leadership_oriented": {
+          "core_angle": "领导力 + 社区影响 + 多元文化适应",
+          "recommended_structure": "团队/社区问题 → 领导行动 → 团队/社区成果 → 对多元文化的理解 → 未来贡献意愿",
+          "key_tips": "加拿大很看重社区贡献和多元文化适应能力。",
+          "china_student_advice": "学生会、社团、志愿者经历如果有真实影响，可以重点写。"
+        }
+      }
+    }
+  ],
+  "relationships": []
+},
+  {
+  "nodes": [
+    {
+      "id": "essay_strategy_au_001",
+      "label": "EssayStrategyByBackground",
+      "properties": {
+        "country": "Australia",
+        "document_type": ["Personal Statement", "Statement of Purpose"],
+        "research_oriented": {
+          "core_angle": "学术背景 + 课程匹配 + 实用技能",
+          "recommended_structure": "学术背景 → 研究/项目经历 → 与目标课程的技能匹配 → 未来职业应用",
+          "key_tips": "澳洲文书较短，研究型也要写得简洁，直接体现技能匹配。",
+          "china_student_advice": "把研究经历转化为具体技能和应用场景，少写过程细节。"
+        },
+        "project_oriented": {
+          "core_angle": "项目成果 + 实用技能 + 就业导向",
+          "recommended_structure": "项目背景与问题 → 解决方案与结果 → 习得技能 → 课程如何帮助进一步提升 → 职业规划",
+          "key_tips": "澳洲最吃“实用技能”和“就业相关性”。一定要有结果导向。",
+          "china_student_advice": "用具体数据和成果说话，少写故事。"
+        },
+        "comeback_underdog": {
+          "core_angle": "逆袭要写得简短且结果导向",
+          "recommended_structure": "早期挫折 → 关键努力 → 能力提升与成果 → 课程如何帮助职业发展",
+          "key_tips": "澳洲对逆袭故事接受度中等，要控制篇幅，重点写结果。",
+          "china_student_advice": "可以写，但建议控制在文书30%以内，快速转向能力和职业规划。"
+        },
+        "leadership_oriented": {
+          "core_angle": "领导力要和专业技能、团队成果结合",
+          "recommended_structure": "团队问题 → 领导行动与组织 → 团队成果 → 习得的领导与协作能力 → 未来应用",
+          "key_tips": "澳洲更看重能产生实际结果的领导力，而非头衔。",
+          "china_student_advice": "把领导经历和专业项目结合写，效果更好。"
+        }
+      }
+    }
+  ],
+  "relationships": []
+}
+]

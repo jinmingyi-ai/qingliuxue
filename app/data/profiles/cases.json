@@ -1,0 +1,4080 @@
+[
+ {
+  "nodes": [
+    {
+      "id": "profile_us_009",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_009",
+        "name": "Q同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.65,
+          "toefl": 105,
+          "ielts": null,
+          "sat_act": "SAT 1440",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus AB 4"],
+          "ecs": "全国信息学奥赛（NOIP）国家级奖 + 2次ACM区域赛获奖 + 独立开发在线判题系统（服务学校编程社团） + 数学建模竞赛省级一等奖",
+          "budget_per_year_usd": 40000,
+          "high_school_type": "Xi'an_key_public_high_school",
+          "region": "Xi'an, Shaanxi",
+          "personality": "性格坚韧内敛，极强的抗压和自学能力，喜欢通过竞赛证明自己，做事非常专注和执着"
+        },
+        "applied_programs": [
+          {"program_id": "georgiatech_cs_undergrad", "result": "admit", "strategy_used": ["competition_achievements", "project_implementation"]},
+          {"program_id": "purdue_cs_undergrad", "result": "admit", "strategy_used": ["competition_achievements", "early_application"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["strong_competition_background"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup"]}
+        ],
+        "key_strategies": [
+          "competition_results_as_core_strength",
+          "project_implementation_story_in_SOP",
+          "early_application_to_Georgia_Tech_and_Purdue",
+          "OSSD作为可靠备份"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，主申美国竞赛认可度高的学校",
+          "2025-05: TOEFL考试（105）",
+          "2025-06: SAT考试",
+          "2025-07: 把信息学奥赛和在线判题系统项目包装成核心故事",
+          "2025-08: 完成所有SOP和补充文书",
+          "2025-09-10: 提交Georgia Tech早申 + Purdue、UIUC常规申请",
+          "2025-11: 收到Georgia Tech录取",
+          "2025-12: 收到Purdue + UIUC + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Georgia Tech CS", "Purdue CS", "UIUC CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Georgia Tech CS",
+          "reason_for_choice": "CS专业强 + 对竞赛背景认可度高 + 性价比好 + 就业资源优秀"
+        },
+        "lessons": "GPA 3.65但有强竞赛背景的学生，在Georgia Tech、Purdue这类重视实际能力和竞赛成绩的学校有明显优势。把竞赛经历和项目落地结合讲故事，比只堆奖项更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "一开始担心GPA不够，不敢冲Georgia Tech这种好学校",
+            "SOP第一版写得像竞赛简历，缺乏个人故事和成长",
+            "时间线因为准备竞赛比较紧张，文书准备被压缩"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘从信息学奥赛到开发在线判题系统，再到想用技术解决更大问题’的成长弧线",
+            "把时间线整体提前3个月，并把文书写作固定在每天晚上",
+            "提前给推荐老师（竞赛教练）提供详细贡献说明"
+          ],
+          "sop_vs_ps_difference": "美国SOP吃竞赛经历 + 项目故事 + 个人成长；英国PS更学术匹配。",
+          "recommendation_letter_strategy": "找竞赛教练 + 班主任，提前提供具体获奖和项目贡献材料。",
+          "timeline_buffer_advice": "竞赛学生时间更紧张，必须比别人提前更多启动申请准备。",
+          "visa_employment_impact": "Georgia Tech CS就业资源强，对未来职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 13000,
+        "overall_difficulty_rating": "medium (竞赛背景助力)"
+      }
+    },
+    {
+      "id": "profile_us_010",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_010",
+        "name": "X同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.80,
+          "toefl": 108,
+          "ielts": null,
+          "sat_act": "SAT 1480",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus BC 5", "AP Physics C 4", "AP Economics 5"],
+          "ecs": "国际课程背景（A-Level + AP） + 学校编程社团核心 + 参加2次国际编程比赛 + 组织校园科技节 + 暑期参与海外科研项目（线上）",
+          "budget_per_year_usd": 52000,
+          "high_school_type": "Chengdu_international_curriculum_program",
+          "region": "Chengdu, Sichuan",
+          "personality": "性格成熟稳重，有较强国际视野，沟通能力好，计划性强，喜欢把中西教育优势结合"
+        },
+        "applied_programs": [
+          {"program_id": "umich_cs_undergrad", "result": "admit", "strategy_used": ["international_background", "balanced_profile"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["international_background", "strong_project"]},
+          {"program_id": "nyu_cs_undergrad", "result": "admit", "strategy_used": ["international_exposure", "clear_career_goal"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_compatible"]}
+        ],
+        "key_strategies": [
+          "international_curriculum_and_exposure",
+          "balanced_academic_EC_and_global_perspective",
+          "clear_career_goal_in_SOP",
+          "OSSD作为强力备份"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，制定中美加多国申请计划",
+          "2025-05: TOEFL考试（108）",
+          "2025-06: SAT考试",
+          "2025-07: 把国际课程背景 + 海外科研项目包装成优势",
+          "2025-08: 完成所有SOP和补充文书",
+          "2025-09-15: 提交Michigan早申 + UIUC、NYU常规申请",
+          "2025-11: 收到Michigan录取",
+          "2025-12: 收到UIUC + NYU + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Michigan CS", "UIUC CS", "NYU CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Michigan CS",
+          "reason_for_choice": "CS专业强 + 研究与就业平衡好 + 国际学生支持好 + 奖学金"
+        },
+        "lessons": "国际课程背景的学生在申请时可以突出中西结合的优势和全球视野。把国际经历和国内基础结合讲故事，能让招生官看到你的独特价值。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP第一版写得比较中规中矩，缺乏鲜明个人特色",
+            "国际课程和国内课程转换时，成绩单和推荐信准备比较复杂",
+            "时间线因为要同时准备多国申请，压力较大"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘国际课程让我看到中西教育差异，我希望用技术连接两者’的独特视角",
+            "提前联系学校教务处和推荐老师，统一材料格式和内容",
+            "把时间线整体提前3.5个月，并制定清晰的多国申请时间表"
+          ],
+          "sop_vs_ps_difference": "美国SOP吃个人独特故事和全球视野；英国PS更学术直接。",
+          "recommendation_letter_strategy": "找国际课程老师 + 国内竞赛/项目老师，提前协调材料风格。",
+          "timeline_buffer_advice": "国际课程学生材料准备更复杂，建议比普通高中学生提前更多时间。",
+          "visa_employment_impact": "Michigan CS对国际学生支持好，OPT/STEM路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 19000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "georgiatech_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "purdue_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "umich_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "nyu_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_007",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_003",
+        "name": "L同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.88,
+          "toefl": 110,
+          "ielts": null,
+          "sat_act": "SAT 1520 (Math 790)",
+          "ap_courses": ["AP Calculus BC 5", "AP Computer Science A 5", "AP Statistics 5", "AP Physics C: Mechanics 5"],
+          "ecs": "学生会副主席 + 学校编程社团创始人 + 带领团队开发校园AI助手小程序（用户超5000） + 省级数学竞赛二等奖",
+          "budget_per_year_usd": 55000,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "外向开朗，组织能力强，喜欢带领团队做事，时间规划非常严谨，是典型的执行派"
+        },
+        "applied_programs": [
+          {"program_id": "berkeley_cs_undergrad", "result": "admit", "strategy_used": ["leadership_impact", "project_story_SOP"]},
+          {"program_id": "umich_cs_undergrad", "result": "admit", "strategy_used": ["leadership_impact", "strong_ECs"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["early_application", "balanced_profile"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup", "research_highlight"]}
+        ],
+        "key_strategies": [
+          "leadership_and_impact_in_SOP",
+          "quantify_project_user_numbers",
+          "early_submission_for_top_publics",
+          "OSSD_as_strong_safety_net"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定主申美国，加拿大作为Plan B",
+          "2025-05: TOEFL考试（一次达标110）",
+          "2025-06: SAT考试（1520满意，不重考）",
+          "2025-07: 完成校园AI助手项目包装 + SOP初稿（突出领导力和用户影响）",
+          "2025-08: 给3位推荐老师分别提供个性化材料（班主任+编程社团指导老师+学生会老师）",
+          "2025-09-01: 早申Berkeley + 常规申请全部材料准备完成",
+          "2025-09-20: 提交Berkeley早申 + UIUC、Michigan常规申请",
+          "2025-11-15: 收到Berkeley录取",
+          "2025-12: 连续收到Michigan + UIUC + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UC Berkeley CS", "University of Michigan CS", "UIUC CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UC Berkeley CS",
+          "reason_for_choice": "CS专业全球顶尖 + 研究与就业资源极强 + 奖学金 + 地理位置和气候都喜欢"
+        },
+        "lessons": "GPA 3.88 + SAT 1520这种高分学生，领导力和真实项目影响比单纯堆分数更能打动顶尖公立大学。早申Berkeley是正确决策，常规申请也准备得非常充分。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP第一版写得太‘完美学生模板’，缺乏真实个人色彩",
+            "推荐信三位老师内容有重复，缺乏个性化",
+            "时间线虽然提前，但材料公证还是差点因为节假日delay"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘我如何从学生会副主席成长为带领团队做真实产品的人’的故事",
+            "提前给每位推荐老师单独写个性化bullet points，避免内容撞车",
+            "材料公证提前2个月启动，并准备好加急通道"
+          ],
+          "sop_vs_ps_difference": "美国SOP非常吃领导力、团队影响和个人成长故事；英国PS更学术化、直接回答why this course。",
+          "recommendation_letter_strategy": "找真正了解你不同侧面（学术、领导力、项目）的老师，并提前提供详细材料。",
+          "timeline_buffer_advice": "即使是高分学生，材料准备也要留至少2个月缓冲，尤其是公证和翻译。",
+          "visa_employment_impact": "Berkeley CS OPT/STEM优势巨大，毕业后就业和H1B抽签概率相对较好。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 18000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    },
+    {
+      "id": "profile_us_008",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_004",
+        "name": "W同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "gpa": 3.58,
+          "toefl": 104,
+          "ielts": null,
+          "sat_act": "SAT 1420",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus AB 4"],
+          "ecs": "全国信息学奥赛（NOIP）省级一等奖 + 独立开发支教地区教育App（真实上线使用） + 家庭经济困难但坚持自学编程",
+          "budget_per_year_usd": 35000,
+          "high_school_type": "tier2_city_ordinary_public_high_school",
+          "region": "Hangzhou, Zhejiang",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心"
+        },
+        "applied_programs": [
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["personal_story_SOP", "resilience_and_impact"]},
+          {"program_id": "purdue_cs_undergrad", "result": "admit", "strategy_used": ["personal_story_SOP", "quantified_impact"]},
+          {"program_id": "nyu_cs_undergrad", "result": "waitlist", "strategy_used": ["personal_story_SOP"]}
+        ],
+        "key_strategies": [
+          "authentic_personal_story_in_SOP",
+          "highlight_resilience_and_self_learning",
+          "quantify_educational_impact_of_side_project"
+        ],
+        "timeline_followed": [
+          "2025-04: 决定只申请美国，不考虑其他国家",
+          "2025-05: TOEFL第一次考试（104，留2个月准备重考但最终没重考）",
+          "2025-06: SAT考试",
+          "2025-07: 把支教App项目和家庭背景完整包装成SOP核心故事",
+          "2025-08: 完成所有文书（重点突出‘用技术帮助教育公平’的初心）",
+          "2025-09-15: 提交UIUC + Purdue + NYU常规申请",
+          "2025-12: 收到UIUC + Purdue录取，NYU waitlist"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UIUC CS", "Purdue CS"],
+          "rejected_or_waitlist": ["NYU (waitlist)"],
+          "final_choice": "UIUC CS",
+          "reason_for_choice": "CS专业强 + 研究资源好 + 性价比高 + 奖学金覆盖生活费"
+        },
+        "lessons": "GPA 3.58 + 普通高中背景完全可以逆袭。**把真实生活困境 + 用技术解决社会问题的故事讲好**，比很多‘完美简历’更有感染力。UIUC对这种有故事、有韧性的学生很认可。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "一开始非常自卑，觉得GPA和背景不够好，不敢冲好学校",
+            "SOP写家庭困难时容易显得‘卖惨’，不知道如何正面呈现",
+            "时间线因为家里经济压力，准备得比较仓促"
+          ],
+          "effective_countermeasures": [
+            "把家庭困难和支教经历转化为‘我为什么想学CS、想用技术改变教育’的正面动力",
+            "SOP重点写‘用App帮助山区孩子’的具体影响，而不是只写困难",
+            "把时间线整体提前2.5个月，并每天固定时间写文书"
+          ],
+          "sop_vs_ps_difference": "美国SOP非常吃真实个人故事和价值观；英国PS更学术和专业匹配。",
+          "recommendation_letter_strategy": "找班主任 + 信息学竞赛教练，提前给教练提供详细项目和成长描述。",
+          "timeline_buffer_advice": "普通高中学生时间更紧张，建议至少提前3个月启动文书准备。",
+          "visa_employment_impact": "UIUC CS就业资源强，OPT后找工作相对有保障，对家庭经济压力是重要缓解。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 15000,
+        "overall_difficulty_rating": "medium (成功逆袭)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "berkeley_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "umich_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "purdue_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "nyu_cs_undergrad", "properties": {"result": "waitlist"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_005",
+        "name": "H同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.91,
+          "toefl": 112,
+          "ielts": null,
+          "sat_act": "SAT 1550 (Math 800)",
+          "ap_courses": ["AP Calculus BC 5", "AP Computer Science A 5", "AP Physics C: Electricity and Magnetism 5", "AP Statistics 5"],
+          "ecs": "学校AI实验室核心成员（参与2个国家级课题） + 全国青少年科技创新大赛一等奖 + 信息学奥赛省级一等奖 + 数学建模竞赛国家级二等奖",
+          "budget_per_year_usd": 60000,
+          "high_school_type": "Beijing_key_public_high_school",
+          "region": "Beijing",
+          "personality": "极度认真 perfectionist，内向安静，时间管理近乎苛刻，对自己要求非常高，喜欢把事情做到极致"
+        },
+        "applied_programs": [
+          {"program_id": "cmu_cs_undergrad", "result": "admit", "strategy_used": ["research_depth", "academic_achievements"]},
+          {"program_id": "berkeley_cs_undergrad", "result": "admit", "strategy_used": ["research_depth", "strong_academic_profile"]},
+          {"program_id": "umich_cs_undergrad", "result": "admit", "strategy_used": ["research_highlight", "early_application"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup"]}
+        ],
+        "key_strategies": [
+          "deep_research_highlight_in_SOP",
+          "academic_achievements_quantification",
+          "early_submission_to_top_research_universities",
+          "OSSD_as_strong_backup"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定主申美国顶尖研究型大学",
+          "2025-04: TOEFL考试（112，一次达标）",
+          "2025-05: SAT考试（1550满意）",
+          "2025-06: 完成研究项目深度包装（突出技术贡献和创新点）",
+          "2025-07: 给推荐老师提供详细学术材料和项目文档",
+          "2025-08: 完成所有SOP和补充文书（强调research depth）",
+          "2025-09-01: 早申CMU + 常规申请Berkeley、Michigan全部提交",
+          "2025-11: 收到CMU录取",
+          "2025-12: 连续收到Berkeley + Michigan + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["CMU CS", "UC Berkeley CS", "University of Michigan CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "CMU CS",
+          "reason_for_choice": "CS专业全球顶尖 + 研究资源极强 + 导师匹配度高 + 奖学金"
+        },
+        "lessons": "GPA 3.91 + SAT 1550这种顶尖学术背景的学生，**研究深度和具体贡献**比单纯的奖项列表更有竞争力。CMU对有真实research experience的学生非常友好，早申是正确选择。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP写得太学术化，像论文摘要，缺乏个人视角",
+            " perfectionist性格导致文书反复修改，差点delay截止日期",
+            "推荐信老师一开始写得太泛，需要反复沟通"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘我在研究中遇到的具体技术难题 + 我如何解决 + 我的思考’的叙事结构",
+            "提前制定严格的修改截止时间表，避免无限 perfectionism",
+            "提前2个月给老师发详细材料 + 多次沟通，确保推荐信有具体例子"
+          ],
+          "sop_vs_ps_difference": "美国SOP需要把research讲成有个人思考的故事；英国PS更直接回答学术兴趣和why this course。",
+          "recommendation_letter_strategy": "找真正指导过research的老师，提前提供项目细节和你的具体贡献。",
+          "timeline_buffer_advice": " perfectionist学生尤其要提前设定‘必须停止修改’的deadline。",
+          "visa_employment_impact": "CMU CS OPT/STEM优势极强，毕业后就业和长期发展路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 22000,
+        "overall_difficulty_rating": "high"
+      }
+    },
+    {
+      "id": "profile_us_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_006",
+        "name": "C同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.78,
+          "toefl": 108,
+          "ielts": null,
+          "sat_act": "SAT 1470",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus BC 4", "AP Physics 1 5"],
+          "ecs": "信息学奥赛省级一等奖 + 带领团队参加3次黑客松（获2次省级奖） + 学校学生会外联部部长 + 组织大型编程夏令营",
+          "budget_per_year_usd": 48000,
+          "high_school_type": "Shenzhen_key_public_high_school",
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢带团队做事，抗压能力强，善于沟通和资源整合"
+        },
+        "applied_programs": [
+          {"program_id": "georgiatech_cs_undergrad", "result": "admit", "strategy_used": ["leadership_impact", "competition_and_project"]},
+          {"program_id": "purdue_cs_undergrad", "result": "admit", "strategy_used": ["leadership_impact", "early_application"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["balanced_profile", "strong_ECs"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup"]}
+        ],
+        "key_strategies": [
+          "leadership_and_team_impact_in_SOP",
+          "competition_results + real_project_combination",
+          "early_application_to_purdue_and_gatech",
+          "OSSD作为稳妥备份"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，主申美国公立强校",
+          "2025-05: TOEFL考试（108）",
+          "2025-06: SAT考试",
+          "2025-07: 把黑客松和夏令营项目包装成‘领导力 + 技术实现 + 团队影响’的故事",
+          "2025-08: 完成所有文书和补充材料",
+          "2025-09-05: 提交Georgia Tech早申 + Purdue、UIUC常规申请",
+          "2025-11: 收到Georgia Tech录取",
+          "2025-12: 收到Purdue + UIUC + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Georgia Tech CS", "Purdue CS", "UIUC CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Georgia Tech CS",
+          "reason_for_choice": "CS专业排名高 + 就业资源强 + 性价比好 + 气候和生活环境喜欢"
+        },
+        "lessons": "GPA 3.78 + 强竞赛和领导力背景的学生，在Georgia Tech、Purdue这类重视实践和团队能力的学校非常有竞争力。把‘带领团队做项目’的故事讲清楚，比只写个人技术更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP第一版写得像简历堆砌，缺乏故事性和感染力",
+            "时间线因为组织夏令营比较忙，文书准备一度被压缩",
+            "推荐信老师对‘领导力’的描述比较空洞"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘我如何从普通队员成长为带领团队在黑客松获奖并组织夏令营’的成长故事",
+            "把时间线整体提前3个月，并把文书写作固定在每天晚上固定时段",
+            "提前给推荐老师提供具体事件和数据（获奖、用户数、团队规模）"
+          ],
+          "sop_vs_ps_difference": "美国SOP非常吃领导力、团队故事和个人成长；英国PS更学术和专业匹配。",
+          "recommendation_letter_strategy": "找带过团队项目或竞赛的老师，提前提供具体事例和量化数据。",
+          "timeline_buffer_advice": "如果同时做活动和申请，时间线一定要比别人提前更多。",
+          "visa_employment_impact": "Georgia Tech CS就业资源非常强，对未来职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 14000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "cmu_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "berkeley_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "umich_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "georgiatech_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "purdue_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}}
+  ]
+},
+ {
+  "nodes": [
+    {
+      "id": "profile_us_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_007",
+        "name": "S同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.82,
+          "toefl": 109,
+          "ielts": null,
+          "sat_act": "SAT 1490",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus BC 5", "AP Physics C: Mechanics 5"],
+          "ecs": "学校机器人社团核心成员（带领团队参加全国机器人比赛获省级奖） + 独立开发智能家居控制系统（真实部署在家庭使用） + 数学建模竞赛省级一等奖",
+          "budget_per_year_usd": 46000,
+          "high_school_type": "Guangzhou_key_public_high_school",
+          "region": "Guangzhou, Guangdong",
+          "personality": "沉稳靠谱，执行力极强，喜欢把想法落地成真实产品，性格偏内向但沟通清晰"
+        },
+        "applied_programs": [
+          {"program_id": "purdue_cs_undergrad", "result": "admit", "strategy_used": ["project_implementation", "engineering_background"]},
+          {"program_id": "georgiatech_cs_undergrad", "result": "admit", "strategy_used": ["project_implementation", "strong_ECs"]},
+          {"program_id": "umich_cs_undergrad", "result": "admit", "strategy_used": ["research_and_project_balance"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup"]}
+        ],
+        "key_strategies": [
+          "project_implementation_and_real_world_impact",
+          "engineering_thinking_in_SOP",
+          "early_application_to_purdue",
+          "OSSD作为稳妥Plan B"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，主申美国工程强校",
+          "2025-05: TOEFL考试（109）",
+          "2025-06: SAT考试",
+          "2025-07: 把机器人项目和智能家居系统完整包装成‘从idea到落地’的故事",
+          "2025-08: 完成所有SOP和补充文书",
+          "2025-09-08: 提交Purdue早申 + Georgia Tech、Michigan常规申请",
+          "2025-11: 收到Purdue录取",
+          "2025-12: 收到Georgia Tech + Michigan + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Purdue CS", "Georgia Tech CS", "University of Michigan CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Purdue CS",
+          "reason_for_choice": "工程与CS结合强 + 性价比高 + 就业资源好 + 奖学金"
+        },
+        "lessons": "GPA 3.82 + 真实项目落地经验的学生，在Purdue、Georgia Tech这类重视实践的学校非常受欢迎。把‘项目从0到1落地’的过程讲清楚，比只写技术更能体现工程能力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP第一版写得太技术化，像项目报告，缺乏个人成长和思考",
+            "时间线因为同时准备机器人比赛，文书准备一度比较紧张",
+            "推荐信老师对项目细节了解不够深入"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘我如何发现问题 → 设计方案 → 克服困难落地 → 个人成长’的完整故事",
+            "把时间线整体提前3个月，并把文书写作固定在每天固定时段",
+            "提前1.5个月给推荐老师发详细项目文档和我的具体贡献说明"
+          ],
+          "sop_vs_ps_difference": "美国SOP非常吃项目落地故事和个人成长；英国PS更学术和专业匹配。",
+          "recommendation_letter_strategy": "找真正带过项目的老师，提前提供项目文档和贡献列表。",
+          "timeline_buffer_advice": "如果同时参加重要比赛和申请，时间线必须比别人提前更多。",
+          "visa_employment_impact": "Purdue和Georgia Tech CS就业资源都很强，对未来职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 16000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_us_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_008",
+        "name": "Y同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.85,
+          "toefl": 107,
+          "ielts": null,
+          "sat_act": "SAT 1500",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus BC 5", "AP Statistics 5"],
+          "ecs": "学校编程社团副社长 + 参加2次ACM区域赛 + 带领团队开发校园失物招领小程序（用户超3000） + 数学建模竞赛省级奖",
+          "budget_per_year_usd": 50000,
+          "high_school_type": "Nanjing_key_public_high_school",
+          "region": "Nanjing, Jiangsu",
+          "personality": "性格稳重沉静，计划性极强，执行力优秀，不喜欢冒险，喜欢把每一步都规划清楚"
+        },
+        "applied_programs": [
+          {"program_id": "umich_cs_undergrad", "result": "admit", "strategy_used": ["balanced_profile", "strong_project_impact"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["balanced_profile", "early_application"]},
+          {"program_id": "purdue_cs_undergrad", "result": "admit", "strategy_used": ["strong_ECs", "clear_career_goal"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup"]}
+        ],
+        "key_strategies": [
+          "balanced_academic_and_EC_profile",
+          "clear_career_goal_in_SOP",
+          "early_application_to_UIUC_and_Michigan",
+          "OSSD作为可靠备份"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，制定详细申请计划",
+          "2025-05: TOEFL考试（107）",
+          "2025-06: SAT考试",
+          "2025-07: 完成校园小程序项目包装 + SOP初稿（突出职业规划）",
+          "2025-08: 给推荐老师提供详细材料",
+          "2025-09-10: 提交Michigan早申 + UIUC、Purdue常规申请",
+          "2025-11: 收到Michigan录取",
+          "2025-12: 收到UIUC + Purdue + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Michigan CS", "UIUC CS", "Purdue CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Michigan CS",
+          "reason_for_choice": "CS专业强 + 研究与就业平衡好 + 性价比高 + 奖学金"
+        },
+        "lessons": "GPA 3.85 + 均衡背景的学生，在Michigan、UIUC、Purdue这类综合实力强的学校非常有竞争力。把清晰的职业规划和项目影响写进SOP，能让招生官看到你的长远思考。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP第一版写得比较平淡，缺乏亮点和个人色彩",
+            "时间线虽然规划好，但材料公证因为节假日还是有小delay",
+            "推荐信内容有一定重复，需要反复修改"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘我为什么选择CS + 我做了什么项目 + 我未来的职业方向’的三段式清晰结构",
+            "材料公证提前2个月启动，并准备好应急方案",
+            "提前给推荐老师单独定制bullet points，避免内容撞车"
+          ],
+          "sop_vs_ps_difference": "美国SOP吃清晰的个人故事和职业规划；英国PS更学术直接。",
+          "recommendation_letter_strategy": "找不同侧面的老师（学术 + 项目 + 领导力），提前提供个性化材料。",
+          "timeline_buffer_advice": "即使计划性强，也要为材料公证和翻译留出额外缓冲时间。",
+          "visa_employment_impact": "Michigan CS就业资源优秀，对未来发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 17000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "purdue_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "georgiatech_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "umich_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "umich_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "purdue_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_009",
+        "name": "Q同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.65,
+          "toefl": 105,
+          "ielts": null,
+          "sat_act": "SAT 1440",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus AB 4"],
+          "ecs": "全国信息学奥赛（NOIP）国家级奖 + 2次ACM区域赛获奖 + 独立开发在线判题系统（服务学校编程社团） + 数学建模竞赛省级一等奖",
+          "budget_per_year_usd": 40000,
+          "high_school_type": "Xi'an_key_public_high_school",
+          "region": "Xi'an, Shaanxi",
+          "personality": "性格坚韧内敛，极强的抗压和自学能力，喜欢通过竞赛证明自己，做事非常专注和执着"
+        },
+        "applied_programs": [
+          {"program_id": "georgiatech_cs_undergrad", "result": "admit", "strategy_used": ["competition_achievements", "project_implementation"]},
+          {"program_id": "purdue_cs_undergrad", "result": "admit", "strategy_used": ["competition_achievements", "early_application"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["strong_competition_background"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_backup"]}
+        ],
+        "key_strategies": [
+          "competition_results_as_core_strength",
+          "project_implementation_story_in_SOP",
+          "early_application_to_Georgia_Tech_and_Purdue",
+          "OSSD作为可靠_backup"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，主申美国竞赛认可度高的学校",
+          "2025-05: TOEFL考试（105）",
+          "2025-06: SAT考试",
+          "2025-07: 把信息学奥赛和在线判题系统项目包装成核心故事",
+          "2025-08: 完成所有SOP和补充文书",
+          "2025-09-10: 提交Georgia Tech早申 + Purdue、UIUC常规申请",
+          "2025-11: 收到Georgia Tech录取",
+          "2025-12: 收到Purdue + UIUC + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Georgia Tech CS", "Purdue CS", "UIUC CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Georgia Tech CS",
+          "reason_for_choice": "CS专业强 + 对竞赛背景认可度高 + 性价比好 + 就业资源优秀"
+        },
+        "lessons": "GPA 3.65但有强竞赛背景的学生，在Georgia Tech、Purdue这类重视实际能力和竞赛成绩的学校有明显优势。把竞赛经历和项目落地结合讲故事，比只堆奖项更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "一开始担心GPA不够，不敢冲Georgia Tech这种好学校",
+            "SOP第一版写得像竞赛简历，缺乏个人故事和成长",
+            "时间线因为准备竞赛比较紧张，文书准备被压缩"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘从信息学奥赛到开发在线判题系统，再到想用技术解决更大问题’的成长弧线",
+            "把时间线整体提前3个月，并把文书写作固定在每天晚上",
+            "提前给推荐老师（竞赛教练）提供详细贡献说明"
+          ],
+          "sop_vs_ps_difference": "美国SOP吃竞赛经历 + 项目故事 + 个人成长；英国PS更学术匹配。",
+          "recommendation_letter_strategy": "找竞赛教练 + 班主任，提前提供具体获奖和项目贡献材料。",
+          "timeline_buffer_advice": "竞赛学生时间更紧张，必须比别人提前更多启动申请准备。",
+          "visa_employment_impact": "Georgia Tech CS就业资源强，对未来职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 13000,
+        "overall_difficulty_rating": "medium (竞赛背景助力)"
+      }
+    },
+    {
+      "id": "profile_us_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_undergrad_010",
+        "name": "X同学",
+        "level": "undergrad",
+        "country": "US",
+        "category": "us_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["US", "Canada"],
+        "input_attributes": {
+          "gpa": 3.80,
+          "toefl": 108,
+          "ielts": null,
+          "sat_act": "SAT 1480",
+          "ap_courses": ["AP Computer Science A 5", "AP Calculus BC 5", "AP Physics C 4", "AP Economics 5"],
+          "ecs": "国际课程背景（A-Level + AP） + 学校编程社团核心 + 参加2次国际编程比赛 + 组织校园科技节 + 暑期参与海外科研项目（线上）",
+          "budget_per_year_usd": 52000,
+          "high_school_type": "Chengdu_international_curriculum_program",
+          "region": "Chengdu, Sichuan",
+          "personality": "性格成熟稳重，有较强国际视野，沟通能力好，计划性强，喜欢把中西教育优势结合"
+        },
+        "applied_programs": [
+          {"program_id": "umich_cs_undergrad", "result": "admit", "strategy_used": ["international_background", "balanced_profile"]},
+          {"program_id": "uiuc_cs_undergrad", "result": "admit", "strategy_used": ["international_background", "strong_project"]},
+          {"program_id": "nyu_cs_undergrad", "result": "admit", "strategy_used": ["international_exposure", "clear_career_goal"]},
+          {"program_id": "uoft_cs_undergrad", "result": "admit", "strategy_used": ["OSSD_compatible"]}
+        ],
+        "key_strategies": [
+          "international_curriculum_and_exposure",
+          "balanced_academic_EC_and_global_perspective",
+          "clear_career_goal_in_SOP",
+          "OSSD作为强力_backup"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定CS专业，制定中美加多国申请计划",
+          "2025-05: TOEFL考试（108）",
+          "2025-06: SAT考试",
+          "2025-07: 把国际课程背景 + 海外科研项目包装成优势",
+          "2025-08: 完成所有SOP和补充文书",
+          "2025-09-15: 提交Michigan早申 + UIUC、NYU常规申请",
+          "2025-11: 收到Michigan录取",
+          "2025-12: 收到UIUC + NYU + UofT录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Michigan CS", "UIUC CS", "NYU CS", "University of Toronto CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Michigan CS",
+          "reason_for_choice": "CS专业强 + 研究与就业平衡好 + 国际学生支持好 + 奖学金"
+        },
+        "lessons": "国际课程背景的学生在申请时可以突出中西结合的优势和全球视野。把国际经历和国内基础结合讲故事，能让招生官看到你的独特价值。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "SOP第一版写得比较中规中矩，缺乏鲜明个人特色",
+            "国际课程和国内课程转换时，成绩单和推荐信准备比较复杂",
+            "时间线因为要同时准备多国申请，压力较大"
+          ],
+          "effective_countermeasures": [
+            "把SOP改成‘国际课程让我看到中西教育差异，我希望用技术连接两者’的独特视角",
+            "提前联系学校教务处和推荐老师，统一材料格式和内容",
+            "把时间线整体提前3.5个月，并制定清晰的多国申请时间表"
+          ],
+          "sop_vs_ps_difference": "美国SOP吃个人独特故事和全球视野；英国PS更学术直接。",
+          "recommendation_letter_strategy": "找国际课程老师 + 国内竞赛/项目老师，提前协调材料风格。",
+          "timeline_buffer_advice": "国际课程学生材料准备更复杂，建议比普通高中学生提前更多时间。",
+          "visa_employment_impact": "Michigan CS对国际学生支持好，OPT/STEM路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 19000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "georgiatech_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "purdue_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "umich_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "uiuc_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "nyu_cs_undergrad", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "uoft_cs_undergrad", "properties": {"result": "admit"}}
+  ]
+},
+{
+  "nodes": [
+    {
+      "id": "profile_us_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_001",
+        "name": "A同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.68,
+          "toefl": 107,
+          "gre": " waived (很多项目2025-2026已取消)",
+          "undergrad_school": "tier2_city_key_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科期间在导师指导下完成1篇CCF-B类论文（已录用） + 参与国家级大创项目并获省级奖",
+          "work_experience": null,
+          "budget_per_year_usd": 55000,
+          "region": "Xi'an, Shaanxi",
+          "personality": "安静内敛但极度专注，喜欢深度技术钻研，有很强的学术好奇心和执行力"
+        },
+        "applied_programs": [
+          {"program_id": "stanford_ms_cs", "result": "admit", "strategy_used": ["strong_research_fit", "professor_contact"]},
+          {"program_id": "cmu_mscs", "result": "admit", "strategy_used": ["research_match", "detailed_SOP"]},
+          {"program_id": "uiuc_ms_cs", "result": "admit", "strategy_used": ["research_experience", "early_contact"]},
+          {"program_id": "georgiatech_ms_cs", "result": "admit", "strategy_used": ["solid_research_background"]}
+        ],
+        "key_strategies": [
+          "research_fit_SOP",
+          "提前联系教授并获得积极回复",
+          "把本科论文和项目包装成清晰的研究方向",
+          "强调长期学术/研究兴趣而非单纯就业"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请美国研究型Master's，目标顶尖CS项目",
+          "2025-04: 完成本科论文投稿 + 整理研究材料",
+          "2025-05: TOEFL考试（107）",
+          "2025-06: 开始写SOP，重点突出研究兴趣和论文贡献",
+          "2025-07: 给3位推荐老师（包括论文导师）提供详细材料",
+          "2025-08: 提前邮件联系目标教授（Stanford + CMU）",
+          "2025-09-15: 提交Stanford、CMU、UIUC、Georgia Tech申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Stanford MS CS", "CMU MSCS", "UIUC MS CS", "Georgia Tech MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Stanford MS CS",
+          "reason_for_choice": "研究方向高度匹配 + 导师资源强 + 长期学术发展路径清晰"
+        },
+        "lessons": "来自非顶尖本科但有真实研究产出（论文）的学生，申请顶尖研究型Master's时，**研究匹配度 + 教授联系**比单纯的GPA和学校排名更重要。提前联系教授并在SOP中清晰展示研究兴趣，能大幅提升竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校不是985，担心被直接筛掉",
+            "SOP第一版写得像项目列表，缺乏清晰的研究问题和个人思考",
+            "不知道如何有效联系教授，邮件经常石沉大海"
+          ],
+          "effective_countermeasures": [
+            "把本科论文的核心贡献和技术难点详细写进SOP，并明确未来研究方向",
+            "提前2-3个月给论文导师提供详细材料，让推荐信有具体研究细节",
+            "邮件联系教授时附上论文PDF + 简短研究兴趣说明，突出匹配点而非套磁"
+          ],
+          "sop_vs_ps_difference": "美国研究型Master's SOP非常吃研究问题、方法和个人贡献；英国更看重整体学术背景和Why this program。",
+          "recommendation_letter_strategy": "找真正指导过研究/论文的老师，提前提供论文和贡献列表。",
+          "timeline_buffer_advice": "研究型申请一定要提前联系教授，建议至少提前3个月开始准备材料和邮件。",
+          "visa_employment_impact": "Stanford MS CS OPT/STEM优势极强，毕业后继续读PhD或进入顶尖实验室的路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 28000,
+        "overall_difficulty_rating": "high"
+      }
+    },
+    {
+      "id": "profile_us_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_002",
+        "name": "B同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.55,
+          "toefl": 104,
+          "gre": " waived",
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级项目，无论文",
+          "work_experience": "毕业后在一家中型互联网公司担任后端开发2年，有多个真实上线项目经验",
+          "budget_per_year_usd": 48000,
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，执行力强，善于沟通和资源整合，有很强的职业规划意识"
+        },
+        "applied_programs": [
+          {"program_id": "georgiatech_ms_cs", "result": "admit", "strategy_used": ["work_experience", "career_goal_clear"]},
+          {"program_id": "purdue_ms_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_SOP"]},
+          {"program_id": "uiuc_ms_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_impact"]},
+          {"program_id": "nyu_ms_cs", "result": "admit", "strategy_used": ["career_switch_story", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "用工作经验和真实项目包装SOP",
+          "突出职业转型动机和长期目标",
+          "强调实际工程能力和解决问题的经历",
+          "选择重视产业合作的学校"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请美国Master's进行职业提升",
+          "2025-03: 开始准备材料，把工作项目整理成技术贡献",
+          "2025-04: TOEFL考试（104）",
+          "2025-05: 完成SOP初稿，重点写工作中的技术成长和职业目标",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书和简历优化",
+          "2025-09-01: 提交Georgia Tech、Purdue、UIUC、NYU申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Georgia Tech MS CS", "Purdue MS CS", "UIUC MS CS", "NYU MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Georgia Tech MS CS",
+          "reason_for_choice": "性价比高 + 就业资源强 + 课程实践性强 + 奖学金覆盖部分费用"
+        },
+        "lessons": "本科背景一般但有2年真实工作经验的学生，申请美国Master's时，**把工作项目讲成技术贡献 + 清晰的职业目标**，反而比纯学术背景更有竞争力。很多项目型Master's更看重实际解决问题的能力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校普通 + GPA不高，担心竞争力不足",
+            "SOP第一版写得像工作简历，缺乏技术深度和个人思考",
+            "不知道如何把工作经验转化为申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把工作中遇到的技术难题、解决方案和量化影响详细写进SOP",
+            "突出从本科到工作的成长曲线，以及为什么需要Master's进一步提升",
+            "选择Georgia Tech、Purdue这类产业联系紧密的项目型Master's"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃职业动机 + 项目贡献 + 未来规划；英国更学术化。",
+          "recommendation_letter_strategy": "找直接带过项目的领导 + 本科导师，提前提供项目贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生材料准备时间更紧张，建议至少提前4个月启动。",
+          "visa_employment_impact": "Georgia Tech MS CS就业资源优秀，OPT后找工作相对容易，对职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 15000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "stanford_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "cmu_mscs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "uiuc_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_001", "end_node_id": "georgiatech_ms_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "georgiatech_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "purdue_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "uiuc_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_002", "end_node_id": "nyu_ms_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_003",
+        "name": "C同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.72,
+          "toefl": 109,
+          "gre": "waived",
+          "undergrad_school": "985_university",
+          "undergrad_major": "Artificial Intelligence",
+          "research_experience": "本科期间在AI实验室完成2个项目，其中1个开源工具在GitHub获2.3k stars，被多家公司实际使用",
+          "work_experience": "大三暑假在字节跳动实习4个月，参与推荐系统优化项目",
+          "budget_per_year_usd": 58000,
+          "region": "Hangzhou, Zhejiang",
+          "personality": "外向且有极强执行力，喜欢把技术落地成真实产品，善于沟通和跨团队协作"
+        },
+        "applied_programs": [
+          {"program_id": "columbia_ms_cs", "result": "admit", "strategy_used": ["strong_project_impact", "open_source_contribution"]},
+          {"program_id": "nyu_ms_cs", "result": "admit", "strategy_used": ["industry_experience", "clear_career_goal"]},
+          {"program_id": "uw_ms_cs", "result": "admit", "strategy_used": ["research_and_industry_balance"]},
+          {"program_id": "ucsd_ms_cs", "result": "admit", "strategy_used": ["project_impact", "strong_recommendation"]}
+        ],
+        "key_strategies": [
+          "把开源项目和实习经历包装成真实影响力",
+          "SOP强调技术落地能力和产品思维",
+          "选择重视产业合作和职业发展的项目",
+          "提前联系教授并展示具体项目代码"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请美国Master's，目标有产业资源的项目",
+          "2025-03: 把GitHub开源项目整理成技术贡献材料",
+          "2025-04: TOEFL考试（109）",
+          "2025-05: 完成SOP初稿，重点写开源项目影响和实习成长",
+          "2025-06: 给实习导师和本科导师要推荐信",
+          "2025-07: 提前邮件联系Columbia和UW教授",
+          "2025-09-01: 提交Columbia、NYU、UW、UCSD申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Columbia MS CS", "NYU MS CS", "UW MS CS", "UCSD MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Columbia MS CS",
+          "reason_for_choice": "项目实践性强 + 纽约产业资源丰富 + 奖学金覆盖部分费用"
+        },
+        "lessons": "有真实开源项目影响力 + 实习经验的学生，申请产业资源强的Master's时，**把项目影响力和技术贡献讲清楚**比单纯的GPA更有竞争力。很多项目看重学生能否把技术落地。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心本科研究不够‘学术’，开源项目被认为不够正式",
+            "SOP第一版写得像项目展示，缺乏个人思考和职业规划",
+            "不知道如何把实习经历转化为申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把开源项目从idea到用户增长到被公司使用的完整过程写进SOP",
+            "突出从本科研究到实习再到想通过Master's进一步提升的成长线",
+            "选择Columbia、NYU这类产业联系紧密的项目"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃项目影响 + 职业动机 + 个人成长；英国更学术化。",
+          "recommendation_letter_strategy": "找实习导师 + 本科研究导师，提前提供项目贡献和代码链接。",
+          "timeline_buffer_advice": "有实习/项目经验的学生，建议至少提前3.5个月准备材料和联系教授。",
+          "visa_employment_impact": "Columbia和NYU的CS项目在纽约就业资源优秀，OPT后找工作相对容易。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 18000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_us_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_004",
+        "name": "D同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.48,
+          "toefl": 103,
+          "gre": "waived",
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Information Management",
+          "research_experience": "本科几乎无研究经历",
+          "work_experience": "毕业后在一家AI创业公司担任产品经理+数据分析 hybrid角色2年，主导过一个AI工具从0到1上线，月活超10万",
+          "budget_per_year_usd": 52000,
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向开朗，极强的产品思维和资源整合能力，喜欢从用户和商业角度思考技术"
+        },
+        "applied_programs": [
+          {"program_id": "nyu_ms_cs", "result": "admit", "strategy_used": ["strong_industry_story", "career_switch_clear"]},
+          {"program_id": "georgiatech_ms_cs", "result": "admit", "strategy_used": ["project_leadership", "clear_goal"]},
+          {"program_id": "purdue_ms_cs", "result": "admit", "strategy_used": ["work_experience_impact"]},
+          {"program_id": "umich_ms_cs", "result": "admit", "strategy_used": ["balanced_profile", "leadership_experience"]}
+        ],
+        "key_strategies": [
+          "把产品经理经历转化为技术+商业结合的故事",
+          "SOP重点写从非CS背景到主导AI产品的成长",
+          "突出领导力和跨团队协作能力",
+          "选择重视职业发展和产业资源的项目"
+        ],
+        "timeline_followed": [
+          "2025-01: 决定申请美国Master's进行技术深度提升",
+          "2025-02: 开始系统整理工作项目和技术贡献",
+          "2025-03: TOEFL考试（103）",
+          "2025-04: 完成SOP初稿，重点写职业转型和产品技术结合",
+          "2025-05: 给前司领导和本科导师要推荐信",
+          "2025-06: 完成所有文书优化",
+          "2025-09-01: 提交NYU、Georgia Tech、Purdue、Michigan申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["NYU MS CS", "Georgia Tech MS CS", "Purdue MS CS", "UMich MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "NYU MS CS",
+          "reason_for_choice": "纽约产业资源丰富 + 课程灵活 + 奖学金覆盖部分生活费"
+        },
+        "lessons": "本科非CS且GPA一般，但有真实产品落地和领导经验的学生，申请美国Master's时，**把工作经历讲成技术+商业价值**反而很有竞争力。很多项目欢迎有产业经验的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科专业不是CS，担心基础不够",
+            "SOP第一版写得像工作总结，缺乏技术深度",
+            "不知道如何把产品经理经历转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI工具从0到1的过程写成技术决策 + 用户价值 + 团队协作的故事",
+            "突出工作中自学技术栈和解决技术问题的经历",
+            "选择NYU、Georgia Tech这类欢迎产业经验的项目"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃职业故事 + 技术贡献 + 未来规划；英国更学术。",
+          "recommendation_letter_strategy": "找直接带过项目的领导，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，材料准备和文书打磨时间更紧张，建议提前4个月启动。",
+          "visa_employment_impact": "NYU和Georgia Tech的CS项目就业资源优秀，对有工作经验的学生职业提升帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 16000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "columbia_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "nyu_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "uw_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_003", "end_node_id": "ucsd_ms_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "nyu_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "georgiatech_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "purdue_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_004", "end_node_id": "umich_ms_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_005",
+        "name": "E同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.78,
+          "toefl": 108,
+          "gre": "waived",
+          "undergrad_school": "985_university",
+          "undergrad_major": "Electronic Information Engineering",
+          "research_experience": "本科在多模态AI实验室完成2个项目，其中1个医疗影像分割模型被合作医院实际试用，相关工作整理成技术报告",
+          "work_experience": null,
+          "budget_per_year_usd": 56000,
+          "region": "Wuhan, Hubei",
+          "personality": "安静专注，有很强的同理心和责任感，喜欢把技术应用到能真正帮助人的场景中"
+        },
+        "applied_programs": [
+          {"program_id": "uw_ms_cse", "result": "admit", "strategy_used": ["research_match", "professor_contact"]},
+          {"program_id": "berkeley_meng_eecs", "result": "admit", "strategy_used": ["applied_research", "clear_impact"]},
+          {"program_id": "cornell_ms_cs", "result": "admit", "strategy_used": ["research_experience", "detailed_SOP"]},
+          {"program_id": "utexas_ms_cs", "result": "admit", "strategy_used": ["strong_project_background"]}
+        ],
+        "key_strategies": [
+          "把研究项目包装成真实应用价值",
+          "提前联系教授并获得积极反馈",
+          "SOP强调技术如何服务于社会/医疗场景",
+          "选择重视应用研究和跨学科合作的学校"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请美国研究型Master's，目标AI应用方向",
+          "2025-04: 完成本科研究项目总结和技术报告",
+          "2025-05: TOEFL考试（108）",
+          "2025-06: 开始写SOP，重点突出研究的应用价值和个人动机",
+          "2025-07: 提前邮件联系UW和Berkeley教授",
+          "2025-08: 给研究导师提供详细材料准备推荐信",
+          "2025-09-01: 提交UW、Berkeley、Cornell、UT Austin申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UW MS CSE", "Berkeley MEng EECS", "Cornell MS CS", "UT Austin MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UW MS CSE",
+          "reason_for_choice": "研究方向高度匹配 + 教授资源强 + 西雅图产业环境好 + 奖学金"
+        },
+        "lessons": "本科有真实应用型研究项目（即使没有顶会论文）的学生，申请重视应用和跨学科的Master's时，**把研究如何产生实际价值讲清楚**非常重要。提前联系教授并展示具体贡献，能显著提升录取概率。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究项目没有发顶会，担心竞争力不足",
+            "SOP第一版写得像技术报告，缺乏个人动机和故事",
+            "不知道如何把医疗影像项目包装成有社会价值的申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把项目从问题发现 → 技术方案 → 医院试用 → 实际帮助患者的完整链条写进SOP",
+            "突出个人从电子信息转AI的兴趣发展和责任感",
+            "选择UW、Berkeley、Cornell这类重视应用研究和impact的学校"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃研究动机 + 项目影响 + 个人成长；英国更学术直接。",
+          "recommendation_letter_strategy": "找真正指导过研究项目的导师，提前提供项目细节和贡献列表。",
+          "timeline_buffer_advice": "研究型申请建议至少提前3个月联系教授和准备材料。",
+          "visa_employment_impact": "UW和Berkeley的CS/AI项目OPT/STEM优势明显，毕业后继续深造或进入产业实验室路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 24000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    },
+    {
+      "id": "profile_us_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_006",
+        "name": "F同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.62,
+          "toefl": 106,
+          "gre": "waived",
+          "undergrad_school": "985_university",
+          "undergrad_major": "Business Administration",
+          "research_experience": "本科几乎无传统研究经历",
+          "work_experience": "毕业后在一家 fintech 创业公司担任技术产品负责人2年，主导过一个AI风控系统从0到1上线，覆盖千万级用户",
+          "budget_per_year_usd": 54000,
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向且有极强的产品和商业敏感度，喜欢用技术解决真实商业问题，执行力和资源整合能力突出"
+        },
+        "applied_programs": [
+          {"program_id": "nyu_ms_cs", "result": "admit", "strategy_used": ["strong_industry_story", "leadership_experience"]},
+          {"program_id": "georgiatech_ms_cs", "result": "admit", "strategy_used": ["project_leadership", "clear_career_goal"]},
+          {"program_id": "umich_ms_cs", "result": "admit", "strategy_used": ["balanced_profile", "impact_story"]},
+          {"program_id": "utexas_ms_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_SOP"]}
+        ],
+        "key_strategies": [
+          "把创业公司项目经历包装成技术+商业双重贡献",
+          "SOP重点写从非CS背景到主导核心系统的成长故事",
+          "突出领导力和跨团队推动项目落地的能力",
+          "选择重视产业经验和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请美国Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: TOEFL考试（106）",
+          "2025-05: 完成SOP初稿，重点写职业成长和项目影响",
+          "2025-06: 给前司联合创始人和本科导师要推荐信",
+          "2025-07: 完成所有文书和简历优化",
+          "2025-09-01: 提交NYU、Georgia Tech、Michigan、UT Austin申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["NYU MS CS", "Georgia Tech MS CS", "UMich MS CS", "UT Austin MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "NYU MS CS",
+          "reason_for_choice": "纽约 fintech 产业资源丰富 + 课程灵活 + 奖学金覆盖部分费用"
+        },
+        "lessons": "本科非CS但有真实创业/产品落地经验的学生，申请美国Master's时，**把工作经历讲成技术决策 + 商业价值 + 领导力**，竞争力非常强。很多项目欢迎有产业经验、能推动项目落地的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科专业是商科，担心CS基础不够",
+            "SOP第一版写得像工作总结，缺乏技术深度和个人思考",
+            "不知道如何把 fintech 风控项目转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI风控系统从需求分析 → 模型选择 → 上线迭代的完整技术决策过程写进SOP",
+            "突出工作中自学技术栈和解决复杂工程问题的经历",
+            "选择NYU、Georgia Tech这类重视产业经验的项目"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃职业故事 + 项目贡献 + 未来规划；英国更学术化。",
+          "recommendation_letter_strategy": "找直接带过项目的联合创始人，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书打磨。",
+          "visa_employment_impact": "NYU和Georgia Tech的CS项目在就业资源上对有工作经验的学生非常友好，OPT后职业发展路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 17000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "uw_ms_cse", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "berkeley_meng_eecs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "cornell_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_005", "end_node_id": "utexas_ms_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "nyu_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "georgiatech_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "umich_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_006", "end_node_id": "utexas_ms_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_007",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_007",
+        "name": "G同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.75,
+          "toefl": 110,
+          "gre": "waived",
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科在分布式系统实验室完成多个项目，其中1个开源的轻量级分布式任务调度框架在GitHub获1.8k stars，被多家中小公司实际使用",
+          "work_experience": null,
+          "budget_per_year_usd": 55000,
+          "region": "Chengdu, Sichuan",
+          "personality": "内向但极度热爱开源和技术分享，喜欢把复杂系统讲清楚，有很强的技术写作和社区影响力"
+        },
+        "applied_programs": [
+          {"program_id": "upenn_mse_cis", "result": "admit", "strategy_used": ["strong_open_source_impact", "clear_research_interest"]},
+          {"program_id": "ucla_ms_cs", "result": "admit", "strategy_used": ["open_source_contribution", "technical_writing"]},
+          {"program_id": "illinois_ms_cs", "result": "admit", "strategy_used": ["systems_background", "project_impact"]},
+          {"program_id": "uw_ms_cse", "result": "admit", "strategy_used": ["open_source_experience", "research_match"]}
+        ],
+        "key_strategies": [
+          "把开源项目影响力和技术贡献详细包装",
+          "SOP强调技术分享和社区影响力",
+          "提前联系教授并展示具体代码和文档",
+          "选择重视系统和开源文化的学校"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请美国系统/分布式方向Master's",
+          "2025-04: 完成开源框架文档和影响力整理",
+          "2025-05: TOEFL考试（110）",
+          "2025-06: 开始写SOP，重点写开源项目从idea到用户增长的过程",
+          "2025-07: 提前邮件联系UPenn和UW教授",
+          "2025-08: 给研究导师提供详细材料",
+          "2025-09-01: 提交UPenn、UCLA、Illinois、UW申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UPenn MSE CIS", "UCLA MS CS", "Illinois MS CS", "UW MS CSE"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UPenn MSE CIS",
+          "reason_for_choice": "系统方向匹配度高 + 教授资源强 + 奖学金覆盖部分费用"
+        },
+        "lessons": "有真实开源项目影响力（即使没有顶会论文）的学生，申请重视系统和开源的Master's时，**把项目从0到有用户实际使用的完整过程讲清楚**非常有竞争力。很多教授和项目喜欢有实际贡献的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心开源项目被认为不够‘学术’",
+            "SOP第一版写得像项目介绍，缺乏个人思考和研究兴趣",
+            "不知道如何把技术分享能力转化为申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把开源项目从技术选型 → 架构设计 → 用户反馈迭代的完整过程写进SOP",
+            "突出个人对分布式系统的兴趣发展和长期研究方向",
+            "选择UPenn、UCLA、Illinois这类重视系统和实际贡献的学校"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃项目影响 + 个人动机 + 未来研究兴趣；英国更学术直接。",
+          "recommendation_letter_strategy": "找指导过开源/研究项目的导师，提前提供项目文档和贡献说明。",
+          "timeline_buffer_advice": "开源/项目型申请建议至少提前3个月准备材料和联系教授。",
+          "visa_employment_impact": "UPenn和UW的CS项目OPT/STEM优势明显，毕业后进入产业或继续深造路径清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 20000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    },
+    {
+      "id": "profile_us_008",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_008",
+        "name": "H同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.58,
+          "toefl": 105,
+          "gre": "waived",
+          "undergrad_school": "985_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级AI项目",
+          "work_experience": "毕业后在腾讯担任AI产品经理2年，主导过一个内部AI工具从需求到上线的全流程，服务数千内部用户",
+          "budget_per_year_usd": 53000,
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向且有极强的产品思维和跨团队推动能力，喜欢从用户和业务角度定义技术方向"
+        },
+        "applied_programs": [
+          {"program_id": "nyu_ms_cs", "result": "admit", "strategy_used": ["strong_product_story", "leadership_experience"]},
+          {"program_id": "georgiatech_ms_cs", "result": "admit", "strategy_used": ["industry_impact", "clear_career_goal"]},
+          {"program_id": "umich_ms_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_leadership"]},
+          {"program_id": "utexas_ms_cs", "result": "admit", "strategy_used": ["work_experience", "strong_SOP"]}
+        ],
+        "key_strategies": [
+          "把产品经理经历包装成技术决策 + 用户价值",
+          "SOP重点写从工程师思维到产品思维的成长",
+          "突出跨团队推动项目落地的领导力",
+          "选择重视产业经验和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请美国Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: TOEFL考试（105）",
+          "2025-05: 完成SOP初稿，重点写产品技术结合和职业目标",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交NYU、Georgia Tech、Michigan、UT Austin申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["NYU MS CS", "Georgia Tech MS CS", "UMich MS CS", "UT Austin MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "NYU MS CS",
+          "reason_for_choice": "纽约产业资源丰富 + 课程灵活 + 奖学金覆盖部分费用"
+        },
+        "lessons": "有真实产品落地和跨团队领导经验的学生，申请美国Master's时，**把工作经历讲成技术决策 + 用户价值 + 领导力**，竞争力很强。很多项目欢迎能推动技术落地的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心本科研究经历少",
+            "SOP第一版写得像工作总结，缺乏技术深度",
+            "不知道如何把产品经理经历转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI工具从需求定义 → 技术选型 → 上线迭代的完整过程写进SOP",
+            "突出工作中解决的技术难题和跨团队推动的经历",
+            "选择NYU、Georgia Tech这类重视产业经验的项目"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃职业故事 + 项目贡献 + 未来规划；英国更学术化。",
+          "recommendation_letter_strategy": "找直接带过项目的领导，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "NYU和Georgia Tech的CS项目就业资源优秀，对有工作经验的学生职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 15000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "upenn_mse_cis", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "ucla_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "illinois_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_007", "end_node_id": "uw_ms_cse", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "nyu_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "georgiatech_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "umich_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_008", "end_node_id": "utexas_ms_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_us_009",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_009",
+        "name": "I同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.70,
+          "toefl": 107,
+          "gre": "waived",
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科几乎无传统实验室研究",
+          "work_experience": null,
+          "budget_per_year_usd": 52000,
+          "region": "Hangzhou, Zhejiang",
+          "personality": "外向开朗，极强的表达能力和教学热情，喜欢把复杂技术讲得通俗易懂，有很强的社区影响力和组织能力"
+        },
+        "applied_programs": [
+          {"program_id": "uw_ms_cse", "result": "admit", "strategy_used": ["strong_teaching_impact", "community_contribution"]},
+          {"program_id": "illinois_ms_cs", "result": "admit", "strategy_used": ["teaching_experience", "clear_goal"]},
+          {"program_id": "upenn_mse_cis", "result": "admit", "strategy_used": ["leadership_and_communication", "project_impact"]},
+          {"program_id": "ucla_ms_cs", "result": "admit", "strategy_used": ["community_influence", "strong_SOP"]}
+        ],
+        "key_strategies": [
+          "把教学和社区影响力包装成核心优势",
+          "SOP重点写技术分享和帮助他人的经历",
+          "选择重视教学、TA和社区文化的学校",
+          "用真实案例展示沟通和组织能力"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请美国Master's，目标重视教学和社区的项目",
+          "2025-04: 系统整理教学和社区贡献材料",
+          "2025-05: TOEFL考试（107）",
+          "2025-06: 完成SOP初稿，重点写教学影响和个人动机",
+          "2025-07: 给指导老师和社区合作伙伴要推荐信",
+          "2025-08: 完成所有文书优化",
+          "2025-09-01: 提交UW、Illinois、UPenn、UCLA申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UW MS CSE", "Illinois MS CS", "UPenn MSE CIS", "UCLA MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UW MS CSE",
+          "reason_for_choice": "教学和社区文化匹配 + 西雅图环境好 + 奖学金覆盖部分费用"
+        },
+        "lessons": "有大量教学、 mentoring 和社区贡献经历的学生，申请重视教学和社区文化的Master's时，**把帮助他人成长的故事讲清楚**非常有竞争力。很多项目喜欢有教学热情和社区影响力的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心没有顶会论文和传统研究经历",
+            "SOP第一版写得像活动总结，缺乏技术深度和个人思考",
+            "不知道如何把教学和社区贡献转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把组织技术分享活动、帮助学弟学妹成长的真实案例和影响数据写进SOP",
+            "突出个人对技术教育的热情和长期职业规划",
+            "选择UW、Illinois、UPenn这类重视教学和社区的学校"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃个人故事 + 影响力和动机；英国更学术直接。",
+          "recommendation_letter_strategy": "找指导过教学/社区活动的老师和合作伙伴，提前提供具体事例和影响数据。",
+          "timeline_buffer_advice": "教学/社区型申请建议至少提前3个月准备材料和文书。",
+          "visa_employment_impact": "UW和Illinois的CS项目OPT/STEM优势明显，毕业后从事技术教育、内容创作或产业路径都比较清晰。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 18000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_us_010",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "us_graduate_010",
+        "name": "J同学",
+        "level": "graduate",
+        "country": "US",
+        "category": "us_graduate",
+        "major": "Computer Science",
+        "target_countries": ["US"],
+        "input_attributes": {
+          "undergrad_gpa": 3.52,
+          "toefl": 104,
+          "gre": "waived",
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Electronic Information Engineering",
+          "research_experience": "本科几乎无研究经历",
+          "work_experience": "毕业后在一家传统制造企业担任数字化转型负责人3年，主导过多个AI+工业项目从0到1上线",
+          "budget_per_year_usd": 48000,
+          "region": "Xi'an, Shaanxi",
+          "personality": "沉稳靠谱，极强的落地执行力和跨领域沟通能力，喜欢把前沿技术应用到传统行业解决真实问题"
+        },
+        "applied_programs": [
+          {"program_id": "georgiatech_ms_cs", "result": "admit", "strategy_used": ["strong_industry_impact", "clear_career_goal"]},
+          {"program_id": "purdue_ms_cs", "result": "admit", "strategy_used": ["work_experience", "project_leadership"]},
+          {"program_id": "umich_ms_cs", "result": "admit", "strategy_used": ["balanced_profile", "real_world_impact"]},
+          {"program_id": "utexas_ms_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_SOP"]}
+        ],
+        "key_strategies": [
+          "把传统行业数字化转型经历包装成真实技术+业务贡献",
+          "SOP重点写从非互联网背景到推动AI落地的成长故事",
+          "突出跨领域沟通和项目落地能力",
+          "选择重视产业应用和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请美国Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: TOEFL考试（104）",
+          "2025-05: 完成SOP初稿，重点写行业转型和项目影响",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交Georgia Tech、Purdue、Michigan、UT Austin申请",
+          "2025-12: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Georgia Tech MS CS", "Purdue MS CS", "UMich MS CS", "UT Austin MS CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Georgia Tech MS CS",
+          "reason_for_choice": "产业应用方向匹配 + 就业资源强 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自非互联网背景、有真实传统行业数字化转型经验的学生，申请美国Master's时，**把工作经历讲成技术决策 + 业务价值 + 跨领域推动能力**，竞争力很强。很多项目欢迎能把技术落地到真实场景的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校和GPA一般，担心竞争力不足",
+            "SOP第一版写得像工作总结，缺乏技术深度和个人思考",
+            "不知道如何把传统行业AI项目转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI+工业项目从需求分析 → 技术选型 → 上线迭代的完整过程写进SOP",
+            "突出工作中自学技术栈和解决复杂工程问题的经历",
+            "选择Georgia Tech、Purdue这类重视产业应用的学校"
+          ],
+          "sop_vs_ps_difference": "美国Master's SOP非常吃职业故事 + 项目贡献 + 未来规划；英国更学术化。",
+          "recommendation_letter_strategy": "找直接带过项目的领导，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "Georgia Tech和Purdue的CS项目就业资源优秀，对有工作经验的学生职业发展帮助很大。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 14000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "uw_ms_cse", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "illinois_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "upenn_mse_cis", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_009", "end_node_id": "ucla_ms_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "georgiatech_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "purdue_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "umich_ms_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_us_010", "end_node_id": "utexas_ms_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_uk_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_undergrad_001",
+        "name": "K同学",
+        "level": "undergrad",
+        "country": "UK",
+        "category": "uk_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "predicted_grades": "A*A*A (Maths, Further Maths, Physics)",
+          "ielts": 7.5,
+          "toefl": null,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "安静内敛但极度热爱数学和逻辑，喜欢钻研复杂问题，有很强的自学能力和学术好奇心"
+        },
+        "applied_programs": [
+          {"program_id": "oxford_cs", "result": "admit", "strategy_used": ["strong_academic_profile", "MAT_preparation"]},
+          {"program_id": "cambridge_cs", "result": "admit", "strategy_used": ["maths_competition", "personal_statement_academic_focus"]},
+          {"program_id": "imperial_cs", "result": "admit", "strategy_used": ["strong_predicted_grades", "clear_academic_interest"]},
+          {"program_id": "ucl_cs", "result": "admit", "strategy_used": ["balanced_profile", "early_application"]}
+        ],
+        "key_strategies": [
+          "MAT考试认真准备并取得高分",
+          "Personal Statement重点突出数学和逻辑思维的热爱",
+          "强调自学能力和学术深度而非过多课外活动",
+          "早申牛剑和Imperial"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请英国本科CS，目标顶尖大学",
+          "2025-05: 开始系统准备MAT考试",
+          "2025-06: IELTS考试（7.5）",
+          "2025-07: 完成Personal Statement初稿，重点写数学兴趣和自学经历",
+          "2025-08: 给数学老师和班主任提供详细材料准备推荐信",
+          "2025-09-15: 提交UCAS申请（早申牛剑）",
+          "2025-10: 参加MAT考试",
+          "2026-01: 连续收到Oxford、Cambridge、Imperial、UCL录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Oxford CS", "Cambridge CS", "Imperial CS", "UCL CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Oxford CS",
+          "reason_for_choice": "数学和理论CS方向高度匹配 + 学院制环境 + 长期学术发展路径清晰"
+        },
+        "lessons": "预测成绩优秀 + MAT高分 + 清晰学术兴趣的学生，申请牛剑CS时，**Personal Statement突出数学思维和自学深度**比堆砌课外活动更有效。早申和认真准备MAT是关键。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心国内高中背景在英国申请中竞争力不足",
+            "Personal Statement第一版写得像活动列表，缺乏学术深度",
+            "MAT考试准备时间紧张，初期成绩不理想"
+          ],
+          "effective_countermeasures": [
+            "把自学数学竞赛和解决复杂问题的经历写成清晰的学术兴趣故事",
+            "Personal Statement重点回答“Why CS”和个人思考，而非罗列活动",
+            "MAT从暑假开始系统准备，每天刷题 + 模拟考试"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更学术化、直接回答学术兴趣和Why this course；美国SOP更吃个人故事和成长弧线。",
+          "recommendation_letter_strategy": "找数学老师和班主任，提前提供学术兴趣和自学经历的详细描述。",
+          "timeline_buffer_advice": "牛剑申请一定要早准备MAT，建议至少提前4个月系统复习。",
+          "visa_employment_impact": "英国本科毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 15000,
+        "overall_difficulty_rating": "high"
+      }
+    },
+    {
+      "id": "profile_uk_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_undergrad_002",
+        "name": "L同学",
+        "level": "undergrad",
+        "country": "UK",
+        "category": "uk_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "predicted_grades": "A*AA (Maths, Physics, Chemistry)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "tier2_city_key_public_high_school",
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，执行力强，喜欢带领团队做项目，有很强的实践能力和沟通能力"
+        },
+        "applied_programs": [
+          {"program_id": "ucl_cs", "result": "admit", "strategy_used": ["strong_project_impact", "leadership_experience"]},
+          {"program_id": "edinburgh_cs", "result": "admit", "strategy_used": ["balanced_profile", "clear_career_goal"]},
+          {"program_id": "warwick_cs", "result": "admit", "strategy_used": ["project_experience", "strong_ECs"]},
+          {"program_id": "kcl_cs", "result": "admit", "strategy_used": ["leadership_and_impact", "personal_statement_story"]}
+        ],
+        "key_strategies": [
+          "把项目经历和领导力包装成核心优势",
+          "Personal Statement用故事讲述技术如何解决真实问题",
+          "突出团队协作和项目落地能力",
+          "选择重视实践和职业发展的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请英国本科CS，目标实践性强的项目",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始整理项目材料和领导力经历",
+          "2025-07: 完成Personal Statement初稿，重点写项目故事和个人成长",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交UCAS常规申请",
+          "2026-01: 连续收到UCL、Edinburgh、Warwick、KCL录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UCL CS", "Edinburgh CS", "Warwick CS", "KCL CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UCL CS",
+          "reason_for_choice": "实践性强 + 伦敦产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "预测成绩良好 + 真实项目和领导力经历的学生，申请UCL、Warwick、Edinburgh这类实践导向的学校时，**把项目讲成故事 + 突出团队影响**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩不是顶尖，担心竞争力不足",
+            "Personal Statement第一版写得像活动罗列，缺乏故事性和个人思考",
+            "不知道如何把国内项目经历转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把带领团队开发校园项目的完整过程（问题 → 方案 → 上线 → 用户反馈）写成故事",
+            "Personal Statement突出个人成长和对技术的热情，而非只堆活动",
+            "选择UCL、Warwick、Edinburgh这类重视项目和实践的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃故事 + 个人动机 + Why this course；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和领导力事例。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "英国本科毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 12000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "oxford_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "cambridge_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "imperial_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "ucl_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "ucl_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "edinburgh_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "warwick_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "kcl_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_uk_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_undergrad_003",
+        "name": "M同学",
+        "level": "undergrad",
+        "country": "UK",
+        "category": "uk_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "predicted_grades": "A*AA (Maths, Physics, Chemistry)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "tier2_city_key_public_high_school",
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢带领团队做真实项目，有很强的实践落地能力和沟通技巧"
+        },
+        "applied_programs": [
+          {"program_id": "manchester_cs", "result": "admit", "strategy_used": ["strong_project_impact", "leadership_experience"]},
+          {"program_id": "bristol_cs", "result": "admit", "strategy_used": ["project_experience", "clear_career_goal"]},
+          {"program_id": "glasgow_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_ECs"]},
+          {"program_id": "birmingham_cs", "result": "admit", "strategy_used": ["leadership_and_impact", "personal_statement_story"]}
+        ],
+        "key_strategies": [
+          "把真实项目经历包装成核心优势",
+          "Personal Statement用故事讲述技术如何解决实际问题",
+          "突出团队领导力和项目落地能力",
+          "选择重视实践和职业发展的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请英国本科CS，目标实践性强的项目",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始整理项目材料和领导力经历",
+          "2025-07: 完成Personal Statement初稿，重点写项目故事和个人成长",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交UCAS常规申请",
+          "2026-01: 连续收到Manchester、Bristol、Glasgow、Birmingham录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Manchester CS", "Bristol CS", "Glasgow CS", "Birmingham CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Manchester CS",
+          "reason_for_choice": "实践性强 + 产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "预测成绩良好 + 真实项目和领导力经历的学生，申请Manchester、Bristol、Glasgow这类实践导向的学校时，**把项目讲成故事 + 突出团队影响**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩不是顶尖，担心竞争力不足",
+            "Personal Statement第一版写得像活动罗列，缺乏故事性和个人思考",
+            "不知道如何把国内项目经历转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把带领团队开发校园项目的完整过程（问题 → 方案 → 上线 → 用户反馈）写成故事",
+            "Personal Statement突出个人成长和对技术的热情，而非只堆活动",
+            "选择Manchester、Bristol、Glasgow这类重视项目和实践的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃故事 + 个人动机 + Why this course；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和领导力事例。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "英国本科毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 11000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_uk_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_undergrad_004",
+        "name": "N同学",
+        "level": "undergrad",
+        "country": "UK",
+        "category": "uk_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "predicted_grades": "AAA (Maths, Physics, Chemistry)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "ordinary_public_high_school",
+          "region": "tier3_city",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心和责任感"
+        },
+        "applied_programs": [
+          {"program_id": "edinburgh_cs", "result": "admit", "strategy_used": ["strong_self_taught_story", "resilience"]},
+          {"program_id": "kcl_cs", "result": "admit", "strategy_used": ["personal_story", "clear_motivation"]},
+          {"program_id": "sheffield_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "leeds_cs", "result": "admit", "strategy_used": ["resilience_and_growth", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "把自学编程和克服困难的经历包装成核心故事",
+          "Personal Statement重点突出个人成长和对技术的热情",
+          "强调自学能力和抗压能力而非顶尖成绩",
+          "选择重视个人故事和包容性的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请英国本科CS",
+          "2025-05: IELTS考试（6.5，留缓冲重考）",
+          "2025-06: 开始整理自学经历和项目材料",
+          "2025-07: 完成Personal Statement初稿，重点写自学故事和个人成长",
+          "2025-08: 给班主任和自学指导老师提供详细材料",
+          "2025-09-20: 提交UCAS常规申请",
+          "2026-01: 连续收到Edinburgh、KCL、Sheffield、Leeds录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Edinburgh CS", "KCL CS", "Sheffield CS", "Leeds CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Edinburgh CS",
+          "reason_for_choice": "学术氛围好 + 性价比高 + 奖学金 + 个人故事被认可"
+        },
+        "lessons": "来自普通高中、预测成绩一般但有真实自学和成长故事的学生，申请Edinburgh、KCL、Sheffield这类重视个人动机和包容性的学校时，**把自学经历和克服困难的故事讲清楚**反而很有竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩和学校背景一般，担心竞争力不足",
+            "Personal Statement第一版写得比较平淡，缺乏感染力",
+            "不知道如何把自学编程和家庭困难经历正面呈现"
+          ],
+          "effective_countermeasures": [
+            "把自学编程从零开始到完成多个项目的完整成长故事写进Personal Statement",
+            "突出个人对技术的热情和克服困难的抗压能力",
+            "选择Edinburgh、KCL、Sheffield这类重视个人故事和包容性的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找班主任和自学指导老师，提前提供成长故事和具体事例。",
+          "timeline_buffer_advice": "自学型学生建议至少提前3个月准备Personal Statement和材料。",
+          "visa_employment_impact": "英国本科毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium (自学逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "manchester_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "bristol_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "glasgow_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "birmingham_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "edinburgh_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "kcl_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "sheffield_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "leeds_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_uk_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_undergrad_005",
+        "name": "O同学",
+        "level": "undergrad",
+        "country": "UK",
+        "category": "uk_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "predicted_grades": "A*AA (Maths, Physics, Chemistry)",
+          "ielts": 7.5,
+          "toefl": null,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢用技术解决真实社会问题，有很强的同理心和项目落地能力"
+        },
+        "applied_programs": [
+          {"program_id": "bristol_cs", "result": "admit", "strategy_used": ["strong_project_impact", "social_good_story"]},
+          {"program_id": "glasgow_cs", "result": "admit", "strategy_used": ["project_experience", "clear_motivation"]},
+          {"program_id": "nottingham_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "southampton_cs", "result": "admit", "strategy_used": ["project_impact", "leadership_experience"]}
+        ],
+        "key_strategies": [
+          "把用技术解决社会问题的项目包装成核心故事",
+          "Personal Statement重点突出技术如何帮助他人和社会",
+          "突出项目落地能力和同理心",
+          "选择重视社会影响和实践的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请英国本科CS，目标重视社会影响的项目",
+          "2025-05: IELTS考试（7.5）",
+          "2025-06: 开始整理项目材料和社会影响数据",
+          "2025-07: 完成Personal Statement初稿，重点写项目故事和个人动机",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交UCAS常规申请",
+          "2026-01: 连续收到Bristol、Glasgow、Nottingham、Southampton录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Bristol CS", "Glasgow CS", "Nottingham CS", "Southampton CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Bristol CS",
+          "reason_for_choice": "实践性强 + 社会影响方向匹配 + 性价比高 + 奖学金"
+        },
+        "lessons": "有真实用技术解决社会问题的项目经历的学生，申请Bristol、Glasgow、Nottingham这类重视实践和社会影响的学校时，**把项目讲成故事 + 突出社会价值**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心项目不够‘技术硬核’",
+            "Personal Statement第一版写得像活动总结，缺乏故事性和个人思考",
+            "不知道如何把国内公益科技项目转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把项目从发现社会问题 → 技术方案 → 上线 → 实际帮助用户的完整过程写成故事",
+            "Personal Statement突出个人对技术的热情和帮助他人的责任感",
+            "选择Bristol、Glasgow、Nottingham这类重视实践和社会影响的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃故事 + 个人动机 + Why this course；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和影响数据。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "英国本科毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 12000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_uk_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_undergrad_006",
+        "name": "P同学",
+        "level": "undergrad",
+        "country": "UK",
+        "category": "uk_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "predicted_grades": "AAA (Maths, Physics, Chemistry)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "ordinary_public_high_school",
+          "region": "tier3_city",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心和责任感"
+        },
+        "applied_programs": [
+          {"program_id": "edinburgh_cs", "result": "admit", "strategy_used": ["strong_self_taught_story", "resilience"]},
+          {"program_id": "manchester_cs", "result": "admit", "strategy_used": ["personal_story", "clear_motivation"]},
+          {"program_id": "leeds_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "exeter_cs", "result": "admit", "strategy_used": ["resilience_and_growth", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "把自学编程和克服困难的经历包装成核心故事",
+          "Personal Statement重点突出个人成长和对技术的热情",
+          "强调自学能力和抗压能力而非顶尖成绩",
+          "选择重视个人故事和包容性的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请英国本科CS",
+          "2025-05: IELTS考试（7.0，留缓冲重考）",
+          "2025-06: 开始整理自学经历和项目材料",
+          "2025-07: 完成Personal Statement初稿，重点写自学故事和个人成长",
+          "2025-08: 给班主任和自学指导老师提供详细材料",
+          "2025-09-20: 提交UCAS常规申请",
+          "2026-01: 连续收到Edinburgh、Manchester、Leeds、Exeter录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Edinburgh CS", "Manchester CS", "Leeds CS", "Exeter CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Edinburgh CS",
+          "reason_for_choice": "学术氛围好 + 性价比高 + 奖学金 + 个人故事被认可"
+        },
+        "lessons": "来自普通高中、预测成绩一般但有真实自学和成长故事的学生，申请Edinburgh、Manchester、Leeds这类重视个人动机和包容性的学校时，**把自学经历和克服困难的故事讲清楚**反而很有竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩和学校背景一般，担心竞争力不足",
+            "Personal Statement第一版写得比较平淡，缺乏感染力",
+            "不知道如何把自学编程和家庭困难经历正面呈现"
+          ],
+          "effective_countermeasures": [
+            "把自学编程从零开始到完成多个项目的完整成长故事写进Personal Statement",
+            "突出个人对技术的热情和克服困难的抗压能力",
+            "选择Edinburgh、Manchester、Leeds这类重视个人故事和包容性的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找班主任和自学指导老师，提前提供成长故事和具体事例。",
+          "timeline_buffer_advice": "自学型学生建议至少提前3个月准备Personal Statement和材料。",
+          "visa_employment_impact": "英国本科毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium (自学逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "bristol_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "glasgow_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "nottingham_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "southampton_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "edinburgh_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "manchester_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "leeds_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "exeter_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_uk_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_graduate_001",
+        "name": "Q同学",
+        "level": "graduate",
+        "country": "UK",
+        "category": "uk_graduate",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "undergrad_gpa": 3.72,
+          "ielts": 7.5,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科在AI实验室完成多模态学习项目，相关工作整理成技术报告并在国内会议发表",
+          "work_experience": null,
+          "budget_per_year_usd": 48000,
+          "region": "Beijing",
+          "personality": "安静内敛但极度热爱学术研究，喜欢钻研复杂理论问题，有很强的逻辑思维和学术写作能力"
+        },
+        "applied_programs": [
+          {"program_id": "oxford_msc_cs", "result": "admit", "strategy_used": ["strong_research_fit", "academic_writing"]},
+          {"program_id": "cambridge_mphil_acs", "result": "admit", "strategy_used": ["research_match", "detailed_personal_statement"]},
+          {"program_id": "ucl_msc_cs", "result": "admit", "strategy_used": ["research_experience", "clear_academic_goal"]},
+          {"program_id": "imperial_msc_computing", "result": "admit", "strategy_used": ["strong_academic_profile", "project_depth"]}
+        ],
+        "key_strategies": [
+          "Personal Statement重点突出研究兴趣和学术动机",
+          "强调本科研究项目的深度和个人思考",
+          "选择重视学术研究和理论方向的顶尖项目",
+          "提前准备研究提案或写作样本（如需要）"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请英国研究型Master's，目标顶尖学术项目",
+          "2025-04: 完成本科研究项目总结和技术报告",
+          "2025-05: IELTS考试（7.5）",
+          "2025-06: 开始写Personal Statement，重点突出研究兴趣",
+          "2025-07: 给研究导师提供详细材料准备推荐信",
+          "2025-09-01: 提交Oxford、Cambridge、UCL、Imperial申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Oxford MSc CS", "Cambridge MPhil ACS", "UCL MSc CS", "Imperial MSc Computing"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Oxford MSc CS",
+          "reason_for_choice": "研究方向高度匹配 + 导师资源强 + 长期学术发展路径清晰"
+        },
+        "lessons": "本科有真实研究经历（即使没有顶会）的学生，申请牛津、剑桥、UCL、Imperial等研究型Master's时，**Personal Statement突出研究兴趣、深度思考和个人动机**非常关键。提前准备好推荐信和研究材料能显著提升竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究没有国际顶会，担心竞争力不足",
+            "Personal Statement第一版写得像项目报告，缺乏学术深度和个人动机",
+            "不知道如何把国内研究经历包装成国际认可的学术兴趣"
+          ],
+          "effective_countermeasures": [
+            "把研究项目从问题提出 → 方法探索 → 个人思考 → 未来研究方向的完整链条写进Personal Statement",
+            "突出个人对该领域的长期热情和独立思考能力",
+            "选择Oxford、Cambridge、UCL、Imperial这类高度重视研究匹配度的项目"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更学术化、直接回答学术兴趣和Why this programme；美国SOP更吃个人故事和成长弧线。",
+          "recommendation_letter_strategy": "找真正指导过研究的导师，提前提供研究细节和个人学术特质描述。",
+          "timeline_buffer_advice": "研究型Master's申请建议至少提前4个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "英国研究生毕业后有Graduate Route 2年工作签证，对未来职业或继续深造有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 18000,
+        "overall_difficulty_rating": "high"
+      }
+    },
+    {
+      "id": "profile_uk_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_graduate_002",
+        "name": "R同学",
+        "level": "graduate",
+        "country": "UK",
+        "category": "uk_graduate",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "undergrad_gpa": 3.58,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级项目",
+          "work_experience": "毕业后在一家AI创业公司担任后端开发+产品hybrid角色2年，主导过多个AI工具从0到1上线",
+          "budget_per_year_usd": 45000,
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向开朗，极强的执行力和产品思维，喜欢把技术落地成真实产品并解决商业问题"
+        },
+        "applied_programs": [
+          {"program_id": "edinburgh_msc_cs", "result": "admit", "strategy_used": ["strong_industry_story", "clear_career_goal"]},
+          {"program_id": "warwick_msc_cs", "result": "admit", "strategy_used": ["work_experience_impact", "leadership_experience"]},
+          {"program_id": "manchester_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_leadership"]},
+          {"program_id": "bristol_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把工作项目经历包装成技术+商业双重贡献",
+          "Personal Statement重点写职业成长和未来规划",
+          "突出项目落地和团队协作能力",
+          "选择重视产业联系和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请英国Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（7.0）",
+          "2025-05: 完成Personal Statement初稿，重点写职业故事和项目影响",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交Edinburgh、Warwick、Manchester、Bristol申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Edinburgh MSc CS", "Warwick MSc CS", "Manchester MSc CS", "Bristol MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Edinburgh MSc CS",
+          "reason_for_choice": "产业联系强 + 课程实践性好 + 性价比高 + 奖学金"
+        },
+        "lessons": "有真实工作经验和项目落地经历的学生，申请Edinburgh、Warwick、Manchester、Bristol这类重视产业联系和职业发展的Master's时，**把工作经历讲成技术决策 + 商业价值 + 个人成长**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究经历少，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏深度和个人思考",
+            "不知道如何把AI创业公司项目转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI工具从需求分析 → 技术选型 → 上线迭代的完整过程写进Personal Statement",
+            "突出工作中解决的技术难题和团队协作经历",
+            "选择Edinburgh、Warwick、Manchester、Bristol这类重视产业经验的项目"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃职业故事 + 动机 + Why this programme；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导和本科导师，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "英国研究生毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 14000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "oxford_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "cambridge_mphil_acs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "ucl_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_001", "end_node_id": "imperial_msc_computing", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "edinburgh_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "warwick_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "manchester_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_002", "end_node_id": "bristol_msc_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_uk_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_graduate_003",
+        "name": "S同学",
+        "level": "graduate",
+        "country": "UK",
+        "category": "uk_graduate",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "undergrad_gpa": 3.68,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级AI项目",
+          "work_experience": "毕业后在一家教育科技公司担任AI产品经理2年，主导过多个AI教育工具从0到1上线，服务数十万学生",
+          "budget_per_year_usd": 46000,
+          "region": "Hangzhou, Zhejiang",
+          "personality": "外向开朗，极强的产品思维和同理心，喜欢用技术解决教育公平问题，有很强的用户洞察和跨团队推动能力"
+        },
+        "applied_programs": [
+          {"program_id": "kcl_msc_cs", "result": "admit", "strategy_used": ["strong_industry_story", "social_impact"]},
+          {"program_id": "glasgow_msc_cs", "result": "admit", "strategy_used": ["project_leadership", "clear_career_goal"]},
+          {"program_id": "nottingham_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "impact_story"]},
+          {"program_id": "southampton_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把教育科技项目经历包装成技术+社会影响双重贡献",
+          "Personal Statement重点写用技术解决教育问题的动机和成长",
+          "突出产品落地和用户价值",
+          "选择重视产业联系和社会影响的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请英国Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（7.0）",
+          "2025-05: 完成Personal Statement初稿，重点写教育科技故事和个人动机",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交KCL、Glasgow、Nottingham、Southampton申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["KCL MSc CS", "Glasgow MSc CS", "Nottingham MSc CS", "Southampton MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "KCL MSc CS",
+          "reason_for_choice": "伦敦产业资源丰富 + 课程灵活 + 奖学金覆盖部分费用"
+        },
+        "lessons": "有真实教育科技产品落地经历的学生，申请KCL、Glasgow、Nottingham、南安普顿这类重视产业联系和社会影响的Master's时，**把工作经历讲成技术决策 + 用户价值 + 社会影响**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究经历少，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏深度和个人思考",
+            "不知道如何把教育科技项目转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI教育工具从需求分析 → 技术选型 → 上线迭代 + 实际帮助学生的完整过程写进Personal Statement",
+            "突出工作中解决的教育痛点和团队协作经历",
+            "选择KCL、Glasgow、Nottingham、南安普顿这类重视产业经验和社会影响的项目"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃职业故事 + 动机 + Why this programme；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导和本科导师，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "英国研究生毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 13000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_uk_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_graduate_004",
+        "name": "T同学",
+        "level": "graduate",
+        "country": "UK",
+        "category": "uk_graduate",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "undergrad_gpa": 3.55,
+          "ielts": 6.5,
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Information Management",
+          "research_experience": "本科几乎无研究经历",
+          "work_experience": "毕业后在一家传统制造企业担任数字化转型负责人3年，主导过多个AI+工业项目从0到1上线",
+          "budget_per_year_usd": 44000,
+          "region": "Xi'an, Shaanxi",
+          "personality": "沉稳靠谱，极强的落地执行力和跨领域沟通能力，喜欢把前沿技术应用到传统行业解决真实问题"
+        },
+        "applied_programs": [
+          {"program_id": "manchester_msc_cs", "result": "admit", "strategy_used": ["strong_industry_impact", "clear_career_goal"]},
+          {"program_id": "leeds_msc_cs", "result": "admit", "strategy_used": ["work_experience", "project_leadership"]},
+          {"program_id": "exeter_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "real_world_impact"]},
+          {"program_id": "glasgow_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把传统行业数字化转型经历包装成真实技术+业务贡献",
+          "Personal Statement重点写从非互联网背景到推动AI落地的成长故事",
+          "突出跨领域沟通和项目落地能力",
+          "选择重视产业应用和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请英国Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（6.5，留缓冲重考）",
+          "2025-05: 完成Personal Statement初稿，重点写行业转型和项目影响",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交Manchester、Leeds、Exeter、Glasgow申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Manchester MSc CS", "Leeds MSc CS", "Exeter MSc CS", "Glasgow MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Manchester MSc CS",
+          "reason_for_choice": "产业应用方向匹配 + 就业资源强 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自非互联网背景、有真实传统行业数字化转型经验的学生，申请Manchester、Leeds、Exeter、Glasgow这类重视产业应用的Master's时，**把工作经历讲成技术决策 + 业务价值 + 跨领域推动能力**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校和GPA一般，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏技术深度和个人思考",
+            "不知道如何把传统行业AI项目转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI+工业项目从需求分析 → 技术选型 → 上线迭代的完整过程写进Personal Statement",
+            "突出工作中自学技术栈和解决复杂工程问题的经历",
+            "选择Manchester、Leeds、Exeter、Glasgow这类重视产业应用的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃职业故事 + 项目贡献 + 未来规划；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "英国研究生毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 12000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "kcl_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "glasgow_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "nottingham_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_003", "end_node_id": "southampton_msc_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "manchester_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "leeds_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "exeter_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_004", "end_node_id": "glasgow_msc_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_uk_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_graduate_005",
+        "name": "U同学",
+        "level": "graduate",
+        "country": "UK",
+        "category": "uk_graduate",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "undergrad_gpa": 3.65,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科参与1个校级AI项目",
+          "work_experience": "毕业后在一家在线教育平台担任内容运营+技术支持hybrid角色2年，主导过多个AI辅助教学内容从0到1上线",
+          "budget_per_year_usd": 45000,
+          "region": "Beijing",
+          "personality": "外向开朗，极强的表达能力和教学热情，喜欢把复杂技术讲得通俗易懂，有很强的社区影响力和组织能力"
+        },
+        "applied_programs": [
+          {"program_id": "leeds_msc_cs", "result": "admit", "strategy_used": ["strong_teaching_impact", "community_contribution"]},
+          {"program_id": "exeter_msc_cs", "result": "admit", "strategy_used": ["teaching_experience", "clear_goal"]},
+          {"program_id": "glasgow_msc_cs", "result": "admit", "strategy_used": ["leadership_and_communication", "project_impact"]},
+          {"program_id": "nottingham_msc_cs", "result": "admit", "strategy_used": ["community_influence", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把教学和社区影响力包装成核心优势",
+          "Personal Statement重点写技术分享和帮助他人的经历",
+          "突出沟通和组织能力",
+          "选择重视教学、社区和包容性的项目"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请英国Master's，目标重视教学和社区的项目",
+          "2025-04: 系统整理教学和社区贡献材料",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 完成Personal Statement初稿，重点写教学影响和个人动机",
+          "2025-07: 给指导老师和社区合作伙伴要推荐信",
+          "2025-08: 完成所有文书优化",
+          "2025-09-01: 提交Leeds、Exeter、Glasgow、Nottingham申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Leeds MSc CS", "Exeter MSc CS", "Glasgow MSc CS", "Nottingham MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Leeds MSc CS",
+          "reason_for_choice": "教学和社区文化匹配 + 性价比高 + 奖学金"
+        },
+        "lessons": "有大量教学、mentoring和社区贡献经历的学生，申请Leeds、Exeter、Glasgow、Nottingham这类重视教学和社区文化的Master's时，**把帮助他人成长的故事讲清楚**非常有竞争力。很多项目喜欢有教学热情和社区影响力的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心没有顶会论文和传统研究经历",
+            "Personal Statement第一版写得像活动总结，缺乏技术深度和个人思考",
+            "不知道如何把教学和社区贡献转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把组织技术分享活动、帮助学弟学妹成长的真实案例和影响数据写进Personal Statement",
+            "突出个人对技术教育的热情和长期职业规划",
+            "选择Leeds、Exeter、Glasgow、Nottingham这类重视教学和社区的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃个人故事 + 影响力和动机；美国SOP更吃多维度个人成长和影响。",
+          "recommendation_letter_strategy": "找指导过教学/社区活动的老师和合作伙伴，提前提供具体事例和影响数据。",
+          "timeline_buffer_advice": "教学/社区型申请建议至少提前3个月准备材料和文书。",
+          "visa_employment_impact": "英国研究生毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 11000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_uk_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "uk_graduate_006",
+        "name": "V同学",
+        "level": "graduate",
+        "country": "UK",
+        "category": "uk_graduate",
+        "major": "Computer Science",
+        "target_countries": ["UK"],
+        "input_attributes": {
+          "undergrad_gpa": 3.60,
+          "ielts": 6.5,
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Electronic Information Engineering",
+          "research_experience": "本科几乎无研究经历",
+          "work_experience": "毕业后在一家AI创业公司担任后端开发+社区运营hybrid角色2.5年，主导过多个开源工具和社区活动，GitHub累计star超5k",
+          "budget_per_year_usd": 43000,
+          "region": "Chengdu, Sichuan",
+          "personality": "内向但极度热爱开源和技术分享，喜欢把复杂系统讲清楚，有很强的技术写作和社区影响力"
+        },
+        "applied_programs": [
+          {"program_id": "edinburgh_msc_cs", "result": "admit", "strategy_used": ["strong_open_source_impact", "community_contribution"]},
+          {"program_id": "manchester_msc_cs", "result": "admit", "strategy_used": ["open_source_experience", "clear_goal"]},
+          {"program_id": "leeds_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_impact"]},
+          {"program_id": "exeter_msc_cs", "result": "admit", "strategy_used": ["community_influence", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把开源项目影响力和社区贡献包装成核心优势",
+          "Personal Statement强调技术分享和社区影响力",
+          "突出实际代码贡献和用户增长",
+          "选择重视开源文化和社区的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请英国Master's，目标重视开源和社区的项目",
+          "2025-03: 系统整理开源项目和社区贡献材料",
+          "2025-04: IELTS考试（6.5，留缓冲重考）",
+          "2025-05: 完成Personal Statement初稿，重点写开源故事和个人动机",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交Edinburgh、Manchester、Leeds、Exeter申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Edinburgh MSc CS", "Manchester MSc CS", "Leeds MSc CS", "Exeter MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Edinburgh MSc CS",
+          "reason_for_choice": "开源和社区文化匹配 + 学术氛围好 + 性价比高 + 奖学金"
+        },
+        "lessons": "有真实开源项目影响力（即使本科背景一般）的学生，申请Edinburgh、Manchester、Leeds、Exeter这类重视开源文化和社区的Master's时，**把项目从0到有大量用户实际使用的完整过程讲清楚**非常有竞争力。很多项目喜欢有实际贡献和社区影响力的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校和GPA一般，担心竞争力不足",
+            "Personal Statement第一版写得像项目介绍，缺乏故事性和个人思考",
+            "不知道如何把开源贡献转化为英国申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把开源项目从idea到用户增长到被社区认可的完整过程写成故事",
+            "突出个人对开源文化的热爱和长期贡献",
+            "选择Edinburgh、Manchester、Leeds、Exeter这类重视开源和社区的学校"
+          ],
+          "sop_vs_ps_difference": "英国Personal Statement更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找前司领导和本科导师，提前提供开源贡献和社区影响数据。",
+          "timeline_buffer_advice": "开源/社区型学生建议至少提前3个月准备材料和文书。",
+          "visa_employment_impact": "英国研究生毕业后有Graduate Route 2年工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium (开源社区逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "leeds_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "exeter_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "glasgow_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_005", "end_node_id": "nottingham_msc_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "edinburgh_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "manchester_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "leeds_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_uk_006", "end_node_id": "exeter_msc_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_au_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_undergrad_001",
+        "name": "W同学",
+        "level": "undergrad",
+        "country": "Australia",
+        "category": "au_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "predicted_grades": "ATAR 95+ equivalent (Maths, Physics, English)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "安静内敛但极度热爱数学和逻辑，喜欢钻研复杂问题，有很强的自学能力和学术好奇心"
+        },
+        "applied_programs": [
+          {"program_id": "unimelb_cs", "result": "admit", "strategy_used": ["strong_academic_profile", "clear_academic_interest"]},
+          {"program_id": "unsw_cs", "result": "admit", "strategy_used": ["maths_competition", "personal_statement_focus"]},
+          {"program_id": "sydney_cs", "result": "admit", "strategy_used": ["strong_predicted_grades", "early_application"]},
+          {"program_id": "anu_cs", "result": "admit", "strategy_used": ["balanced_profile", "research_interest"]}
+        ],
+        "key_strategies": [
+          "Personal Statement突出数学和逻辑思维的热爱",
+          "强调自学能力和学术深度",
+          "早申请顶尖大学",
+          "准备好英语成绩和学术材料"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请澳大利亚本科CS",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始写Personal Statement，重点写学术兴趣",
+          "2025-07: 给数学老师和班主任提供详细材料准备推荐信",
+          "2025-08: 提交申请（早申请Melbourne、UNSW、Sydney、ANU）",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Melbourne CS", "UNSW CS", "University of Sydney CS", "ANU CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Melbourne CS",
+          "reason_for_choice": "学术氛围好 + 研究资源强 + 长期学术发展路径清晰"
+        },
+        "lessons": "预测成绩优秀 + 清晰学术兴趣的学生，申请墨尔本、UNSW、悉尼、ANU等顶尖大学时，**Personal Statement突出数学思维和自学深度**比堆砌活动更有效。早申请是关键。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心国内高中背景在澳大利亚申请中竞争力不足",
+            "Personal Statement第一版写得像活动列表，缺乏学术深度",
+            "不知道如何把数学竞赛和自学经历包装成申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把自学数学竞赛和解决复杂问题的经历写成清晰的学术兴趣故事",
+            "Personal Statement重点回答学术动机和个人思考",
+            "选择墨尔本、UNSW、悉尼、ANU这类重视学术能力的大学"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更学术化、直接回答学术兴趣和Why this course；美国SOP更吃个人故事和成长弧线。",
+          "recommendation_letter_strategy": "找数学老师和班主任，提前提供学术兴趣和自学经历的详细描述。",
+          "timeline_buffer_advice": "顶尖大学申请建议至少提前4个月准备材料和英语成绩。",
+          "visa_employment_impact": "澳大利亚本科毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 12000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    },
+    {
+      "id": "profile_au_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_undergrad_002",
+        "name": "Y同学",
+        "level": "undergrad",
+        "country": "Australia",
+        "category": "au_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "predicted_grades": "ATAR 90+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "tier2_city_key_public_high_school",
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，执行力强，喜欢带领团队做项目，有很强的实践能力和沟通能力"
+        },
+        "applied_programs": [
+          {"program_id": "monash_cs", "result": "admit", "strategy_used": ["strong_project_impact", "leadership_experience"]},
+          {"program_id": "uq_cs", "result": "admit", "strategy_used": ["project_experience", "clear_career_goal"]},
+          {"program_id": "uwa_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_ECs"]},
+          {"program_id": "adelaide_cs", "result": "admit", "strategy_used": ["leadership_and_impact", "personal_statement_story"]}
+        ],
+        "key_strategies": [
+          "把项目经历和领导力包装成核心优势",
+          "Personal Statement用故事讲述技术如何解决真实问题",
+          "突出团队协作和项目落地能力",
+          "选择重视实践和职业发展的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请澳大利亚本科CS，目标实践性强的项目",
+          "2025-05: IELTS考试（6.5）",
+          "2025-06: 开始整理项目材料和领导力经历",
+          "2025-07: 完成Personal Statement初稿，重点写项目故事和个人成长",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Monash、UQ、UWA、Adelaide录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Monash CS", "University of Queensland CS", "UWA CS", "University of Adelaide CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Monash CS",
+          "reason_for_choice": "实践性强 + 产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "预测成绩良好 + 真实项目和领导力经历的学生，申请Monash、UQ、UWA、Adelaide这类实践导向的学校时，**把项目讲成故事 + 突出团队影响**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩不是顶尖，担心竞争力不足",
+            "Personal Statement第一版写得像活动罗列，缺乏故事性和个人思考",
+            "不知道如何把国内项目经历转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把带领团队开发校园项目的完整过程（问题 → 方案 → 上线 → 用户反馈）写成故事",
+            "Personal Statement突出个人成长和对技术的热情，而非只堆活动",
+            "选择Monash、UQ、UWA、Adelaide这类重视项目和实践的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃故事 + 个人动机 + Why this course；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和领导力事例。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "澳大利亚本科毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "unimelb_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "unsw_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "sydney_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "anu_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "monash_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "uq_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "uwa_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "adelaide_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_au_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_undergrad_003",
+        "name": "Z同学",
+        "level": "undergrad",
+        "country": "Australia",
+        "category": "au_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "predicted_grades": "ATAR 92+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "tier2_city_key_public_high_school",
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢带领团队做真实项目，有很强的实践落地能力和沟通技巧"
+        },
+        "applied_programs": [
+          {"program_id": "uts_cs", "result": "admit", "strategy_used": ["strong_project_impact", "leadership_experience"]},
+          {"program_id": "macquarie_cs", "result": "admit", "strategy_used": ["project_experience", "clear_career_goal"]},
+          {"program_id": "newcastle_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_ECs"]},
+          {"program_id": "wollongong_cs", "result": "admit", "strategy_used": ["leadership_and_impact", "personal_statement_story"]}
+        ],
+        "key_strategies": [
+          "把真实项目经历包装成核心优势",
+          "Personal Statement用故事讲述技术如何解决实际问题",
+          "突出团队领导力和项目落地能力",
+          "选择重视实践和职业发展的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请澳大利亚本科CS，目标实践性强的项目",
+          "2025-05: IELTS考试（6.5）",
+          "2025-06: 开始整理项目材料和领导力经历",
+          "2025-07: 完成Personal Statement初稿，重点写项目故事和个人成长",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到UTS、Macquarie、Newcastle、Wollongong录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UTS CS", "Macquarie CS", "University of Newcastle CS", "University of Wollongong CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UTS CS",
+          "reason_for_choice": "实践性强 + 悉尼产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "预测成绩良好 + 真实项目和领导力经历的学生，申请UTS、Macquarie、Newcastle、Wollongong这类实践导向的学校时，**把项目讲成故事 + 突出团队影响**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩不是顶尖，担心竞争力不足",
+            "Personal Statement第一版写得像活动罗列，缺乏故事性和个人思考",
+            "不知道如何把国内项目经历转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把带领团队开发校园项目的完整过程（问题 → 方案 → 上线 → 用户反馈）写成故事",
+            "Personal Statement突出个人成长和对技术的热情，而非只堆活动",
+            "选择UTS、Macquarie、Newcastle、Wollongong这类重视项目和实践的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃故事 + 个人动机 + Why this course；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和领导力事例。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "澳大利亚本科毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 9000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_au_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_undergrad_004",
+        "name": "AA同学",
+        "level": "undergrad",
+        "country": "Australia",
+        "category": "au_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "predicted_grades": "ATAR 88+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "ordinary_public_high_school",
+          "region": "tier3_city",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心和责任感"
+        },
+        "applied_programs": [
+          {"program_id": "uts_cs", "result": "admit", "strategy_used": ["strong_self_taught_story", "resilience"]},
+          {"program_id": "macquarie_cs", "result": "admit", "strategy_used": ["personal_story", "clear_motivation"]},
+          {"program_id": "newcastle_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "wollongong_cs", "result": "admit", "strategy_used": ["resilience_and_growth", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "把自学编程和克服困难的经历包装成核心故事",
+          "Personal Statement重点突出个人成长和对技术的热情",
+          "强调自学能力和抗压能力而非顶尖成绩",
+          "选择重视个人故事和包容性的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请澳大利亚本科CS",
+          "2025-05: IELTS考试（6.5，留缓冲重考）",
+          "2025-06: 开始整理自学经历和项目材料",
+          "2025-07: 完成Personal Statement初稿，重点写自学故事和个人成长",
+          "2025-08: 给班主任和自学指导老师提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到UTS、Macquarie、Newcastle、Wollongong录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UTS CS", "Macquarie CS", "University of Newcastle CS", "University of Wollongong CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UTS CS",
+          "reason_for_choice": "实践性强 + 悉尼产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自普通高中、预测成绩一般但有真实自学和成长故事的学生，申请UTS、Macquarie、Newcastle、Wollongong这类重视个人动机和包容性的学校时，**把自学经历和克服困难的故事讲清楚**反而很有竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩和学校背景一般，担心竞争力不足",
+            "Personal Statement第一版写得比较平淡，缺乏感染力",
+            "不知道如何把自学编程和家庭困难经历正面呈现"
+          ],
+          "effective_countermeasures": [
+            "把自学编程从零开始到完成多个项目的完整成长故事写进Personal Statement",
+            "突出个人对技术的热情和克服困难的抗压能力",
+            "选择UTS、Macquarie、Newcastle、Wollongong这类重视个人故事和包容性的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找班主任和自学指导老师，提前提供成长故事和具体事例。",
+          "timeline_buffer_advice": "自学型学生建议至少提前3个月准备Personal Statement和材料。",
+          "visa_employment_impact": "澳大利亚本科毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 8000,
+        "overall_difficulty_rating": "medium (自学逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "uts_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "macquarie_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "newcastle_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "wollongong_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "uts_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "macquarie_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "newcastle_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "wollongong_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_au_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_undergrad_005",
+        "name": "BB同学",
+        "level": "undergrad",
+        "country": "Australia",
+        "category": "au_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "predicted_grades": "ATAR 94+ equivalent (Maths, Physics, English)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢用技术解决真实社会问题，有很强的同理心和项目落地能力"
+        },
+        "applied_programs": [
+          {"program_id": "unimelb_cs", "result": "admit", "strategy_used": ["strong_project_impact", "social_good_story"]},
+          {"program_id": "sydney_cs", "result": "admit", "strategy_used": ["project_experience", "clear_motivation"]},
+          {"program_id": "unsw_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "anu_cs", "result": "admit", "strategy_used": ["project_impact", "leadership_experience"]}
+        ],
+        "key_strategies": [
+          "把用技术解决社会问题的项目包装成核心故事",
+          "Personal Statement重点突出技术如何帮助他人和社会",
+          "突出项目落地能力和同理心",
+          "选择重视社会影响和实践的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请澳大利亚本科CS，目标重视社会影响的项目",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始整理项目材料和社会影响数据",
+          "2025-07: 完成Personal Statement初稿，重点写项目故事和个人动机",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Melbourne、Sydney、UNSW、ANU录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Melbourne CS", "University of Sydney CS", "UNSW CS", "ANU CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Melbourne CS",
+          "reason_for_choice": "学术氛围好 + 社会影响方向匹配 + 长期发展路径清晰"
+        },
+        "lessons": "有真实用技术解决社会问题的项目经历的学生，申请Melbourne、Sydney、UNSW、ANU这类重视实践和社会影响的学校时，**把项目讲成故事 + 突出社会价值**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心项目不够‘技术硬核’",
+            "Personal Statement第一版写得像活动总结，缺乏故事性和个人思考",
+            "不知道如何把国内公益科技项目转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把项目从发现社会问题 → 技术方案 → 上线 → 实际帮助用户的完整过程写成故事",
+            "Personal Statement突出个人对技术的热情和帮助他人的责任感",
+            "选择Melbourne、Sydney、UNSW、ANU这类重视实践和社会影响的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃故事 + 个人动机 + Why this course；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和影响数据。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "澳大利亚本科毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 11000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_au_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_undergrad_006",
+        "name": "CC同学",
+        "level": "undergrad",
+        "country": "Australia",
+        "category": "au_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "predicted_grades": "ATAR 90+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "ordinary_public_high_school",
+          "region": "tier3_city",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心和责任感"
+        },
+        "applied_programs": [
+          {"program_id": "monash_cs", "result": "admit", "strategy_used": ["strong_self_taught_story", "resilience"]},
+          {"program_id": "uq_cs", "result": "admit", "strategy_used": ["personal_story", "clear_motivation"]},
+          {"program_id": "uwa_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "adelaide_cs", "result": "admit", "strategy_used": ["resilience_and_growth", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "把自学编程和克服困难的经历包装成核心故事",
+          "Personal Statement重点突出个人成长和对技术的热情",
+          "强调自学能力和抗压能力而非顶尖成绩",
+          "选择重视个人故事和包容性的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请澳大利亚本科CS",
+          "2025-05: IELTS考试（6.5，留缓冲重考）",
+          "2025-06: 开始整理自学经历和项目材料",
+          "2025-07: 完成Personal Statement初稿，重点写自学故事和个人成长",
+          "2025-08: 给班主任和自学指导老师提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Monash、UQ、UWA、Adelaide录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Monash CS", "University of Queensland CS", "UWA CS", "University of Adelaide CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Monash CS",
+          "reason_for_choice": "实践性强 + 产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自普通高中、预测成绩一般但有真实自学和成长故事的学生，申请Monash、UQ、UWA、Adelaide这类重视个人动机和包容性的学校时，**把自学经历和克服困难的故事讲清楚**反而很有竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩和学校背景一般，担心竞争力不足",
+            "Personal Statement第一版写得比较平淡，缺乏感染力",
+            "不知道如何把自学编程和家庭困难经历正面呈现"
+          ],
+          "effective_countermeasures": [
+            "把自学编程从零开始到完成多个项目的完整成长故事写进Personal Statement",
+            "突出个人对技术的热情和克服困难的抗压能力",
+            "选择Monash、UQ、UWA、Adelaide这类重视个人故事和包容性的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找班主任和自学指导老师，提前提供成长故事和具体事例。",
+          "timeline_buffer_advice": "自学型学生建议至少提前3个月准备Personal Statement和材料。",
+          "visa_employment_impact": "澳大利亚本科毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 9000,
+        "overall_difficulty_rating": "medium (自学逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "unimelb_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "sydney_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "unsw_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "anu_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "monash_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "uq_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "uwa_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "adelaide_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_au_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_graduate_001",
+        "name": "DD同学",
+        "level": "graduate",
+        "country": "Australia",
+        "category": "au_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "undergrad_gpa": 3.70,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科在多模态AI实验室完成多个项目，其中1个医疗影像相关工作整理成技术报告并在国内会议发表",
+          "work_experience": null,
+          "budget_per_year_usd": 48000,
+          "region": "Beijing",
+          "personality": "安静内敛但极度热爱学术研究，喜欢钻研复杂理论问题，有很强的逻辑思维和学术写作能力"
+        },
+        "applied_programs": [
+          {"program_id": "unimelb_msc_cs", "result": "admit", "strategy_used": ["strong_research_fit", "academic_writing"]},
+          {"program_id": "sydney_msc_cs", "result": "admit", "strategy_used": ["research_match", "detailed_personal_statement"]},
+          {"program_id": "unsw_msc_cs", "result": "admit", "strategy_used": ["research_experience", "clear_academic_goal"]},
+          {"program_id": "anu_msc_cs", "result": "admit", "strategy_used": ["strong_academic_profile", "project_depth"]}
+        ],
+        "key_strategies": [
+          "Personal Statement重点突出研究兴趣和学术动机",
+          "强调本科研究项目的深度和个人思考",
+          "选择重视学术研究和理论方向的顶尖项目",
+          "提前准备好研究提案或写作样本（如需要）"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请澳大利亚研究型Master's，目标顶尖学术项目",
+          "2025-04: 完成本科研究项目总结和技术报告",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始写Personal Statement，重点突出研究兴趣",
+          "2025-07: 给研究导师提供详细材料准备推荐信",
+          "2025-09-01: 提交Melbourne、Sydney、UNSW、ANU申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Melbourne MSc CS", "University of Sydney MSc CS", "UNSW MSc CS", "ANU MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Melbourne MSc CS",
+          "reason_for_choice": "研究方向高度匹配 + 导师资源强 + 长期学术发展路径清晰"
+        },
+        "lessons": "本科有真实研究经历（即使没有国际顶会）的学生，申请墨尔本、悉尼、UNSW、ANU等研究型Master's时，**Personal Statement突出研究兴趣、深度思考和个人动机**非常关键。提前准备好推荐信和研究材料能显著提升竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究没有国际顶会，担心竞争力不足",
+            "Personal Statement第一版写得像项目报告，缺乏学术深度和个人动机",
+            "不知道如何把国内研究经历包装成国际认可的学术兴趣"
+          ],
+          "effective_countermeasures": [
+            "把研究项目从问题提出 → 方法探索 → 个人思考 → 未来研究方向的完整链条写进Personal Statement",
+            "突出个人对该领域的长期热情和独立思考能力",
+            "选择Melbourne、Sydney、UNSW、ANU这类高度重视研究匹配度的项目"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更学术化、直接回答学术兴趣和Why this programme；美国SOP更吃个人故事和成长弧线。",
+          "recommendation_letter_strategy": "找真正指导过研究的导师，提前提供研究细节和个人学术特质描述。",
+          "timeline_buffer_advice": "研究型Master's申请建议至少提前4个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "澳大利亚研究生毕业后有2-4年工作签证（485签证），对未来职业或继续深造有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 15000,
+        "overall_difficulty_rating": "high"
+      }
+    },
+    {
+      "id": "profile_au_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_graduate_002",
+        "name": "EE同学",
+        "level": "graduate",
+        "country": "Australia",
+        "category": "au_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "undergrad_gpa": 3.55,
+          "ielts": 6.5,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级项目",
+          "work_experience": "毕业后在一家AI创业公司担任后端开发+产品hybrid角色2年，主导过多个AI工具从0到1上线",
+          "budget_per_year_usd": 45000,
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向开朗，极强的执行力和产品思维，喜欢把技术落地成真实产品并解决商业问题"
+        },
+        "applied_programs": [
+          {"program_id": "monash_msc_cs", "result": "admit", "strategy_used": ["strong_industry_story", "clear_career_goal"]},
+          {"program_id": "uq_msc_cs", "result": "admit", "strategy_used": ["work_experience_impact", "leadership_experience"]},
+          {"program_id": "uwa_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_leadership"]},
+          {"program_id": "adelaide_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把工作项目经历包装成技术+商业双重贡献",
+          "Personal Statement重点写职业成长和未来规划",
+          "突出项目落地和团队协作能力",
+          "选择重视产业联系和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请澳大利亚Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（6.5）",
+          "2025-05: 完成Personal Statement初稿，重点写职业故事和项目影响",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交Monash、UQ、UWA、Adelaide申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["Monash MSc CS", "University of Queensland MSc CS", "UWA MSc CS", "University of Adelaide MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "Monash MSc CS",
+          "reason_for_choice": "产业联系强 + 课程实践性好 + 性价比高 + 奖学金"
+        },
+        "lessons": "有真实工作经验和项目落地经历的学生，申请Monash、UQ、UWA、Adelaide这类重视产业联系和职业发展的Master's时，**把工作经历讲成技术决策 + 商业价值 + 个人成长**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究经历少，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏深度和个人思考",
+            "不知道如何把AI创业公司项目转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI工具从需求分析 → 技术选型 → 上线迭代的完整过程写进Personal Statement",
+            "突出工作中解决的技术难题和团队协作经历",
+            "选择Monash、UQ、UWA、Adelaide这类重视产业经验的项目"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃职业故事 + 动机 + Why this programme；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导和本科导师，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "澳大利亚研究生毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 12000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "unimelb_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "sydney_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "unsw_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_001", "end_node_id": "anu_msc_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "monash_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "uq_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "uwa_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_002", "end_node_id": "adelaide_msc_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_au_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_graduate_003",
+        "name": "FF同学",
+        "level": "graduate",
+        "country": "Australia",
+        "category": "au_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "undergrad_gpa": 3.62,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级AI项目",
+          "work_experience": "毕业后在一家在线教育平台担任AI产品经理2年，主导过多个AI教育工具从0到1上线，服务数十万学生",
+          "budget_per_year_usd": 46000,
+          "region": "Hangzhou, Zhejiang",
+          "personality": "外向开朗，极强的产品思维和同理心，喜欢用技术解决教育公平问题，有很强的用户洞察和跨团队推动能力"
+        },
+        "applied_programs": [
+          {"program_id": "uts_msc_cs", "result": "admit", "strategy_used": ["strong_industry_story", "social_impact"]},
+          {"program_id": "macquarie_msc_cs", "result": "admit", "strategy_used": ["project_leadership", "clear_career_goal"]},
+          {"program_id": "newcastle_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "impact_story"]},
+          {"program_id": "wollongong_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把教育科技项目经历包装成技术+社会影响双重贡献",
+          "Personal Statement重点写用技术解决教育问题的动机和成长",
+          "突出产品落地和用户价值",
+          "选择重视产业联系和社会影响的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请澳大利亚Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（7.0）",
+          "2025-05: 完成Personal Statement初稿，重点写教育科技故事和个人动机",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交UTS、Macquarie、Newcastle、Wollongong申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UTS MSc CS", "Macquarie MSc CS", "University of Newcastle MSc CS", "University of Wollongong MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UTS MSc CS",
+          "reason_for_choice": "悉尼产业资源丰富 + 课程灵活 + 奖学金覆盖部分费用"
+        },
+        "lessons": "有真实教育科技产品落地经历的学生，申请UTS、Macquarie、Newcastle、Wollongong这类重视产业联系和社会影响的Master's时，**把工作经历讲成技术决策 + 用户价值 + 社会影响**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究经历少，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏深度和个人思考",
+            "不知道如何把教育科技项目转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI教育工具从需求分析 → 技术选型 → 上线迭代 + 实际帮助学生的完整过程写进Personal Statement",
+            "突出工作中解决的教育痛点和团队协作经历",
+            "选择UTS、Macquarie、Newcastle、Wollongong这类重视产业经验和社会影响的项目"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃职业故事 + 动机 + Why this programme；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导和本科导师，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "澳大利亚研究生毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 11000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_au_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_graduate_004",
+        "name": "GG同学",
+        "level": "graduate",
+        "country": "Australia",
+        "category": "au_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "undergrad_gpa": 3.58,
+          "ielts": 6.5,
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Electronic Information Engineering",
+          "research_experience": "本科几乎无研究经历",
+          "work_experience": "毕业后在一家传统制造企业担任数字化转型负责人3年，主导过多个AI+工业项目从0到1上线",
+          "budget_per_year_usd": 44000,
+          "region": "Xi'an, Shaanxi",
+          "personality": "沉稳靠谱，极强的落地执行力和跨领域沟通能力，喜欢把前沿技术应用到传统行业解决真实问题"
+        },
+        "applied_programs": [
+          {"program_id": "uts_msc_cs", "result": "admit", "strategy_used": ["strong_industry_impact", "clear_career_goal"]},
+          {"program_id": "macquarie_msc_cs", "result": "admit", "strategy_used": ["work_experience", "project_leadership"]},
+          {"program_id": "newcastle_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "real_world_impact"]},
+          {"program_id": "wollongong_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把传统行业数字化转型经历包装成真实技术+业务贡献",
+          "Personal Statement重点写从非互联网背景到推动AI落地的成长故事",
+          "突出跨领域沟通和项目落地能力",
+          "选择重视产业应用和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请澳大利亚Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（6.5，留缓冲重考）",
+          "2025-05: 完成Personal Statement初稿，重点写行业转型和项目影响",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交UTS、Macquarie、Newcastle、Wollongong申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UTS MSc CS", "Macquarie MSc CS", "University of Newcastle MSc CS", "University of Wollongong MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UTS MSc CS",
+          "reason_for_choice": "产业应用方向匹配 + 就业资源强 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自非互联网背景、有真实传统行业数字化转型经验的学生，申请UTS、Macquarie、Newcastle、Wollongong这类重视产业应用的Master's时，**把工作经历讲成技术决策 + 业务价值 + 跨领域推动能力**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校和GPA一般，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏技术深度和个人思考",
+            "不知道如何把传统行业AI项目转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI+工业项目从需求分析 → 技术选型 → 上线迭代的完整过程写进Personal Statement",
+            "突出工作中自学技术栈和解决复杂工程问题的经历",
+            "选择UTS、Macquarie、Newcastle、Wollongong这类重视产业应用的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃职业故事 + 项目贡献 + 未来规划；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "澳大利亚研究生毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "uts_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "macquarie_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "newcastle_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_003", "end_node_id": "wollongong_msc_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "uts_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "macquarie_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "newcastle_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_004", "end_node_id": "wollongong_msc_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_au_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_graduate_005",
+        "name": "HH同学",
+        "level": "graduate",
+        "country": "Australia",
+        "category": "au_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "undergrad_gpa": 3.65,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科参与1个校级AI项目",
+          "work_experience": "毕业后在一家在线教育平台担任内容运营+技术支持hybrid角色2年，主导过多个AI辅助教学内容从0到1上线",
+          "budget_per_year_usd": 45000,
+          "region": "Beijing",
+          "personality": "外向开朗，极强的表达能力和教学热情，喜欢把复杂技术讲得通俗易懂，有很强的社区影响力和组织能力"
+        },
+        "applied_programs": [
+          {"program_id": "uts_msc_cs", "result": "admit", "strategy_used": ["strong_teaching_impact", "community_contribution"]},
+          {"program_id": "macquarie_msc_cs", "result": "admit", "strategy_used": ["teaching_experience", "clear_goal"]},
+          {"program_id": "newcastle_msc_cs", "result": "admit", "strategy_used": ["leadership_and_communication", "project_impact"]},
+          {"program_id": "wollongong_msc_cs", "result": "admit", "strategy_used": ["community_influence", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把教学和社区影响力包装成核心优势",
+          "Personal Statement重点写技术分享和帮助他人的经历",
+          "突出沟通和组织能力",
+          "选择重视教学、社区和包容性的项目"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请澳大利亚Master's，目标重视教学和社区的项目",
+          "2025-04: 系统整理教学和社区贡献材料",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 完成Personal Statement初稿，重点写教学影响和个人动机",
+          "2025-07: 给指导老师和社区合作伙伴要推荐信",
+          "2025-08: 完成所有文书优化",
+          "2025-09-01: 提交UTS、Macquarie、Newcastle、Wollongong申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UTS MSc CS", "Macquarie MSc CS", "University of Newcastle MSc CS", "University of Wollongong MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UTS MSc CS",
+          "reason_for_choice": "教学和社区文化匹配 + 悉尼产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "有大量教学、mentoring和社区贡献经历的学生，申请UTS、Macquarie、Newcastle、Wollongong这类重视教学和社区文化的Master's时，**把帮助他人成长的故事讲清楚**非常有竞争力。很多项目喜欢有教学热情和社区影响力的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心没有顶会论文和传统研究经历",
+            "Personal Statement第一版写得像活动总结，缺乏技术深度和个人思考",
+            "不知道如何把教学和社区贡献转化为CS申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把组织技术分享活动、帮助学弟学妹成长的真实案例和影响数据写进Personal Statement",
+            "突出个人对技术教育的热情和长期职业规划",
+            "选择UTS、Macquarie、Newcastle、Wollongong这类重视教学和社区的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃个人故事 + 影响力和动机；美国SOP更吃多维度个人成长和影响。",
+          "recommendation_letter_strategy": "找指导过教学/社区活动的老师和合作伙伴，提前提供具体事例和影响数据。",
+          "timeline_buffer_advice": "教学/社区型申请建议至少提前3个月准备材料和文书。",
+          "visa_employment_impact": "澳大利亚研究生毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_au_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "au_graduate_006",
+        "name": "II同学",
+        "level": "graduate",
+        "country": "Australia",
+        "category": "au_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Australia"],
+        "input_attributes": {
+          "undergrad_gpa": 3.60,
+          "ielts": 6.5,
+          "undergrad_school": "ordinary_public_university",
+          "undergrad_major": "Electronic Information Engineering",
+          "research_experience": "本科几乎无研究经历",
+          "work_experience": "毕业后在一家AI创业公司担任后端开发+社区运营hybrid角色2.5年，主导过多个开源工具和社区活动，GitHub累计star超5k",
+          "budget_per_year_usd": 43000,
+          "region": "Chengdu, Sichuan",
+          "personality": "内向但极度热爱开源和技术分享，喜欢把复杂系统讲清楚，有很强的技术写作和社区影响力"
+        },
+        "applied_programs": [
+          {"program_id": "uts_msc_cs", "result": "admit", "strategy_used": ["strong_open_source_impact", "community_contribution"]},
+          {"program_id": "macquarie_msc_cs", "result": "admit", "strategy_used": ["open_source_experience", "clear_goal"]},
+          {"program_id": "newcastle_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_impact"]},
+          {"program_id": "wollongong_msc_cs", "result": "admit", "strategy_used": ["community_influence", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把开源项目影响力和社区贡献包装成核心优势",
+          "Personal Statement强调技术分享和社区影响力",
+          "突出实际代码贡献和用户增长",
+          "选择重视开源文化和社区的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请澳大利亚Master's，目标重视开源和社区的项目",
+          "2025-03: 系统整理开源项目和社区贡献材料",
+          "2025-04: IELTS考试（6.5，留缓冲重考）",
+          "2025-05: 完成Personal Statement初稿，重点写开源故事和个人动机",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交UTS、Macquarie、Newcastle、Wollongong申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UTS MSc CS", "Macquarie MSc CS", "University of Newcastle MSc CS", "University of Wollongong MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UTS MSc CS",
+          "reason_for_choice": "开源和社区文化匹配 + 悉尼产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "有真实开源项目影响力（即使本科背景一般）的学生，申请UTS、Macquarie、Newcastle、Wollongong这类重视开源文化和社区的Master's时，**把项目从0到有大量用户实际使用的完整过程讲清楚**非常有竞争力。很多项目喜欢有实际贡献和社区影响力的学生。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科学校和GPA一般，担心竞争力不足",
+            "Personal Statement第一版写得像项目介绍，缺乏故事性和个人思考",
+            "不知道如何把开源贡献转化为澳大利亚申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把开源项目从idea到用户增长到被社区认可的完整过程写成故事",
+            "突出个人对开源文化的热爱和长期贡献",
+            "选择UTS、Macquarie、Newcastle、Wollongong这类重视开源和社区的学校"
+          ],
+          "sop_vs_ps_difference": "澳大利亚Personal Statement更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找前司领导和本科导师，提前提供开源贡献和社区影响数据。",
+          "timeline_buffer_advice": "开源/社区型学生建议至少提前3个月准备材料和文书。",
+          "visa_employment_impact": "澳大利亚研究生毕业后有2-4年工作签证（485签证），对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 9000,
+        "overall_difficulty_rating": "medium (开源社区逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "uts_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "macquarie_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "newcastle_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_005", "end_node_id": "wollongong_msc_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "uts_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "macquarie_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "newcastle_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_au_006", "end_node_id": "wollongong_msc_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_ca_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_undergrad_001",
+        "name": "JJ同学",
+        "level": "undergrad",
+        "country": "Canada",
+        "category": "ca_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "predicted_grades": "OSSD 95+ equivalent (Maths, Physics, English)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "安静内敛但极度热爱数学和逻辑，喜欢钻研复杂问题，有很强的自学能力和学术好奇心"
+        },
+        "applied_programs": [
+          {"program_id": "uoft_cs", "result": "admit", "strategy_used": ["strong_academic_profile", "clear_academic_interest"]},
+          {"program_id": "waterloo_cs", "result": "admit", "strategy_used": ["maths_competition", "supplemental_application"]},
+          {"program_id": "ubc_cs", "result": "admit", "strategy_used": ["strong_predicted_grades", "early_application"]},
+          {"program_id": "mcgill_cs", "result": "admit", "strategy_used": ["balanced_profile", "research_interest"]}
+        ],
+        "key_strategies": [
+          "Supplemental Application突出数学和逻辑思维的热爱",
+          "强调自学能力和学术深度",
+          "早申请顶尖大学",
+          "准备好英语成绩和学术材料"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请加拿大本科CS",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始写Supplemental Application / Personal Profile，重点写学术兴趣",
+          "2025-07: 给数学老师和班主任提供详细材料准备推荐信",
+          "2025-08: 提交申请（早申请Toronto、Waterloo、UBC、McGill）",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Toronto CS", "University of Waterloo CS", "UBC CS", "McGill CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Toronto CS",
+          "reason_for_choice": "学术氛围好 + 研究资源强 + 长期学术发展路径清晰"
+        },
+        "lessons": "预测成绩优秀 + 清晰学术兴趣的学生，申请多伦多、滑铁卢、UBC、麦吉尔等顶尖大学时，**Supplemental Application / Personal Profile突出数学思维和自学深度**比堆砌活动更有效。早申请是关键。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心国内高中背景在加拿大申请中竞争力不足",
+            "Supplemental Application第一版写得像活动列表，缺乏学术深度",
+            "不知道如何把数学竞赛和自学经历包装成申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把自学数学竞赛和解决复杂问题的经历写成清晰的学术兴趣故事",
+            "Personal Profile重点回答学术动机和个人思考",
+            "选择多伦多、滑铁卢、UBC、麦吉尔这类重视学术能力的大学"
+          ],
+          "sop_vs_ps_difference": "加拿大Supplemental Application / Personal Profile更学术化、直接回答学术兴趣和Why this programme；美国SOP更吃个人故事和成长弧线。",
+          "recommendation_letter_strategy": "找数学老师和班主任，提前提供学术兴趣和自学经历的详细描述。",
+          "timeline_buffer_advice": "顶尖大学申请建议至少提前4个月准备材料和英语成绩。",
+          "visa_employment_impact": "加拿大本科毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 12000,
+        "overall_difficulty_rating": "medium_high"
+      }
+    },
+    {
+      "id": "profile_ca_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_undergrad_002",
+        "name": "KK同学",
+        "level": "undergrad",
+        "country": "Canada",
+        "category": "ca_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "predicted_grades": "OSSD 90+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "tier2_city_key_public_high_school",
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，执行力强，喜欢带领团队做项目，有很强的实践能力和沟通能力"
+        },
+        "applied_programs": [
+          {"program_id": "ubc_cs", "result": "admit", "strategy_used": ["strong_project_impact", "leadership_experience"]},
+          {"program_id": "mcgill_cs", "result": "admit", "strategy_used": ["project_experience", "clear_career_goal"]},
+          {"program_id": "alberta_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_ECs"]},
+          {"program_id": "western_cs", "result": "admit", "strategy_used": ["leadership_and_impact", "personal_statement_story"]}
+        ],
+        "key_strategies": [
+          "把项目经历和领导力包装成核心优势",
+          "Personal Profile用故事讲述技术如何解决真实问题",
+          "突出团队协作和项目落地能力",
+          "选择重视实践和职业发展的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请加拿大本科CS，目标实践性强的项目",
+          "2025-05: IELTS考试（6.5）",
+          "2025-06: 开始整理项目材料和领导力经历",
+          "2025-07: 完成Personal Profile初稿，重点写项目故事和个人成长",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到UBC、McGill、Alberta、Western录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["UBC CS", "McGill CS", "University of Alberta CS", "Western University CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "UBC CS",
+          "reason_for_choice": "实践性强 + 产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "预测成绩良好 + 真实项目和领导力经历的学生，申请UBC、麦吉尔、阿尔伯塔、西安大略这类实践导向的学校时，**把项目讲成故事 + 突出团队影响**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩不是顶尖，担心竞争力不足",
+            "Personal Profile第一版写得像活动罗列，缺乏故事性和个人思考",
+            "不知道如何把国内项目经历转化为加拿大申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把带领团队开发校园项目的完整过程（问题 → 方案 → 上线 → 用户反馈）写成故事",
+            "Personal Profile突出个人成长和对技术的热情，而非只堆活动",
+            "选择UBC、麦吉尔、阿尔伯塔、西安大略这类重视项目和实践的学校"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Profile更吃故事 + 个人动机 + Why this programme；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和领导力事例。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Profile和推荐信。",
+          "visa_employment_impact": "加拿大本科毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 10000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "uoft_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "waterloo_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "ubc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "mcgill_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "ubc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "mcgill_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "alberta_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "western_cs", "properties": {"result": "admit"}}
+  ]
+},
+{
+  "nodes": [
+    {
+      "id": "profile_ca_003",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_undergrad_003",
+        "name": "LL同学",
+        "level": "undergrad",
+        "country": "Canada",
+        "category": "ca_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "predicted_grades": "OSSD 92+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "tier2_city_key_public_high_school",
+          "region": "Chengdu, Sichuan",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢带领团队做真实项目，有很强的实践落地能力和沟通技巧"
+        },
+        "applied_programs": [
+          {"program_id": "ottawa_cs", "result": "admit", "strategy_used": ["strong_project_impact", "leadership_experience"]},
+          {"program_id": "queens_cs", "result": "admit", "strategy_used": ["project_experience", "clear_career_goal"]},
+          {"program_id": "calgary_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_ECs"]},
+          {"program_id": "victoria_cs", "result": "admit", "strategy_used": ["leadership_and_impact", "personal_statement_story"]}
+        ],
+        "key_strategies": [
+          "把真实项目经历包装成核心优势",
+          "Personal Profile用故事讲述技术如何解决实际问题",
+          "突出团队领导力和项目落地能力",
+          "选择重视实践和职业发展的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请加拿大本科CS，目标实践性强的项目",
+          "2025-05: IELTS考试（6.5）",
+          "2025-06: 开始整理项目材料和领导力经历",
+          "2025-07: 完成Personal Profile初稿，重点写项目故事和个人成长",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Ottawa、Queen's、Calgary、Victoria录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Ottawa CS", "Queen's University CS", "University of Calgary CS", "University of Victoria CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Ottawa CS",
+          "reason_for_choice": "实践性强 + 渥太华产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "预测成绩良好 + 真实项目和领导力经历的学生，申请渥太华、Queen's、卡尔加里、维多利亚这类实践导向的学校时，**把项目讲成故事 + 突出团队影响**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩不是顶尖，担心竞争力不足",
+            "Personal Profile第一版写得像活动罗列，缺乏故事性和个人思考",
+            "不知道如何把国内项目经历转化为加拿大申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把带领团队开发校园项目的完整过程（问题 → 方案 → 上线 → 用户反馈）写成故事",
+            "Personal Profile突出个人成长和对技术的热情，而非只堆活动",
+            "选择渥太华、Queen's、卡尔加里、维多利亚这类重视项目和实践的学校"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Profile更吃故事 + 个人动机 + Why this programme；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和领导力事例。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Profile和推荐信。",
+          "visa_employment_impact": "加拿大本科毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 9000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_ca_004",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_undergrad_004",
+        "name": "MM同学",
+        "level": "undergrad",
+        "country": "Canada",
+        "category": "ca_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "predicted_grades": "OSSD 88+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "ordinary_public_high_school",
+          "region": "tier3_city",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心和责任感"
+        },
+        "applied_programs": [
+          {"program_id": "ottawa_cs", "result": "admit", "strategy_used": ["strong_self_taught_story", "resilience"]},
+          {"program_id": "queens_cs", "result": "admit", "strategy_used": ["personal_story", "clear_motivation"]},
+          {"program_id": "calgary_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "victoria_cs", "result": "admit", "strategy_used": ["resilience_and_growth", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "把自学编程和克服困难的经历包装成核心故事",
+          "Personal Profile重点突出个人成长和对技术的热情",
+          "强调自学能力和抗压能力而非顶尖成绩",
+          "选择重视个人故事和包容性的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请加拿大本科CS",
+          "2025-05: IELTS考试（6.5，留缓冲重考）",
+          "2025-06: 开始整理自学经历和项目材料",
+          "2025-07: 完成Personal Profile初稿，重点写自学故事和个人成长",
+          "2025-08: 给班主任和自学指导老师提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Ottawa、Queen's、Calgary、Victoria录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Ottawa CS", "Queen's University CS", "University of Calgary CS", "University of Victoria CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Ottawa CS",
+          "reason_for_choice": "实践性强 + 渥太华产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自普通高中、预测成绩一般但有真实自学和成长故事的学生，申请渥太华、Queen's、卡尔加里、维多利亚这类重视个人动机和包容性的学校时，**把自学经历和克服困难的故事讲清楚**反而很有竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩和学校背景一般，担心竞争力不足",
+            "Personal Profile第一版写得比较平淡，缺乏感染力",
+            "不知道如何把自学编程和家庭困难经历正面呈现"
+          ],
+          "effective_countermeasures": [
+            "把自学编程从零开始到完成多个项目的完整成长故事写进Personal Profile",
+            "突出个人对技术的热情和克服困难的抗压能力",
+            "选择渥太华、Queen's、卡尔加里、维多利亚这类重视个人故事和包容性的学校"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Profile更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找班主任和自学指导老师，提前提供成长故事和具体事例。",
+          "timeline_buffer_advice": "自学型学生建议至少提前3个月准备Personal Profile和材料。",
+          "visa_employment_impact": "加拿大本科毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 8000,
+        "overall_difficulty_rating": "medium (自学逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_003", "end_node_id": "ottawa_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_003", "end_node_id": "queens_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_003", "end_node_id": "calgary_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_003", "end_node_id": "victoria_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_004", "end_node_id": "ottawa_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_004", "end_node_id": "queens_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_004", "end_node_id": "calgary_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_004", "end_node_id": "victoria_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_ca_005",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_undergrad_005",
+        "name": "NN同学",
+        "level": "undergrad",
+        "country": "Canada",
+        "category": "ca_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "predicted_grades": "OSSD 94+ equivalent (Maths, Physics, English)",
+          "ielts": 7.0,
+          "toefl": null,
+          "high_school_type": "Shanghai_key_public_high_school",
+          "region": "Shanghai",
+          "personality": "外向开朗，极强的执行力和组织能力，喜欢用技术解决真实社会问题，有很强的同理心和项目落地能力"
+        },
+        "applied_programs": [
+          {"program_id": "uoft_cs", "result": "admit", "strategy_used": ["strong_project_impact", "social_good_story"]},
+          {"program_id": "waterloo_cs", "result": "admit", "strategy_used": ["project_experience", "clear_motivation"]},
+          {"program_id": "ubc_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "mcgill_cs", "result": "admit", "strategy_used": ["project_impact", "leadership_experience"]}
+        ],
+        "key_strategies": [
+          "把用技术解决社会问题的项目包装成核心故事",
+          "Personal Profile重点突出技术如何帮助他人和社会",
+          "突出项目落地能力和同理心",
+          "选择重视社会影响和实践的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请加拿大本科CS，目标重视社会影响的项目",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始整理项目材料和社会影响数据",
+          "2025-07: 完成Personal Profile初稿，重点写项目故事和个人动机",
+          "2025-08: 给项目指导老师和班主任提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Toronto、Waterloo、UBC、McGill录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Toronto CS", "University of Waterloo CS", "UBC CS", "McGill CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Toronto CS",
+          "reason_for_choice": "学术氛围好 + 社会影响方向匹配 + 长期发展路径清晰"
+        },
+        "lessons": "有真实用技术解决社会问题的项目经历的学生，申请多伦多、滑铁卢、UBC、麦吉尔这类重视实践和社会影响的学校时，**把项目讲成故事 + 突出社会价值**比单纯强调成绩更有效。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "担心项目不够‘技术硬核’",
+            "Personal Profile第一版写得像活动总结，缺乏故事性和个人思考",
+            "不知道如何把国内公益科技项目转化为加拿大申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把项目从发现社会问题 → 技术方案 → 上线 → 实际帮助用户的完整过程写成故事",
+            "Personal Profile突出个人对技术的热情和帮助他人的责任感",
+            "选择多伦多、滑铁卢、UBC、麦吉尔这类重视实践和社会影响的学校"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Profile更吃故事 + 个人动机 + Why this programme；美国SOP更吃多维度个人成长。",
+          "recommendation_letter_strategy": "找带过项目的老师和班主任，提前提供具体项目贡献和影响数据。",
+          "timeline_buffer_advice": "常规申请也要至少提前3个月准备Personal Profile和推荐信。",
+          "visa_employment_impact": "加拿大本科毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 11000,
+        "overall_difficulty_rating": "medium"
+      }
+    },
+    {
+      "id": "profile_ca_006",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_undergrad_006",
+        "name": "OO同学",
+        "level": "undergrad",
+        "country": "Canada",
+        "category": "ca_undergrad",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "predicted_grades": "OSSD 90+ equivalent (Maths, Physics, English)",
+          "ielts": 6.5,
+          "toefl": null,
+          "high_school_type": "ordinary_public_high_school",
+          "region": "tier3_city",
+          "personality": "坚韧内敛，极强的自学能力和抗压能力，性格安静但做事极致认真，有很强的同理心和责任感"
+        },
+        "applied_programs": [
+          {"program_id": "alberta_cs", "result": "admit", "strategy_used": ["strong_self_taught_story", "resilience"]},
+          {"program_id": "western_cs", "result": "admit", "strategy_used": ["personal_story", "clear_motivation"]},
+          {"program_id": "ottawa_cs", "result": "admit", "strategy_used": ["balanced_profile", "strong_personal_statement"]},
+          {"program_id": "queens_cs", "result": "admit", "strategy_used": ["resilience_and_growth", "clear_goal"]}
+        ],
+        "key_strategies": [
+          "把自学编程和克服困难的经历包装成核心故事",
+          "Personal Profile重点突出个人成长和对技术的热情",
+          "强调自学能力和抗压能力而非顶尖成绩",
+          "选择重视个人故事和包容性的学校"
+        ],
+        "timeline_followed": [
+          "2025-04: 确定申请加拿大本科CS",
+          "2025-05: IELTS考试（6.5，留缓冲重考）",
+          "2025-06: 开始整理自学经历和项目材料",
+          "2025-07: 完成Personal Profile初稿，重点写自学故事和个人成长",
+          "2025-08: 给班主任和自学指导老师提供详细材料",
+          "2025-09-20: 提交申请",
+          "2026-01: 连续收到Alberta、Western、Ottawa、Queen's录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Alberta CS", "Western University CS", "University of Ottawa CS", "Queen's University CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Alberta CS",
+          "reason_for_choice": "实践性强 + 产业资源丰富 + 性价比高 + 奖学金"
+        },
+        "lessons": "来自普通高中、预测成绩一般但有真实自学和成长故事的学生，申请阿尔伯塔、西安大略、渥太华、Queen's这类重视个人动机和包容性的学校时，**把自学经历和克服困难的故事讲清楚**反而很有竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "预测成绩和学校背景一般，担心竞争力不足",
+            "Personal Profile第一版写得比较平淡，缺乏感染力",
+            "不知道如何把自学编程和家庭困难经历正面呈现"
+          ],
+          "effective_countermeasures": [
+            "把自学编程从零开始到完成多个项目的完整成长故事写进Personal Profile",
+            "突出个人对技术的热情和克服困难的抗压能力",
+            "选择阿尔伯塔、西安大略、渥太华、Queen's这类重视个人故事和包容性的学校"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Profile更吃真实个人故事和动机；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找班主任和自学指导老师，提前提供成长故事和具体事例。",
+          "timeline_buffer_advice": "自学型学生建议至少提前3个月准备Personal Profile和材料。",
+          "visa_employment_impact": "加拿大本科毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 9000,
+        "overall_difficulty_rating": "medium (自学逆袭成功)"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_005", "end_node_id": "uoft_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_005", "end_node_id": "waterloo_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_005", "end_node_id": "ubc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_005", "end_node_id": "mcgill_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_006", "end_node_id": "alberta_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_006", "end_node_id": "western_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_006", "end_node_id": "ottawa_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_006", "end_node_id": "queens_cs", "properties": {"result": "admit"}}
+  ]
+},
+  {
+  "nodes": [
+    {
+      "id": "profile_ca_001",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_graduate_001",
+        "name": "PP同学",
+        "level": "graduate",
+        "country": "Canada",
+        "category": "ca_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "undergrad_gpa": 3.72,
+          "ielts": 7.0,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Computer Science",
+          "research_experience": "本科在多模态AI实验室完成多个项目，其中1个医疗影像相关工作整理成技术报告并在国内会议发表",
+          "work_experience": null,
+          "budget_per_year_usd": 48000,
+          "region": "Beijing",
+          "personality": "安静内敛但极度热爱学术研究，喜欢钻研复杂理论问题，有很强的逻辑思维和学术写作能力"
+        },
+        "applied_programs": [
+          {"program_id": "uoft_msc_cs", "result": "admit", "strategy_used": ["strong_research_fit", "academic_writing"]},
+          {"program_id": "waterloo_msc_cs", "result": "admit", "strategy_used": ["research_match", "detailed_personal_statement"]},
+          {"program_id": "ubc_msc_cs", "result": "admit", "strategy_used": ["research_experience", "clear_academic_goal"]},
+          {"program_id": "mcgill_msc_cs", "result": "admit", "strategy_used": ["strong_academic_profile", "project_depth"]}
+        ],
+        "key_strategies": [
+          "Personal Statement重点突出研究兴趣和学术动机",
+          "强调本科研究项目的深度和个人思考",
+          "选择重视学术研究和理论方向的顶尖项目",
+          "提前准备好研究提案或写作样本（如需要）"
+        ],
+        "timeline_followed": [
+          "2025-03: 确定申请加拿大研究型Master's，目标顶尖学术项目",
+          "2025-04: 完成本科研究项目总结和技术报告",
+          "2025-05: IELTS考试（7.0）",
+          "2025-06: 开始写Personal Statement，重点突出研究兴趣",
+          "2025-07: 给研究导师提供详细材料准备推荐信",
+          "2025-09-01: 提交Toronto、Waterloo、UBC、McGill申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Toronto MSc CS", "University of Waterloo MSc CS", "UBC MSc CS", "McGill MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Toronto MSc CS",
+          "reason_for_choice": "研究方向高度匹配 + 导师资源强 + 长期学术发展路径清晰"
+        },
+        "lessons": "本科有真实研究经历（即使没有国际顶会）的学生，申请多伦多、滑铁卢、UBC、麦吉尔等研究型Master's时，**Personal Statement突出研究兴趣、深度思考和个人动机**非常关键。提前准备好推荐信和研究材料能显著提升竞争力。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究没有国际顶会，担心竞争力不足",
+            "Personal Statement第一版写得像项目报告，缺乏学术深度和个人动机",
+            "不知道如何把国内研究经历包装成国际认可的学术兴趣"
+          ],
+          "effective_countermeasures": [
+            "把研究项目从问题提出 → 方法探索 → 个人思考 → 未来研究方向的完整链条写进Personal Statement",
+            "突出个人对该领域的长期热情和独立思考能力",
+            "选择多伦多、滑铁卢、UBC、麦吉尔这类高度重视研究匹配度的项目"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Statement更学术化、直接回答学术兴趣和Why this programme；美国SOP更吃个人故事和成长弧线。",
+          "recommendation_letter_strategy": "找真正指导过研究的导师，提前提供研究细节和个人学术特质描述。",
+          "timeline_buffer_advice": "研究型Master's申请建议至少提前4个月准备Personal Statement和推荐信。",
+          "visa_employment_impact": "加拿大研究生毕业后有3年PGWP工作签证，对未来职业或继续深造有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 16000,
+        "overall_difficulty_rating": "high"
+      }
+    },
+    {
+      "id": "profile_ca_002",
+      "label": "StudentProfile",
+      "properties": {
+        "profile_id": "ca_graduate_002",
+        "name": "QQ同学",
+        "level": "graduate",
+        "country": "Canada",
+        "category": "ca_graduate",
+        "major": "Computer Science",
+        "target_countries": ["Canada"],
+        "input_attributes": {
+          "undergrad_gpa": 3.58,
+          "ielts": 6.5,
+          "undergrad_school": "985_university",
+          "undergrad_major": "Software Engineering",
+          "research_experience": "本科参与1个校级项目",
+          "work_experience": "毕业后在一家AI创业公司担任后端开发+产品hybrid角色2年，主导过多个AI工具从0到1上线",
+          "budget_per_year_usd": 45000,
+          "region": "Shenzhen, Guangdong",
+          "personality": "外向开朗，极强的执行力和产品思维，喜欢把技术落地成真实产品并解决商业问题"
+        },
+        "applied_programs": [
+          {"program_id": "alberta_msc_cs", "result": "admit", "strategy_used": ["strong_industry_story", "clear_career_goal"]},
+          {"program_id": "montreal_msc_cs", "result": "admit", "strategy_used": ["work_experience_impact", "leadership_experience"]},
+          {"program_id": "ottawa_msc_cs", "result": "admit", "strategy_used": ["balanced_profile", "project_leadership"]},
+          {"program_id": "calgary_msc_cs", "result": "admit", "strategy_used": ["industry_experience", "strong_personal_statement"]}
+        ],
+        "key_strategies": [
+          "把工作项目经历包装成技术+商业双重贡献",
+          "Personal Statement重点写职业成长和未来规划",
+          "突出项目落地和团队协作能力",
+          "选择重视产业联系和职业发展的项目"
+        ],
+        "timeline_followed": [
+          "2025-02: 决定申请加拿大Master's进行技术系统性提升",
+          "2025-03: 系统整理工作项目和技术决策过程",
+          "2025-04: IELTS考试（6.5）",
+          "2025-05: 完成Personal Statement初稿，重点写职业故事和项目影响",
+          "2025-06: 给前司领导和本科导师要推荐信",
+          "2025-07: 完成所有文书优化",
+          "2025-09-01: 提交Alberta、Montreal、Ottawa、Calgary申请",
+          "2026-01: 连续收到4个录取"
+        ],
+        "final_outcome": {
+          "admitted_schools": ["University of Alberta MSc CS", "Université de Montréal MSc CS", "University of Ottawa MSc CS", "University of Calgary MSc CS"],
+          "rejected_or_waitlist": [],
+          "final_choice": "University of Alberta MSc CS",
+          "reason_for_choice": "产业联系强 + 课程实践性好 + 性价比高 + 奖学金"
+        },
+        "lessons": "有真实工作经验和项目落地经历的学生，申请阿尔伯塔、蒙特利尔、渥太华、卡尔加里这类重视产业联系和职业发展的Master's时，**把工作经历讲成技术决策 + 商业价值 + 个人成长**，竞争力很强。",
+        "china_specific_notes": {
+          "pain_points_encountered": [
+            "本科研究经历少，担心竞争力不足",
+            "Personal Statement第一版写得像工作总结，缺乏深度和个人思考",
+            "不知道如何把AI创业公司项目转化为加拿大申请亮点"
+          ],
+          "effective_countermeasures": [
+            "把主导AI工具从需求分析 → 技术选型 → 上线迭代的完整过程写进Personal Statement",
+            "突出工作中解决的技术难题和团队协作经历",
+            "选择阿尔伯塔、蒙特利尔、渥太华、卡尔加里这类重视产业经验的项目"
+          ],
+          "sop_vs_ps_difference": "加拿大Personal Statement更吃职业故事 + 动机 + Why this programme；美国SOP更吃多维度成长和影响。",
+          "recommendation_letter_strategy": "找直接带过项目的领导和本科导师，提前提供项目影响数据和贡献列表。",
+          "timeline_buffer_advice": "有工作经验的学生，建议至少提前3.5个月准备材料和文书。",
+          "visa_employment_impact": "加拿大研究生毕业后有3年PGWP工作签证，对未来职业发展有缓冲作用。"
+        },
+        "scholarship_obtained": true,
+        "scholarship_amount_usd": 13000,
+        "overall_difficulty_rating": "medium"
+      }
+    }
+  ],
+  "relationships": [
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "uoft_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "waterloo_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "ubc_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_001", "end_node_id": "mcgill_msc_cs", "properties": {"result": "admit"}},
+
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "alberta_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "montreal_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "ottawa_msc_cs", "properties": {"result": "admit"}},
+    {"type": "APPLIED_TO", "start_node_id": "profile_ca_002", "end_node_id": "calgary_msc_cs", "properties": {"result": "admit"}}
+  ]
+}
+  ]
+
+

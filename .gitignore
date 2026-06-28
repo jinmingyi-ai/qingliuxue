@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Runtime auth and memory data
+app/data/auth/*.db
+app/data/auth/*.db-*
+app/data/memory/*.json
+app/data/memory/users/*.json
+app/data/memory/guests/*.json
+app/data/logs/*
+
+# Local env files
+.env
+.env.*
+!.env.example

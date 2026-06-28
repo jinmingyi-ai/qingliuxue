@@ -1,0 +1,14 @@
+services:
+  qingliuxue:
+    build: .
+    container_name: qingliuxue-demo
+    ports:
+      - "8501:8501"
+      - "8000:8000"
+    environment:
+      API_BASE_URL: "http://127.0.0.1:8000"
+      JWT_SECRET: "replace-this-local-secret"
+      DATABASE_URL: "sqlite:////app/app/data/auth/qingliuxue.db"
+    volumes:
+      - ./app/data:/app/app/data
+

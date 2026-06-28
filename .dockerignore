@@ -1,0 +1,12 @@
+.git
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.mypy_cache
+.DS_Store
+app/data/auth/*.db
+app/data/memory/users/*.json
+app/data/memory/guests/*.json
+app/data/memory/*.json
+app/data/logs/*
