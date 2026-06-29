@@ -101,21 +101,22 @@ def base_page_css() -> str:
         }
 
         .ql-nav {
-            height: 70px;
+            height: 72px;
             background: #f6ded5;
             border-bottom: 1px solid #eac5b9;
             box-shadow: 0 1px 0 rgba(124, 47, 34, 0.04);
         }
 
         .ql-nav-inner {
-            height: 70px;
-            max-width: 1760px;
-            margin: 0 auto;
-            padding: 0 64px;
+            height: 72px;
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0 38px;
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            grid-template-columns: minmax(260px, 1fr) auto minmax(260px, 1fr);
             align-items: center;
-            gap: 34px;
+            gap: 42px;
         }
 
         .ql-brand {
@@ -123,14 +124,14 @@ def base_page_css() -> str:
             align-items: center;
             gap: 12px;
             color: var(--coral-800);
-            font-size: 24px;
+            font-size: 27px;
             font-weight: 900;
             white-space: nowrap;
         }
 
         .ql-logo-wrap {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             padding: 5px;
             display: inline-grid;
             place-items: center;
@@ -141,8 +142,8 @@ def base_page_css() -> str:
         }
 
         .ql-logo {
-            width: 38px;
-            height: 38px;
+            width: 41px;
+            height: 41px;
             object-fit: contain;
             display: block;
         }
@@ -151,9 +152,9 @@ def base_page_css() -> str:
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 42px;
+            gap: 58px;
             color: #6f625d;
-            font-size: 17px;
+            font-size: 19px;
             font-weight: 750;
             white-space: nowrap;
         }
@@ -193,8 +194,8 @@ def base_page_css() -> str:
         }
 
         .ql-auth-link {
-            height: 38px;
-            padding: 0 18px;
+            height: 40px;
+            padding: 0 20px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -202,7 +203,7 @@ def base_page_css() -> str:
             border: 1px solid #e7b9aa;
             color: var(--coral-800);
             background: rgba(255, 255, 255, 0.64);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 850;
         }
 
@@ -221,9 +222,9 @@ def base_page_css() -> str:
         }
 
         .ql-main {
-            max-width: 1120px;
+            max-width: 1360px;
             margin: 0 auto;
-            padding: 58px 28px 80px;
+            padding: 64px 32px 88px;
         }
 
         .ql-section-head {
@@ -234,7 +235,7 @@ def base_page_css() -> str:
         .ql-section-head h1 {
             margin: 0;
             color: var(--ink);
-            font-size: 38px;
+            font-size: 44px;
             font-weight: 900;
             line-height: 1.2;
         }
@@ -243,7 +244,7 @@ def base_page_css() -> str:
             margin: 14px auto 0;
             max-width: 720px;
             color: var(--muted);
-            font-size: 15px;
+            font-size: 17px;
             line-height: 1.75;
             font-weight: 650;
         }
@@ -251,33 +252,37 @@ def base_page_css() -> str:
         .ql-grid-2,
         .ql-grid-3 {
             display: grid;
-            gap: 26px;
+            gap: 34px;
             align-items: stretch;
         }
 
         .ql-grid-2 {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: 1180px;
+            margin: 0 auto;
         }
 
         .ql-grid-3 {
             grid-template-columns: repeat(3, minmax(0, 1fr));
+            max-width: 1260px;
+            margin: 0 auto;
         }
 
         .ql-card {
-            min-height: 420px;
-            padding: 34px;
+            min-height: 500px;
+            padding: 44px;
             border-radius: 18px;
             background: var(--card);
             border: 1px solid var(--line);
-            box-shadow: 0 26px 58px rgba(73, 42, 33, 0.08);
+            box-shadow: 0 30px 64px rgba(73, 42, 33, 0.08);
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
         .ql-card.featured {
-            border-color: #e9967e;
-            box-shadow: 0 30px 70px rgba(184, 79, 59, 0.14);
+            border-color: var(--line);
+            box-shadow: 0 30px 64px rgba(73, 42, 33, 0.08);
         }
 
         .ql-card-head {
@@ -303,7 +308,7 @@ def base_page_css() -> str:
         .ql-card h2 {
             margin: 0 0 7px;
             color: var(--ink);
-            font-size: 25px;
+            font-size: 31px;
             line-height: 1.2;
             font-weight: 900;
         }
@@ -311,7 +316,7 @@ def base_page_css() -> str:
         .ql-kicker {
             margin: 0;
             color: var(--muted);
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.55;
             font-weight: 650;
         }
@@ -326,9 +331,9 @@ def base_page_css() -> str:
             display: grid;
             grid-template-columns: 22px 1fr;
             gap: 10px;
-            margin: 13px 0;
+            margin: 15px 0;
             color: #564c47;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.7;
             font-weight: 650;
         }
@@ -351,39 +356,40 @@ def base_page_css() -> str:
             background: linear-gradient(180deg, #fff3ee 0%, #fde4da 100%);
             color: var(--coral-800);
             text-align: center;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 850;
             line-height: 1.7;
         }
 
         .ql-spacer {
             flex: 1;
-            min-height: 24px;
+            min-height: 30px;
         }
 
         .ql-button {
             width: fit-content;
-            min-width: 132px;
-            height: 44px;
-            padding: 0 24px;
+            min-width: 156px;
+            height: 48px;
+            padding: 0 28px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            align-self: center;
             border-radius: 11px;
             border: 1px solid var(--coral-700);
             color: #ffffff !important;
             background: var(--coral-700);
             box-shadow: 0 16px 32px rgba(184, 79, 59, 0.22);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 900;
             text-decoration: none !important;
         }
 
         .ql-button.secondary {
-            color: var(--coral-800) !important;
-            background: #fff2ec;
-            border-color: #edb09e;
-            box-shadow: none;
+            color: #ffffff !important;
+            background: var(--coral-700);
+            border-color: var(--coral-700);
+            box-shadow: 0 16px 32px rgba(184, 79, 59, 0.22);
         }
 
         .ql-button:hover {
@@ -419,7 +425,7 @@ def base_page_css() -> str:
 
             .ql-card {
                 min-height: auto;
-                padding: 28px 24px;
+                padding: 32px 26px;
             }
         }
     </style>

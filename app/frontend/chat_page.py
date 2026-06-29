@@ -35,31 +35,31 @@ ENTRY_CONFIG = {
         "title": "时间线和任务规划",
         "seed": "请根据我的画像生成申请时间线和任务规划；如果信息不足，请先给一条常见路线。",
         "agents": ["timeline"],
-        "description": "调用 timeline_agent 输出阶段性任务表。",
+        "description": "按国家、项目和入学季生成阶段性任务表。",
     },
     "essay": {
         "title": "文书策略和指导",
         "seed": "请根据我的画像和文书知识库，生成 SOP/PS 文书策略和素材准备方向。",
         "agents": ["essay"],
-        "description": "调用 essay_agent 结合文书知识库给写作主线。",
+        "description": "结合你的经历和目标项目，梳理文书主线、素材和表达重点。",
     },
     "comparison": {
         "title": "多方案对比",
         "seed": "请结合我的画像，比较几个适合我的留学国家、专业或项目方案。",
         "agents": ["comparison"],
-        "description": "调用 comparison_agent 输出结构化对比。",
+        "description": "把国家、专业、预算、就业和申请难度放在同一张表里比较。",
     },
     "materials": {
         "title": "材料准备指导",
         "seed": "请根据我的画像和材料知识库，生成申请材料准备清单和注意事项。",
         "agents": ["materials"],
-        "description": "调用 material_agent 给材料清单和质量标准。",
+        "description": "生成申请材料清单、准备顺序和容易遗漏的细节。",
     },
     "visa": {
         "title": "签证和毕业后规划",
         "seed": "请根据我的画像，生成签证、入学后准备和毕业后路径规划。",
         "agents": ["visa"],
-        "description": "调用 visa_career_agent 规划政策和职业路径。",
+        "description": "规划签证、入学衔接、工签窗口和毕业后发展路径。",
     },
 }
 
@@ -163,7 +163,13 @@ def _initialise_entry(entry: str) -> None:
         return
     st.session_state["entry_initialized"][key] = True
     questionnaire = st.session_state.pop("pending_questionnaire", None)
-    with st.spinner("正在调用轻留学多 agent 生成第一版建议..."):
+    st.session_state["chat_messages"].append(
+        {
+            "role": "assistant",
+            "content": f"我已经进入「{config['title']}」模式，正在根据你的入口和已有信息准备第一版建议。",
+        }
+    )
+    with st.spinner("正在生成第一版建议..."):
         result = _call_agent(config["seed"], entry, config["agents"], questionnaire=questionnaire)
     _append_turn(config["seed"], result)
 
@@ -243,11 +249,20 @@ def _render_agent_trace() -> None:
     route = st.session_state.get("last_route") or []
     results = st.session_state.get("last_agent_results") or []
     if route:
-        st.caption("本轮调用：" + " → ".join(route))
+        label_map = {
+            "profile": "画像更新",
+            "case": "案例推荐",
+            "timeline": "时间规划",
+            "essay": "文书指导",
+            "comparison": "方案对比",
+            "materials": "材料指导",
+            "visa": "签证与发展",
+        }
+        st.caption("本轮处理：" + " → ".join(label_map.get(item, item) for item in route))
     if results:
-        with st.expander("查看 agent 过程和召回结果", expanded=False):
+        with st.expander("查看处理过程和参考来源", expanded=False):
             for result in results:
-                st.markdown(f"**{result.get('agent')} · {result.get('task')}**")
+                st.markdown(f"**{result.get('task')}**")
                 st.write(result.get("answer", ""))
                 sources = result.get("sources") or []
                 if sources:
@@ -255,14 +270,36 @@ def _render_agent_trace() -> None:
 
 
 def _styles() -> str:
-    return (
-        base_page_css()
-        + """
+    return """
         <style>
+            :root {
+                --coral-900: #7c2f22;
+                --coral-800: #9a3d2c;
+                --coral-700: #b94f3b;
+                --coral-600: #d8614a;
+                --coral-200: #f8d8cf;
+                --coral-100: #fbebe6;
+                --coral-050: #fff8f5;
+                --ink: #2b2724;
+                --muted: #7c716b;
+                --line: #ead9d2;
+            }
+            [data-testid="stHeader"],
+            [data-testid="stToolbar"],
+            [data-testid="stDecoration"],
+            [data-testid="stStatusWidget"] {
+                display: none !important;
+            }
+            .stApp {
+                background:
+                    radial-gradient(circle at 56% 12%, rgba(237, 118, 93, 0.10), transparent 34%),
+                    linear-gradient(180deg, #fffaf8 0%, #fff7f3 100%);
+            }
             [data-testid="stSidebar"] {
                 display: block !important;
                 background: #f6ded5;
                 border-right: 1px solid #ead1c8;
+                min-width: 300px !important;
             }
             [data-testid="stSidebar"] * {
                 font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
@@ -272,8 +309,8 @@ def _styles() -> str:
                 color: #9a3d2c;
             }
             .main .block-container {
-                max-width: 980px !important;
-                padding: 32px 42px 92px !important;
+                max-width: 1120px !important;
+                padding: 34px 44px 92px !important;
             }
             .side-brand {
                 display: flex;
@@ -304,13 +341,13 @@ def _styles() -> str:
             .chat-head h1 {
                 margin: 0;
                 color: #2b2724;
-                font-size: 32px;
+                font-size: 40px;
                 font-weight: 950;
             }
             .chat-head p {
                 margin: 8px 0 0;
                 color: #7c716b;
-                font-size: 15px;
+                font-size: 17px;
                 line-height: 1.7;
                 font-weight: 650;
             }
@@ -326,20 +363,38 @@ def _styles() -> str:
                 border-radius: 14px;
                 border: 1px solid #ead9d2;
                 background: rgba(255, 252, 250, 0.78);
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                max-width: 100%;
+            }
+            .stChatMessage p {
+                line-height: 1.85;
+                font-size: 16px;
             }
             [data-testid="stChatInput"] textarea {
                 border-color: #e7b9aa !important;
                 box-shadow: 0 0 0 1px rgba(237, 118, 93, 0.08);
             }
+            div[data-testid="stHorizontalBlock"] button {
+                min-height: 42px;
+                white-space: normal !important;
+                line-height: 1.55 !important;
+            }
+            pre, code {
+                white-space: pre-wrap !important;
+                word-break: break-word !important;
+            }
         </style>
         """
-    )
 
 
 def render(entry: str = "direct") -> None:
     _ensure_state()
     entry = entry if entry in ENTRY_CONFIG else "direct"
-    st.markdown(_styles(), unsafe_allow_html=True)
+    if hasattr(st, "html"):
+        st.html(_styles())
+    else:
+        st.markdown(_styles(), unsafe_allow_html=True)
     _render_sidebar(entry)
 
     config = ENTRY_CONFIG[entry]
@@ -368,13 +423,13 @@ def render(entry: str = "direct") -> None:
     for index, prompt in enumerate(QUICK_PROMPTS):
         with cols[index % 2]:
             if st.button(prompt, key=f"quick_{index}", use_container_width=True):
-                with st.spinner("正在分配 agent 并生成回答..."):
+                with st.spinner("正在生成回答..."):
                     result = _call_agent(prompt, entry)
                 _append_turn(prompt, result)
                 st.rerun()
 
     if user_input := st.chat_input("输入你的背景、目标、偏好，或继续追问..."):
-        with st.spinner("正在分配 agent 并生成回答..."):
+        with st.spinner("正在生成回答..."):
             result = _call_agent(user_input, entry)
         _append_turn(user_input, result)
         st.rerun()

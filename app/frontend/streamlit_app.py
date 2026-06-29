@@ -32,10 +32,7 @@ def current_user_email() -> str | None:
 
 
 def render_html(html: str, height: int = 920, scrolling: bool = True) -> None:
-    if hasattr(st, "html"):
-        st.html(html)
-    else:
-        components.html(html, height=height, scrolling=scrolling)
+    st.markdown(html, unsafe_allow_html=True)
 
 
 def render_home() -> None:
@@ -78,26 +75,33 @@ def render_home() -> None:
 
         <style>
             .home-main {{
-                max-width: 1220px;
-                padding-top: 34px;
+                max-width: 1320px;
+                padding-top: 28px;
             }}
 
             .home-hero {{
-                width: min(1120px, 100%);
-                margin: 0 auto 24px;
+                width: min(1220px, 100%);
+                margin: 0 auto 18px;
                 display: flex;
                 justify-content: center;
+                position: relative;
+                overflow: hidden;
+                border-radius: 26px;
+                background: radial-gradient(circle at 50% 55%, rgba(255,255,255,0.86), rgba(255,248,245,0.48) 52%, rgba(255,248,245,0) 74%);
             }}
 
             .home-hero-image {{
-                width: min(1050px, 100%);
-                height: clamp(250px, 34vw, 390px);
+                width: min(1160px, 100%);
+                height: clamp(270px, 34vw, 410px);
                 object-fit: cover;
                 object-position: center;
-                border-radius: 18px;
-                border: 1px solid rgba(234, 217, 210, 0.8);
-                box-shadow: 0 28px 70px rgba(73, 42, 33, 0.08);
-                background: #fff;
+                border-radius: 26px;
+                border: 0;
+                box-shadow: none;
+                mix-blend-mode: multiply;
+                filter: saturate(1.04) contrast(1.02);
+                -webkit-mask-image: radial-gradient(ellipse at center, #000 62%, rgba(0,0,0,0.72) 76%, transparent 100%);
+                mask-image: radial-gradient(ellipse at center, #000 62%, rgba(0,0,0,0.72) 76%, transparent 100%);
             }}
 
             .home-copy {{
@@ -139,10 +143,8 @@ def render_home() -> None:
                 background: rgba(255, 252, 250, 0.9);
                 border: 1px solid var(--line);
                 box-shadow: 0 16px 36px rgba(73, 42, 33, 0.05);
-                opacity: 0;
-                transform: translateY(12px);
-                animation: bulletIn 560ms ease forwards;
-                animation-delay: var(--delay);
+                opacity: 1;
+                transform: none;
             }}
 
             .home-bullet strong {{
@@ -160,13 +162,6 @@ def render_home() -> None:
 
             .journey-button {{
                 margin: 2px auto 0;
-            }}
-
-            @keyframes bulletIn {{
-                to {{
-                    opacity: 1;
-                    transform: translateY(0);
-                }}
             }}
 
             @media (max-width: 720px) {{
@@ -209,7 +204,7 @@ def render_school() -> None:
                         <li>结合真实案例和长期记忆，给出更贴近你的申请方案。</li>
                         <li>填写项都可以跳过，后续聊天中会继续补全画像。</li>
                     </ul>
-                    <div class="ql-callout">完成后进入聊天页，由智能选校 agent 生成个性化路线。</div>
+                    <div class="ql-callout">完成后进入聊天页，系统会根据你的背景、偏好和真实案例生成个性化路线。</div>
                     <div class="ql-spacer"></div>
                     <a class="ql-button" href="?page=step1">开始填写信息</a>
                 </article>
@@ -253,7 +248,7 @@ def render_planning() -> None:
                         <div class="ql-icon">⌁</div>
                         <div>
                             <h2>时间线和任务规划</h2>
-                            <p class="ql-kicker">调用 timeline_agent 生成申请季任务表。</p>
+                            <p class="ql-kicker">把申请季拆成清晰的月份计划和待办任务。</p>
                         </div>
                     </div>
                     <ul class="ql-list">
@@ -270,7 +265,7 @@ def render_planning() -> None:
                         <div class="ql-icon">✎</div>
                         <div>
                             <h2>文书指导</h2>
-                            <p class="ql-kicker">调用 essay_agent 生成 SOP/PS 策略。</p>
+                            <p class="ql-kicker">结合你的经历，设计 SOP/PS 主线和素材表达。</p>
                         </div>
                     </div>
                     <ul class="ql-list">
@@ -287,7 +282,7 @@ def render_planning() -> None:
                         <div class="ql-icon">≋</div>
                         <div>
                             <h2>多方案对比</h2>
-                            <p class="ql-kicker">调用 comparison_agent 比较国家/专业/项目路线。</p>
+                            <p class="ql-kicker">把不同国家、专业和项目路线放在同一张表里比较。</p>
                         </div>
                     </div>
                     <ul class="ql-list">
@@ -320,7 +315,7 @@ def render_materials() -> None:
                         <div class="ql-icon">▤</div>
                         <div>
                             <h2>材料准备</h2>
-                            <p class="ql-kicker">调用 material_agent 生成材料清单和质量标准。</p>
+                            <p class="ql-kicker">生成材料清单、准备顺序和关键质量标准。</p>
                         </div>
                     </div>
                     <ul class="ql-list">
@@ -337,7 +332,7 @@ def render_materials() -> None:
                         <div class="ql-icon">⌖</div>
                         <div>
                             <h2>签证和毕业后规划</h2>
-                            <p class="ql-kicker">调用 visa_career_agent 规划签证、工签和就业路径。</p>
+                            <p class="ql-kicker">规划签证、入学后准备、工签和毕业后发展路径。</p>
                         </div>
                     </div>
                     <ul class="ql-list">
