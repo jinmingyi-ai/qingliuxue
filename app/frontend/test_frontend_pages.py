@@ -80,14 +80,15 @@ def main() -> None:
         expect("<div class=\"ql-page\"" not in text, f"{label}_no_ql_page_leak")
         expect("<style>" not in text, f"{label}_no_style_leak")
         if params["page"] == "chat":
-            expect(len(at.chat_message) >= 1, f"{label}_chat_messages")
+            expect("轻留学" in text, f"{label}_custom_chat_shell")
             expect(len(at.chat_input) >= 1, f"{label}_chat_input")
             expect("返回首页" in text, f"{label}_sidebar_home")
             expect("新对话" in text, f"{label}_sidebar_new_chat")
             expect("历史对话" in text, f"{label}_sidebar_history")
             expect("访客" in text, f"{label}_guest_user_card")
-            expect("真实案例路线" in text, f"{label}_quick_cards")
+            expect("快速开始" in text, f"{label}_starter_cards")
             expect("请根据我的画像" not in text, f"{label}_no_internal_seed_prompt")
+            expect("keyboard_double" not in text, f"{label}_no_keyboard_double_leak")
 
     print("ALL PASSED")
 

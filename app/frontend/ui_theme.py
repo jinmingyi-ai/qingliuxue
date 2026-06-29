@@ -51,15 +51,22 @@ def global_css(hide_sidebar: bool = True) -> str:
         }
     """).strip() + "\n\n" + sidebar_hide_css + "\n\n" + dedent("""
 
+        html,
+        body,
+        #root,
+        .stApp,
+        [data-testid="stAppViewContainer"] {
+            background: #fff8f5 !important;
+        }
+
         [data-testid="stSkeleton"],
         .stSkeleton,
         div[class*="skeleton"],
-        div[class*="Skeleton"] {
+        div[class*="Skeleton"],
+        div[data-testid*="Skeleton"] {
             display: none !important;
-        }
-
-        .stApp {
-            background: #fff8f5 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
         }
 
         .block-container {
@@ -246,9 +253,9 @@ def base_page_css() -> str:
         }
 
         .ql-main {
-            max-width: 1360px;
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 64px 32px 88px;
+            padding: 64px 24px 88px;
         }
 
         .ql-section-head {
@@ -276,72 +283,81 @@ def base_page_css() -> str:
         .ql-grid-2,
         .ql-grid-3 {
             display: grid;
-            gap: 34px;
+            gap: 28px;
             align-items: stretch;
+            justify-content: center;
         }
 
         .ql-grid-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            max-width: 1180px;
+            grid-template-columns: repeat(2, minmax(320px, 360px));
+            max-width: 760px;
             margin: 0 auto;
         }
 
         .ql-grid-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            max-width: 1260px;
+            grid-template-columns: repeat(3, minmax(320px, 360px));
+            max-width: 1120px;
             margin: 0 auto;
         }
 
         .ql-card {
-            min-height: 500px;
-            padding: 44px;
-            border-radius: 18px;
+            width: 100%;
+            min-height: 420px;
+            padding: 28px 24px;
+            border-radius: 20px;
             background: var(--card);
             border: 1px solid var(--line);
-            box-shadow: 0 30px 64px rgba(73, 42, 33, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
         }
 
         .ql-card.featured {
             border-color: var(--line);
-            box-shadow: 0 30px 64px rgba(73, 42, 33, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .ql-card:hover {
+            transform: translateY(-6px);
+            border-color: #efc4b7;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
         .ql-card-head {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
             margin-bottom: 18px;
         }
 
         .ql-icon {
-            width: 52px;
-            height: 52px;
+            width: 36px;
+            height: 36px;
             display: grid;
             place-items: center;
-            border-radius: 15px;
+            border-radius: 10px;
             background: #fde8e0;
             color: var(--coral-800);
-            font-size: 26px;
+            font-size: 17px;
             font-weight: 900;
             flex: 0 0 auto;
         }
 
         .ql-card h2 {
-            margin: 0 0 7px;
-            color: var(--ink);
-            font-size: 31px;
-            line-height: 1.2;
-            font-weight: 900;
+            margin: 0 0 6px;
+            color: #2c2c2c;
+            font-size: 20px;
+            line-height: 1.25;
+            font-weight: 850;
         }
 
         .ql-kicker {
             margin: 0;
-            color: var(--muted);
-            font-size: 16px;
-            line-height: 1.55;
+            color: #555;
+            font-size: 14.5px;
+            line-height: 1.65;
             font-weight: 650;
         }
 
@@ -353,19 +369,19 @@ def base_page_css() -> str:
 
         .ql-list li {
             display: grid;
-            grid-template-columns: 22px 1fr;
-            gap: 10px;
-            margin: 15px 0;
-            color: #564c47;
-            font-size: 16px;
-            line-height: 1.7;
+            grid-template-columns: 20px 1fr;
+            gap: 8px;
+            margin: 12px 0;
+            color: #555;
+            font-size: 14.8px;
+            line-height: 1.65;
             font-weight: 650;
         }
 
         .ql-list li::before {
             content: "";
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             margin-top: 8px;
             border-radius: 50%;
             background: var(--coral-600);
@@ -373,33 +389,33 @@ def base_page_css() -> str:
         }
 
         .ql-callout {
-            margin-top: 22px;
-            padding: 16px 18px;
-            border-radius: 12px;
+            margin-top: 18px;
+            padding: 13px 14px;
+            border-radius: 14px;
             border: 1px solid #efbaa9;
             background: linear-gradient(180deg, #fff3ee 0%, #fde4da 100%);
             color: var(--coral-800);
             text-align: center;
-            font-size: 16px;
+            font-size: 14.8px;
             font-weight: 850;
-            line-height: 1.7;
+            line-height: 1.65;
         }
 
         .ql-spacer {
             flex: 1;
-            min-height: 30px;
+            min-height: 22px;
         }
 
         .ql-button {
             width: fit-content;
             min-width: 156px;
-            height: 48px;
+            height: 44px;
             padding: 0 28px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             align-self: center;
-            border-radius: 11px;
+            border-radius: 12px;
             border: 1px solid var(--coral-700);
             color: #ffffff !important;
             background: var(--coral-700);
@@ -417,7 +433,7 @@ def base_page_css() -> str:
         }
 
         .ql-button:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 960px) {
@@ -445,11 +461,12 @@ def base_page_css() -> str:
             .ql-grid-2,
             .ql-grid-3 {
                 grid-template-columns: 1fr;
+                max-width: min(360px, 100%);
             }
 
             .ql-card {
                 min-height: auto;
-                padding: 32px 26px;
+                padding: 28px 24px;
             }
         }
     </style>

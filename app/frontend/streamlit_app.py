@@ -10,17 +10,9 @@ import streamlit.components.v1 as components
 
 try:
     from api_client import ApiClientError, login_user, register_user
-    from school_step1 import render as render_step1
-    from school_step2 import render as render_step2
-    from school_step3 import render as render_step3
-    from chat_page import render as render_chat
     from ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
 except ImportError:  # Allows AppTest/package imports from the project root.
     from app.frontend.api_client import ApiClientError, login_user, register_user
-    from app.frontend.school_step1 import render as render_step1
-    from app.frontend.school_step2 import render as render_step2
-    from app.frontend.school_step3 import render as render_step3
-    from app.frontend.chat_page import render as render_chat
     from app.frontend.ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
 
 
@@ -50,6 +42,15 @@ def render_html(html: str, height: int = 920, scrolling: bool = True) -> None:
         st.html(html)
     else:
         components.html(html, height=height, scrolling=scrolling)
+
+
+@st.cache_resource(show_spinner=False)
+def get_page_renderer(module_name: str):
+    try:
+        module = __import__(module_name, fromlist=["render"])
+    except ImportError:
+        module = __import__(f"app.frontend.{module_name}", fromlist=["render"])
+    return module.render
 
 
 def render_home() -> None:
@@ -492,12 +493,12 @@ elif page == "register":
 elif page == "logout":
     logout()
 elif page == "step1":
-    render_step1()
+    get_page_renderer("school_step1")()
 elif page == "step2":
-    render_step2()
+    get_page_renderer("school_step2")()
 elif page == "step3":
-    render_step3()
+    get_page_renderer("school_step3")()
 elif page == "chat":
-    render_chat(st.query_params.get("entry", "direct"))
+    get_page_renderer("chat_page")(st.query_params.get("entry", "direct"))
 else:
     render_home()
