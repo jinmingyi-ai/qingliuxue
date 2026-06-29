@@ -66,14 +66,14 @@ ENTRY_CONFIG = {
 
 
 QUICK_PROMPTS = [
-    "我 GPA 3.55，本科信息管理，有两段 AI 产品实习，想申请美国 CS 或 DS 硕士，请推荐真实案例路线。",
-    "帮我生成 2027 年秋季入学的申请时间线，按月份列任务。",
-    "我的预算比较有限，更看重就业和性价比，英国、加拿大、澳洲怎么选？",
-    "我想申请商科或数据分析，请帮我比较美国 MSBA、英国 Business Analytics 和新加坡相关项目。",
-    "SOP 应该怎么写才能突出实习、项目和职业目标？",
-    "申请美国研究生需要准备哪些材料？推荐信、成绩单、简历有什么坑？",
-    "拿到录取后签证、住宿、行前和毕业后求职应该怎么规划？",
-    "请记住：我更喜欢就业导向、预算稳一点、希望毕业后留当地工作。",
+    ("真实案例路线", "GPA 3.55，有 AI 产品实习，想申请美国 CS/DS 硕士，请按真实案例给路线。"),
+    ("时间线规划", "帮我生成 2027 年秋季入学申请时间线，按月份拆任务。"),
+    ("国家方案对比", "预算有限，更看重就业和性价比，英国、加拿大、澳洲怎么选？"),
+    ("商科数据项目", "比较美国 MSBA、英国 Business Analytics 和新加坡数据相关项目。"),
+    ("文书主线", "SOP 怎么写才能突出实习、项目和职业目标？"),
+    ("材料清单", "申请研究生需要准备哪些材料？推荐信、成绩单、简历有什么坑？"),
+    ("签证与毕业后", "拿到录取后签证、住宿、行前和毕业后求职怎么规划？"),
+    ("更新我的偏好", "请记住：我更喜欢就业导向、预算稳一点、希望毕业后留当地工作。"),
 ]
 
 
@@ -157,6 +157,11 @@ def _append_turn(user_message: str, result: dict[str, Any]) -> None:
     _store_result(result)
 
 
+def _append_assistant_result(result: dict[str, Any]) -> None:
+    st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
+    _store_result(result)
+
+
 def _initialise_entry(entry: str) -> None:
     config = ENTRY_CONFIG.get(entry, ENTRY_CONFIG["direct"])
     key = f"{entry}:{st.session_state.get('conversation_id') or 'new'}"
@@ -164,15 +169,9 @@ def _initialise_entry(entry: str) -> None:
         return
     st.session_state["entry_initialized"][key] = True
     questionnaire = st.session_state.pop("pending_questionnaire", None)
-    st.session_state["chat_messages"].append(
-        {
-            "role": "assistant",
-            "content": f"我已经进入「{config['title']}」模式，正在根据你的入口和已有信息准备第一版建议。",
-        }
-    )
     with st.spinner("正在生成第一版建议..."):
         result = _call_agent(config["seed"], entry, config["agents"], questionnaire=questionnaire)
-    _append_turn(config["seed"], result)
+    _append_assistant_result(result)
 
 
 def _load_conversations() -> list[dict[str, Any]]:
@@ -202,32 +201,27 @@ def _new_chat(entry: str) -> None:
 
 def _render_sidebar(entry: str) -> None:
     logo = logo_uri()
+    display_name = _user_email() or "访客"
+    user_hint = "长期记忆已开启" if _user_email() else "访客模式，本次关闭后不保留长期记忆"
     with st.sidebar:
         st.markdown(
             dedent(f"""
-            <div class="side-brand">
-                <span class="side-logo"><img src="{logo}" alt="轻留学" /></span>
-                <span>轻留学</span>
+            <div class="side-shell">
+                <div class="side-brand">
+                    <span class="side-logo"><img src="{logo}" alt="轻留学" /></span>
+                    <span>轻留学</span>
+                </div>
             </div>
             """).strip(),
             unsafe_allow_html=True,
         )
-        if _user_email():
-            st.caption(f"已登录：{_user_email()}")
-        else:
-            st.caption("访客模式：可完整使用，但关闭会话后不保留长期记忆。")
 
-        if st.button("＋ 开启新聊天", use_container_width=True):
-            _new_chat(entry)
-        st.link_button("返回首页", "?page=home", use_container_width=True)
-        if _user_email():
-            st.link_button("退出登录", "?page=logout", use_container_width=True)
-        else:
-            col1, col2 = st.columns(2)
-            with col1:
-                st.link_button("登录", "?page=login", use_container_width=True)
-            with col2:
-                st.link_button("注册", "?page=register", use_container_width=True)
+        top_left, top_right = st.columns(2)
+        with top_left:
+            st.markdown('<a class="side-action-link" href="?page=home">返回首页</a>', unsafe_allow_html=True)
+        with top_right:
+            if st.button("新对话", use_container_width=True):
+                _new_chat(entry)
 
         st.markdown("#### 历史对话")
         conversations = _load_conversations()
@@ -245,23 +239,41 @@ def _render_sidebar(entry: str) -> None:
                 st.session_state["entry_initialized"] = {}
                 st.rerun()
 
+        auth_html = (
+            '<a class="side-mini-link" href="?page=logout">退出登录</a>'
+            if _user_email()
+            else '<a class="side-mini-link" href="?page=login">登录</a><a class="side-mini-link" href="?page=register">注册</a>'
+        )
+        st.markdown(
+            dedent(f"""
+            <div class="side-user-card">
+                <div class="side-avatar">{display_name[:1].upper()}</div>
+                <div class="side-user-meta">
+                    <strong>{display_name}</strong>
+                    <span>{user_hint}</span>
+                </div>
+                <div class="side-auth-links">{auth_html}</div>
+            </div>
+            """).strip(),
+            unsafe_allow_html=True,
+        )
+
 
 def _render_agent_trace() -> None:
     route = st.session_state.get("last_route") or []
     results = st.session_state.get("last_agent_results") or []
-    if route:
+    if route or results:
         label_map = {
             "profile": "画像更新",
-            "case": "案例推荐",
-            "timeline": "时间规划",
-            "essay": "文书指导",
+            "case": "真实案例",
+            "timeline": "时间线",
+            "essay": "文书策略",
             "comparison": "方案对比",
-            "materials": "材料指导",
-            "visa": "签证与发展",
+            "materials": "材料清单",
+            "visa": "签证规划",
         }
-        st.caption("本轮处理：" + " → ".join(label_map.get(item, item) for item in route))
-    if results:
-        with st.expander("查看处理过程和参考来源", expanded=False):
+        route_text = " · ".join(label_map.get(item, item) for item in route)
+        with st.expander(f"参考来源与处理模块{f'：{route_text}' if route_text else ''}", expanded=False):
             for result in results:
                 st.markdown(f"**{result.get('task')}**")
                 st.write(result.get("answer", ""))
@@ -293,31 +305,39 @@ def _styles() -> str:
             }
             .stApp {
                 background:
-                    radial-gradient(circle at 56% 12%, rgba(237, 118, 93, 0.10), transparent 34%),
-                    linear-gradient(180deg, #fffaf8 0%, #fff7f3 100%);
+                    radial-gradient(circle at 62% 10%, rgba(237, 118, 93, 0.10), transparent 34%),
+                    linear-gradient(180deg, #fffaf8 0%, #fff7f3 100%) !important;
             }
             [data-testid="stSidebar"] {
                 display: block !important;
-                background: #f6ded5;
-                border-right: 1px solid #ead1c8;
-                min-width: 300px !important;
+                width: 318px !important;
+                min-width: 318px !important;
+                background: #f6ded5 !important;
+                border-right: 1px solid #e8c5ba;
+                box-shadow: 18px 0 44px rgba(124, 47, 34, 0.06);
             }
             [data-testid="stSidebar"] * {
                 font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            }
+            [data-testid="stSidebarContent"] {
+                padding: 18px 16px 16px !important;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
             }
             [data-testid="collapsedControl"] {
                 display: block !important;
                 color: #9a3d2c;
             }
             .main .block-container {
-                max-width: 1120px !important;
-                padding: 34px 44px 92px !important;
+                max-width: 980px !important;
+                padding: 28px 34px 118px !important;
             }
             .side-brand {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                margin: 10px 0 18px;
+                margin: 4px 0 18px;
                 color: #9a3d2c;
                 font-size: 22px;
                 font-weight: 950;
@@ -334,15 +354,107 @@ def _styles() -> str:
                 box-shadow: 0 10px 20px rgba(124, 47, 34, 0.12);
             }
             .side-logo img { width: 32px; height: 32px; object-fit: contain; }
+            [data-testid="stSidebar"] .stButton button,
+            [data-testid="stSidebar"] .stLinkButton a {
+                height: 42px;
+                border-radius: 12px !important;
+                border: 1px solid rgba(184, 79, 59, 0.20) !important;
+                color: #7c2f22 !important;
+                background: rgba(255, 255, 255, 0.58) !important;
+                box-shadow: none !important;
+            }
+            .side-action-link {
+                height: 42px;
+                width: 100%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
+                border: 1px solid rgba(184, 79, 59, 0.20);
+                color: #7c2f22 !important;
+                background: rgba(255, 255, 255, 0.58);
+                font-size: 14px;
+                font-weight: 800;
+                text-decoration: none !important;
+            }
+            .side-action-link:hover {
+                background: rgba(255, 252, 250, 0.90);
+                box-shadow: 0 12px 28px rgba(124, 47, 34, 0.08);
+            }
+            [data-testid="stSidebar"] h4 {
+                margin-top: 18px !important;
+                color: #7c2f22 !important;
+                font-size: 14px !important;
+                letter-spacing: 0;
+            }
+            [data-testid="stSidebar"] .stCaption {
+                color: #8a756c !important;
+            }
+            .side-user-card {
+                position: fixed;
+                left: 16px;
+                bottom: 16px;
+                width: 286px;
+                min-height: 74px;
+                display: grid;
+                grid-template-columns: 42px 1fr auto;
+                gap: 10px;
+                align-items: center;
+                padding: 12px;
+                border-radius: 16px;
+                border: 1px solid rgba(184, 79, 59, 0.18);
+                background: rgba(255, 252, 250, 0.74);
+                box-shadow: 0 16px 34px rgba(124, 47, 34, 0.10);
+                backdrop-filter: blur(12px);
+            }
+            .side-avatar {
+                width: 42px;
+                height: 42px;
+                display: grid;
+                place-items: center;
+                border-radius: 999px;
+                color: #fff;
+                background: #b94f3b;
+                font-size: 16px;
+                font-weight: 900;
+            }
+            .side-user-meta {
+                min-width: 0;
+                display: grid;
+                gap: 3px;
+            }
+            .side-user-meta strong {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: #2b2724;
+                font-size: 14px;
+            }
+            .side-user-meta span {
+                color: #7c716b;
+                font-size: 11px;
+                line-height: 1.35;
+            }
+            .side-auth-links {
+                display: grid;
+                gap: 4px;
+                text-align: right;
+            }
+            .side-mini-link {
+                color: #9a3d2c !important;
+                font-size: 12px;
+                font-weight: 800;
+                text-decoration: none !important;
+            }
             .chat-head {
-                padding-bottom: 22px;
-                border-bottom: 1px solid #ead9d2;
+                padding: 8px 0 18px;
+                border-bottom: 1px solid rgba(234, 217, 210, 0.9);
                 margin-bottom: 22px;
             }
             .chat-head h1 {
                 margin: 0;
                 color: #2b2724;
-                font-size: 40px;
+                font-size: 30px;
                 font-weight: 950;
             }
             .chat-head p {
@@ -354,36 +466,93 @@ def _styles() -> str:
             }
             .stButton button,
             .stLinkButton a {
-                border-radius: 10px !important;
-                border-color: #e7b9aa !important;
+                border-radius: 14px !important;
+                border-color: rgba(231, 185, 170, 0.95) !important;
                 color: #9a3d2c !important;
-                background: rgba(255, 255, 255, 0.72) !important;
+                background: rgba(255, 252, 250, 0.72) !important;
                 font-weight: 800 !important;
+                transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+            }
+            .stButton button:hover,
+            .stLinkButton a:hover {
+                transform: translateY(-1px);
+                background: rgba(255, 247, 244, 0.96) !important;
+                box-shadow: 0 12px 28px rgba(124, 47, 34, 0.10);
             }
             .stChatMessage {
-                border-radius: 14px;
-                border: 1px solid #ead9d2;
-                background: rgba(255, 252, 250, 0.78);
+                max-width: min(820px, 100%);
+                margin: 0 auto 14px;
+                padding: 14px 16px;
+                border-radius: 18px;
+                border: 1px solid rgba(234, 217, 210, 0.88);
+                background: rgba(255, 252, 250, 0.82);
+                box-shadow: 0 14px 34px rgba(73, 42, 33, 0.045);
                 overflow-wrap: anywhere;
                 word-break: break-word;
-                max-width: 100%;
+            }
+            .stChatMessage:has([data-testid="chatAvatarIcon-user"]),
+            .stChatMessage:has([data-testid="stChatMessageAvatarUser"]) {
+                background: rgba(255, 239, 233, 0.74);
             }
             .stChatMessage p {
                 line-height: 1.85;
                 font-size: 16px;
             }
+            [data-testid="stExpander"] {
+                max-width: min(820px, 100%);
+                margin: 6px auto 22px;
+                border-color: rgba(234, 217, 210, 0.8) !important;
+                border-radius: 14px !important;
+                background: rgba(255, 252, 250, 0.62) !important;
+            }
+            .quick-title {
+                max-width: min(820px, 100%);
+                margin: 24px auto 12px;
+                color: #7c2f22;
+                font-size: 14px;
+                font-weight: 900;
+            }
+            .main div[data-testid="stHorizontalBlock"] .stButton button {
+                min-height: 74px !important;
+                padding: 13px 15px !important;
+                justify-content: flex-start !important;
+                text-align: left !important;
+                white-space: pre-line !important;
+                line-height: 1.45 !important;
+                background: rgba(255, 252, 250, 0.84) !important;
+            }
             [data-testid="stChatInput"] textarea {
                 border-color: #e7b9aa !important;
                 box-shadow: 0 0 0 1px rgba(237, 118, 93, 0.08);
             }
+            [data-testid="stChatInput"] {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            [data-testid="stChatInput"] > div {
+                border-radius: 18px !important;
+                background: rgba(255, 255, 255, 0.88) !important;
+                box-shadow: 0 16px 38px rgba(124, 47, 34, 0.10);
+            }
             div[data-testid="stHorizontalBlock"] button {
-                min-height: 42px;
                 white-space: normal !important;
                 line-height: 1.55 !important;
             }
             pre, code {
                 white-space: pre-wrap !important;
                 word-break: break-word !important;
+            }
+            @media (max-width: 900px) {
+                [data-testid="stSidebar"] {
+                    width: 284px !important;
+                    min-width: 284px !important;
+                }
+                .side-user-card {
+                    width: 252px;
+                }
+                .main .block-container {
+                    padding: 22px 18px 108px !important;
+                }
             }
         </style>
         """).strip()
@@ -419,15 +588,17 @@ def render(entry: str = "direct") -> None:
 
     _render_agent_trace()
 
-    st.markdown("##### 可以直接问")
-    cols = st.columns(2)
-    for index, prompt in enumerate(QUICK_PROMPTS):
+    st.markdown('<div class="quick-title">可以直接问</div>', unsafe_allow_html=True)
+    st.markdown('<div class="quick-grid">', unsafe_allow_html=True)
+    cols = st.columns(2, gap="small")
+    for index, (title, prompt) in enumerate(QUICK_PROMPTS):
         with cols[index % 2]:
-            if st.button(prompt, key=f"quick_{index}", use_container_width=True):
+            if st.button(f"{title}\n\n{prompt}", key=f"quick_{index}", use_container_width=True):
                 with st.spinner("正在生成回答..."):
                     result = _call_agent(prompt, entry)
                 _append_turn(prompt, result)
                 st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
 
     if user_input := st.chat_input("输入你的背景、目标、偏好，或继续追问..."):
         with st.spinner("正在生成回答..."):

@@ -49,10 +49,19 @@ def page_label(params: dict[str, str]) -> str:
 
 def collect_visible_text(at: AppTest) -> str:
     parts: list[str] = []
-    for collection_name in ["markdown", "caption", "header", "subheader", "title", "code"]:
+    for collection_name in [
+        "markdown",
+        "caption",
+        "header",
+        "subheader",
+        "title",
+        "code",
+        "button",
+        "link_button",
+    ]:
         collection = getattr(at, collection_name, [])
         for item in collection:
-            value = getattr(item, "value", "")
+            value = getattr(item, "value", "") or getattr(item, "label", "")
             if value:
                 parts.append(str(value))
     return "\n".join(parts)
@@ -73,10 +82,15 @@ def main() -> None:
         if params["page"] == "chat":
             expect(len(at.chat_message) >= 1, f"{label}_chat_messages")
             expect(len(at.chat_input) >= 1, f"{label}_chat_input")
+            expect("返回首页" in text, f"{label}_sidebar_home")
+            expect("新对话" in text, f"{label}_sidebar_new_chat")
+            expect("历史对话" in text, f"{label}_sidebar_history")
+            expect("访客" in text, f"{label}_guest_user_card")
+            expect("真实案例路线" in text, f"{label}_quick_cards")
+            expect("请根据我的画像" not in text, f"{label}_no_internal_seed_prompt")
 
     print("ALL PASSED")
 
 
 if __name__ == "__main__":
     main()
-

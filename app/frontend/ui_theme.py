@@ -7,12 +7,15 @@ import base64
 from pathlib import Path
 from textwrap import dedent
 
+import streamlit as st
+
 
 ASSET_DIR = Path(__file__).resolve().parent / "assets"
 LOGO_PATH = ASSET_DIR / "qingliuxue-logo.png"
 HOME_IMAGE_PATH = ASSET_DIR / "home-collaboration.png"
 
 
+@st.cache_data(show_spinner=False)
 def image_data_uri(path: Path) -> str:
     mime = "image/png"
     data = base64.b64encode(path.read_bytes()).decode("ascii")
@@ -27,16 +30,36 @@ def home_image_uri() -> str:
     return image_data_uri(HOME_IMAGE_PATH)
 
 
-def global_css() -> str:
+def global_css(hide_sidebar: bool = True) -> str:
+    sidebar_hide_css = (
+        dedent("""
+        [data-testid="stSidebar"],
+        [data-testid="collapsedControl"] {
+            display: none !important;
+        }
+        """).strip()
+        if hide_sidebar
+        else ""
+    )
     return dedent("""
     <style>
         [data-testid="stHeader"],
         [data-testid="stToolbar"],
         [data-testid="stDecoration"],
-        [data-testid="stStatusWidget"],
-        [data-testid="stSidebar"],
-        [data-testid="collapsedControl"] {
+        [data-testid="stStatusWidget"] {
             display: none !important;
+        }
+    """).strip() + "\n\n" + sidebar_hide_css + "\n\n" + dedent("""
+
+        [data-testid="stSkeleton"],
+        .stSkeleton,
+        div[class*="skeleton"],
+        div[class*="Skeleton"] {
+            display: none !important;
+        }
+
+        .stApp {
+            background: #fff8f5 !important;
         }
 
         .block-container {

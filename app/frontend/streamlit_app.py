@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import importlib
 from textwrap import dedent
 
 import streamlit as st
@@ -14,12 +13,14 @@ try:
     from school_step1 import render as render_step1
     from school_step2 import render as render_step2
     from school_step3 import render as render_step3
+    from chat_page import render as render_chat
     from ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
 except ImportError:  # Allows AppTest/package imports from the project root.
     from app.frontend.api_client import ApiClientError, login_user, register_user
     from app.frontend.school_step1 import render as render_step1
     from app.frontend.school_step2 import render as render_step2
     from app.frontend.school_step3 import render as render_step3
+    from app.frontend.chat_page import render as render_chat
     from app.frontend.ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
 
 
@@ -27,13 +28,15 @@ st.set_page_config(
     page_title="轻留学 | AI 留学助手",
     page_icon="🎓",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
+_page_for_css = st.query_params.get("page", "home")
+_global_css = global_css(hide_sidebar=_page_for_css != "chat")
 if hasattr(st, "html"):
-    st.html(global_css())
+    st.html(_global_css)
 else:
-    st.markdown(global_css(), unsafe_allow_html=True)
+    st.markdown(_global_css, unsafe_allow_html=True)
 
 
 def current_user_email() -> str | None:
@@ -495,8 +498,6 @@ elif page == "step2":
 elif page == "step3":
     render_step3()
 elif page == "chat":
-    chat_page = importlib.import_module("chat_page")
-    chat_page = importlib.reload(chat_page)
-    chat_page.render(st.query_params.get("entry", "direct"))
+    render_chat(st.query_params.get("entry", "direct"))
 else:
     render_home()
