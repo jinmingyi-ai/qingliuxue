@@ -6,7 +6,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-DEFAULT_XAI_MODEL = "grok-4.20-0309-non-reasoning"
+DEFAULT_XAI_MODEL = "grok-4.3"
 
 
 @dataclass
