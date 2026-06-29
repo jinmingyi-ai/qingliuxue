@@ -43,7 +43,11 @@ docker compose up --build
    - `JWT_SECRET`: 一段足够长的随机字符串
    - `API_BASE_URL`: `http://127.0.0.1:8000`
    - `DATABASE_URL`: `sqlite:////app/app/data/auth/qingliuxue.db`
+   - `XAI_API_KEY`: xAI 控制台生成的 API Key，必须在 Railway Variables 中配置
+   - `XAI_MODEL`: `grok-4.3`
+   - `XAI_BASE_URL`: `https://api.x.ai/v1`
 5. Railway 对外暴露 Streamlit 端口，FastAPI 只在容器内给前端调用。
 
-当前 demo 使用 SQLite 和本地 JSON 记忆文件，适合展示项目。若要正式多人长期使用，建议升级为 PostgreSQL，并把记忆、会话、问卷和检索日志迁移到数据库。
+LLM 检查接口：部署后可访问 `/llm/health`，返回 `status=ok` 且 `model=grok-4.3` 表示已经真实调用 xAI。
 
+当前 demo 使用 SQLite 和本地 JSON 记忆文件，适合展示项目。若要正式多人长期使用，建议升级为 PostgreSQL，并把记忆、会话、问卷和检索日志迁移到数据库。

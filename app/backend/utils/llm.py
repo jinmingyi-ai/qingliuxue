@@ -1,10 +1,12 @@
 import os
 from dataclasses import dataclass
+from pathlib import Path
 
 from dotenv import load_dotenv
 from openai import OpenAI
 
-load_dotenv()
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+load_dotenv(PROJECT_ROOT / ".env", override=False)
 
 DEFAULT_XAI_MODEL = "grok-4.3"
 
@@ -39,7 +41,7 @@ def get_llm(model: str | None = None, temperature: float = 0.7):
     """
     api_key = os.getenv("XAI_API_KEY")
     if not api_key:
-        raise ValueError("XAI_API_KEY 未设置，请在 .env 文件中配置")
+        raise ValueError("XAI_API_KEY 未设置：本地请在项目根目录 .env 配置；Railway 请在 Variables 中配置 XAI_API_KEY")
 
     return OpenAICompatibleChat(
         api_key=api_key,
