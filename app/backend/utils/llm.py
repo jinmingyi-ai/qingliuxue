@@ -6,6 +6,8 @@ from openai import OpenAI
 
 load_dotenv()
 
+DEFAULT_XAI_MODEL = "grok-4.20-0309-non-reasoning"
+
 
 @dataclass
 class ChatResponse:
@@ -42,6 +44,10 @@ def get_llm(model: str | None = None, temperature: float = 0.7):
     return OpenAICompatibleChat(
         api_key=api_key,
         base_url=os.getenv("XAI_BASE_URL", "https://api.x.ai/v1"),
-        model=model or os.getenv("XAI_MODEL", "grok-2-latest"),
+        model=current_model(model),
         temperature=temperature,
     )
+
+
+def current_model(model: str | None = None) -> str:
+    return model or os.getenv("XAI_MODEL", DEFAULT_XAI_MODEL)

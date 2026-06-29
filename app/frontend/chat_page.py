@@ -5,18 +5,18 @@ from __future__ import annotations
 
 import html
 import re
-import tempfile
 import uuid
-from pathlib import Path
 from textwrap import dedent
 from typing import Any
 
 import streamlit as st
 
 try:
+    from api_client import ApiClientError
     from api_client import chat_message, create_conversation, list_conversations
     from ui_theme import logo_uri
 except ImportError:  # Allows importing as app.frontend.chat_page in tests.
+    from app.frontend.api_client import ApiClientError
     from app.frontend.api_client import chat_message, create_conversation, list_conversations
     from app.frontend.ui_theme import logo_uri
 
@@ -119,7 +119,6 @@ def _ensure_state() -> None:
     st.session_state.setdefault("conversation_id", None)
     st.session_state.setdefault("last_route", [])
     st.session_state.setdefault("last_agent_results", [])
-    st.session_state.setdefault("entry_initialized", {})
     st.session_state.setdefault("last_call_status", {})
 
 
@@ -132,56 +131,21 @@ def _user_email() -> str | None:
     return user.get("email")
 
 
-def _direct_memory_manager():
-    from app.backend.memory.memory_manager import MemoryManager
-
-    if _token() and st.session_state.get("current_user"):
-        user_id = st.session_state["current_user"]["id"]
-        store_path = Path("app/data/memory/users") / f"{user_id}.json"
-    else:
-        user_id = "guest_" + st.session_state["guest_session_id"]
-        store_path = Path(tempfile.gettempdir()) / "qingliuxue_guests" / f"{user_id}.json"
-    return user_id, MemoryManager(store_path=store_path)
-
-
-def _local_supervisor_call(message: str, entry: str, requested_agents: list[str] | None, questionnaire: dict[str, Any] | None) -> dict[str, Any]:
-    from app.backend.agents.supervisor import StudyAbroadSupervisor
-
-    user_id, manager = _direct_memory_manager()
-    result = StudyAbroadSupervisor(memory_manager=manager).run(
-        query=message,
-        user_id=user_id,
-        conversation_id=st.session_state.get("conversation_id"),
-        questionnaire=questionnaire,
-        requested_agents=requested_agents,
-    )
-    st.session_state["conversation_id"] = result["conversation_id"]
-    result["conversations"] = manager.list_conversations(user_id)
-    result["local_fallback"] = True
-    return result
-
-
 def _call_agent(message: str, entry: str, requested_agents: list[str] | None = None, questionnaire: dict[str, Any] | None = None) -> dict[str, Any]:
-    try:
-        result = chat_message(
-            message=message,
-            token=_token(),
-            conversation_id=st.session_state.get("conversation_id"),
-            entry=entry,
-            requested_agents=requested_agents,
-            questionnaire=questionnaire,
-            guest_session_id=st.session_state["guest_session_id"],
-        )
-        st.session_state["conversation_id"] = result.get("conversation_id")
-        if result.get("guest_session_id"):
-            st.session_state["guest_session_id"] = result["guest_session_id"]
-        result["transport"] = "api"
-        return result
-    except Exception as exc:
-        result = _local_supervisor_call(message, entry, requested_agents, questionnaire)
-        result["api_warning"] = str(exc)
-        result["transport"] = "local_fallback"
-        return result
+    result = chat_message(
+        message=message,
+        token=_token(),
+        conversation_id=st.session_state.get("conversation_id"),
+        entry=entry,
+        requested_agents=requested_agents,
+        questionnaire=questionnaire,
+        guest_session_id=st.session_state["guest_session_id"],
+    )
+    st.session_state["conversation_id"] = result.get("conversation_id")
+    if result.get("guest_session_id"):
+        st.session_state["guest_session_id"] = result["guest_session_id"]
+    result["transport"] = "api"
+    return result
 
 
 def _store_result(result: dict[str, Any]) -> None:
@@ -189,7 +153,7 @@ def _store_result(result: dict[str, Any]) -> None:
     st.session_state["last_agent_results"] = result.get("agent_results") or []
     st.session_state["profile_snapshot"] = result.get("profile") or {}
     st.session_state["last_call_status"] = {
-        "transport": result.get("transport") or ("local_fallback" if result.get("local_fallback") else "api"),
+        "transport": result.get("transport") or "api",
         "answer_source": result.get("answer_source") or result.get("llm_source"),
         "api_warning": result.get("api_warning"),
     }
@@ -206,16 +170,9 @@ def _append_assistant_result(result: dict[str, Any]) -> None:
     _store_result(result)
 
 
-def _initialise_entry(entry: str) -> None:
-    config = ENTRY_CONFIG.get(entry, ENTRY_CONFIG["direct"])
-    key = f"{entry}:{st.session_state.get('conversation_id') or 'new'}"
-    if st.session_state["entry_initialized"].get(key):
-        return
-    st.session_state["entry_initialized"][key] = True
-    questionnaire = st.session_state.pop("pending_questionnaire", None)
-    with st.spinner("正在生成第一版建议..."):
-        result = _call_agent(config["seed"], entry, config["agents"], questionnaire=questionnaire)
-    _append_assistant_result(result)
+def _append_error(message: str) -> None:
+    st.session_state["chat_messages"].append({"role": "system", "content": message})
+    st.session_state["last_call_status"] = {"transport": "api_error", "api_warning": message}
 
 
 def _load_conversations() -> list[dict[str, Any]]:
@@ -239,7 +196,6 @@ def _new_chat(entry: str) -> None:
         st.session_state["conversation_id"] = data.get("conversation", {}).get("conversation_id")
     except Exception:
         st.session_state["conversation_id"] = None
-    st.session_state["entry_initialized"] = {}
     st.rerun()
 
 
@@ -280,7 +236,6 @@ def _render_sidebar(entry: str) -> None:
                     for msg in item.get("messages", [])
                     if msg.get("role") in {"user", "assistant"}
                 ]
-                st.session_state["entry_initialized"] = {}
                 st.rerun()
 
         auth_html = (
@@ -305,12 +260,12 @@ def _render_sidebar(entry: str) -> None:
 
 def _render_agent_trace() -> None:
     status = st.session_state.get("last_call_status") or {}
-    if status.get("transport") == "local_fallback":
-        warning = html.escape(str(status.get("api_warning") or "后端 API 暂时不可用"))
+    if status.get("transport") in {"api_error", "local_fallback"}:
+        warning = html.escape(str(status.get("api_warning") or "LLM 调用失败"))
         st.markdown(
             dedent(f"""
             <div class="api-warning">
-                后端 API 没连上，当前是本地模块兜底回答。原因：{warning}
+                没有生成假答案：真实 LLM 调用失败。原因：{warning}
             </div>
             """).strip(),
             unsafe_allow_html=True,
@@ -328,9 +283,10 @@ def _message_html(content: str) -> str:
 
 def _render_message(role: str, content: str) -> None:
     is_user = role == "user"
-    role_class = "user" if is_user else "assistant"
+    is_error = role == "system"
+    role_class = "user" if is_user else ("system" if is_error else "assistant")
     avatar = "你" if is_user else "留"
-    label = "你" if is_user else "轻留学"
+    label = "你" if is_user else ("系统" if is_error else "轻留学")
     st.markdown(
         dedent(f"""
         <div class="ql-msg-row {role_class}">
@@ -364,9 +320,14 @@ def _render_starters(entry: str) -> None:
     for index, (title, prompt) in enumerate(_starter_prompts(entry)):
         with cols[index % 4]:
             if st.button(title, key=f"starter_{entry}_{index}", use_container_width=True, help=prompt):
-                with st.spinner("正在生成回答..."):
-                    result = _call_agent(prompt, entry)
-                _append_turn(prompt, result)
+                st.session_state["chat_messages"].append({"role": "user", "content": prompt})
+                try:
+                    with st.spinner("正在调用真实 LLM..."):
+                        result = _call_agent(prompt, entry)
+                    st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
+                    _store_result(result)
+                except ApiClientError as exc:
+                    _append_error(str(exc))
                 st.rerun()
 
 
@@ -555,6 +516,9 @@ def _styles() -> str:
             .ql-msg-row.user {
                 justify-content: flex-end;
             }
+            .ql-msg-row.system {
+                justify-content: center;
+            }
             .ql-msg-row.user .ql-msg-avatar {
                 order: 2;
                 background: #b94f3b;
@@ -563,6 +527,14 @@ def _styles() -> str:
             }
             .ql-msg-row.user .ql-msg-stack {
                 align-items: flex-end;
+            }
+            .ql-msg-row.system .ql-msg-avatar,
+            .ql-msg-row.system .ql-msg-label {
+                display: none;
+            }
+            .ql-msg-row.system .ql-msg-stack {
+                max-width: min(760px, 100%);
+                align-items: center;
             }
             .ql-msg-avatar {
                 width: 44px;
@@ -604,6 +576,12 @@ def _styles() -> str:
                 color: #3a2520;
                 background: #f8ded6;
                 border-color: #efc4b8;
+                box-shadow: none;
+            }
+            .ql-msg-row.system .ql-msg-bubble {
+                color: #8a3427;
+                background: rgba(255, 245, 240, 0.92);
+                border-color: rgba(205, 122, 94, 0.36);
                 box-shadow: none;
             }
             .ql-msg-bubble p {
@@ -771,9 +749,6 @@ def render(entry: str = "direct") -> None:
         st.markdown(_styles(), unsafe_allow_html=True)
     _render_sidebar(entry)
 
-    if not st.session_state.get("chat_messages"):
-        _initialise_entry(entry)
-
     st.markdown('<div class="ql-message-list">', unsafe_allow_html=True)
     for message in st.session_state.get("chat_messages", []):
         _render_message(message.get("role", "assistant"), message.get("content", ""))
@@ -785,7 +760,12 @@ def render(entry: str = "direct") -> None:
         _render_starters(entry)
 
     if user_input := st.chat_input("告诉我你的 GPA、专业、目标，或继续问我..."):
-        with st.spinner("正在生成回答..."):
-            result = _call_agent(user_input, entry)
-        _append_turn(user_input, result)
+        st.session_state["chat_messages"].append({"role": "user", "content": user_input})
+        try:
+            with st.spinner("正在调用真实 LLM..."):
+                result = _call_agent(user_input, entry)
+            st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
+            _store_result(result)
+        except ApiClientError as exc:
+            _append_error(str(exc))
         st.rerun()

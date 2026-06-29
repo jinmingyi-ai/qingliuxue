@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 
 os.environ["DATABASE_URL"] = "sqlite:///" + str(Path(tempfile.gettempdir()) / f"qingliuxue_test_{uuid.uuid4().hex}.db")
 os.environ["JWT_SECRET"] = "test-secret"
+os.environ["ALLOW_DETERMINISTIC_CHAT_FALLBACK"] = "1"
 
 from app.backend.api.main import app  # noqa: E402
 

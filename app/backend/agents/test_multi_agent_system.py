@@ -5,11 +5,14 @@ from __future__ import annotations
 
 import tempfile
 import sys
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+
+os.environ.setdefault("ALLOW_DETERMINISTIC_CHAT_FALLBACK", "1")
 
 from app.backend.agents.specialists import (
     CaseRecommendationAgent,

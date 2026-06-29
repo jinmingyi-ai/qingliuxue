@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Small LLM wrapper with graceful fallback.
+"""Small LLM wrapper used by the chat supervisor.
 
-Agents should be able to run in local tests without network access.  When an
-API key and dependencies are available, this wrapper can call the configured
-xAI/OpenAI-compatible model.  Otherwise it returns None and agents use their
-deterministic structured fallback.
+Production chat must use a real model response.  This module therefore raises
+explicit errors instead of silently returning deterministic fallback text.
 """
 
 from __future__ import annotations
@@ -12,18 +10,32 @@ from __future__ import annotations
 from typing import Any
 
 
-def try_llm(messages: list[dict[str, str]], temperature: float = 0.2) -> str | None:
+class LLMCallError(RuntimeError):
+    """Raised when the configured LLM cannot produce a real answer."""
+
+
+def call_llm(messages: list[dict[str, str]], temperature: float = 0.2) -> str:
     try:
         from app.backend.utils.llm import get_llm
+    except Exception as exc:
+        raise LLMCallError(f"LLM 客户端初始化失败：{exc}") from exc
 
+    try:
         llm = get_llm(temperature=temperature)
         response = llm.invoke(messages)
         content = getattr(response, "content", None)
         if isinstance(content, str) and content.strip():
             return content.strip()
-        return str(response).strip() if response else None
-    except Exception:
-        return None
+        fallback_text = str(response).strip() if response else ""
+        if fallback_text:
+            return fallback_text
+    except Exception as exc:
+        raise LLMCallError(f"LLM 调用失败：{exc}") from exc
+    raise LLMCallError("LLM 返回了空内容")
+
+
+def try_llm(messages: list[dict[str, str]], temperature: float = 0.2) -> str:
+    return call_llm(messages, temperature=temperature)
 
 
 def compact_profile(profile: dict[str, Any]) -> str:

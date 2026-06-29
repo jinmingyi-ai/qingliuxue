@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import re
 import json
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
@@ -36,7 +37,7 @@ try:
     )
     from app.backend.memory.memory_manager import MemoryManager
     from app.backend.rag.retriever import build_rag_context
-    from app.backend.tools.llm_client import compact_profile, try_llm
+    from app.backend.tools.llm_client import LLMCallError, compact_profile, call_llm
 except ImportError:  # Allows direct execution from app/backend/agents.
     import sys
 
@@ -53,7 +54,7 @@ except ImportError:  # Allows direct execution from app/backend/agents.
     )
     from app.backend.memory.memory_manager import MemoryManager
     from app.backend.rag.retriever import build_rag_context
-    from app.backend.tools.llm_client import compact_profile, try_llm
+    from app.backend.tools.llm_client import LLMCallError, compact_profile, call_llm
 
 
 SYSTEM_INSTRUCTION = """你是轻留学 AI 留学中介/助手的 supervisor。
@@ -226,10 +227,14 @@ class StudyAbroadSupervisor:
 
     def _synthesize_answer(self, query: str, results: list[dict[str, Any]], profile: dict[str, Any]) -> tuple[str, str]:
         fallback = self._deterministic_answer(results)
+        if os.getenv("ALLOW_DETERMINISTIC_CHAT_FALLBACK") == "1":
+            try:
+                llm_answer = self._llm_synthesize_answer(query=query, results=results, profile=profile, fallback=fallback)
+                return llm_answer, "llm"
+            except LLMCallError:
+                return fallback, "deterministic_test_fallback"
         llm_answer = self._llm_synthesize_answer(query=query, results=results, profile=profile, fallback=fallback)
-        if llm_answer:
-            return llm_answer, "llm"
-        return fallback, "deterministic_fallback"
+        return llm_answer, "llm"
 
     def _deterministic_answer(self, results: list[dict[str, Any]]) -> str:
         lines = ["我按你的问题拆给对应的专业模块处理了。"]
@@ -290,7 +295,7 @@ class StudyAbroadSupervisor:
                 ),
             },
         ]
-        return try_llm(messages, temperature=0.35)
+        return call_llm(messages, temperature=0.35)
 
     def _compact_json(self, value: Any, max_chars: int = 1800) -> Any:
         text = json.dumps(value, ensure_ascii=False)

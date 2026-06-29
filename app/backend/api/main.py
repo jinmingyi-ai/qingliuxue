@@ -26,6 +26,8 @@ from app.backend.api.security import (
     validate_password,
     verify_password,
 )
+from app.backend.tools.llm_client import LLMCallError, call_llm
+from app.backend.utils.llm import current_model
 from app.backend.memory.memory_manager import MemoryManager
 
 
@@ -120,6 +122,18 @@ def health() -> dict[str, str]:
     return {"status": "ok", "service": "qingliuxue-api"}
 
 
+@app.get("/llm/health")
+def llm_health() -> dict[str, Any]:
+    answer = call_llm(
+        [
+            {"role": "system", "content": "You are a production LLM health check."},
+            {"role": "user", "content": "只回复：LLM_OK"},
+        ],
+        temperature=0,
+    )
+    return {"status": "ok", "model": current_model(), "answer": answer}
+
+
 @app.post("/auth/register", response_model=AuthResponse)
 def register(payload: AuthRequest) -> dict[str, Any]:
     try:
@@ -157,13 +171,23 @@ def chat(payload: ChatRequest, user: dict[str, Any] | None = Depends(optional_us
         raise HTTPException(status_code=400, detail="消息不能为空")
     user_id, guest_session_id, manager = memory_for(user, payload.guest_session_id)
     supervisor = StudyAbroadSupervisor(memory_manager=manager)
-    result = supervisor.run(
-        query=payload.message.strip(),
-        user_id=user_id,
-        conversation_id=payload.conversation_id,
-        questionnaire=payload.questionnaire,
-        requested_agents=payload.requested_agents,
-    )
+    try:
+        result = supervisor.run(
+            query=payload.message.strip(),
+            user_id=user_id,
+            conversation_id=payload.conversation_id,
+            questionnaire=payload.questionnaire,
+            requested_agents=payload.requested_agents,
+        )
+    except LLMCallError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "error": "llm_unavailable",
+                "message": str(exc),
+                "model": current_model(),
+            },
+        ) from exc
     result["guest_session_id"] = guest_session_id
     result["conversations"] = _conversation_summaries(manager, user_id)
     return result
@@ -221,4 +245,3 @@ def profile(
 ) -> dict[str, Any]:
     user_id, guest_session_id, manager = memory_for(user, guest_session_id)
     return {"guest_session_id": guest_session_id, "profile": manager.export_user_profile(user_id)}
-

@@ -35,6 +35,8 @@ def _request(method: str, path: str, token: str | None = None, **kwargs: Any) ->
             detail = response.json().get("detail", response.text)
         except ValueError:
             detail = response.text
+        if isinstance(detail, dict):
+            detail = detail.get("message") or detail.get("error") or str(detail)
         raise ApiClientError(str(detail))
     try:
         return response.json()
@@ -117,4 +119,3 @@ def submit_questionnaire(
             "guest_session_id": guest_session_id,
         },
     )
-
