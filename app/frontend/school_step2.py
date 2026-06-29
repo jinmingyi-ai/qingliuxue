@@ -4,8 +4,13 @@
 from __future__ import annotations
 
 import streamlit as st
+import streamlit.components.v1 as components
+from textwrap import dedent
 
-from ui_theme import base_page_css, nav_html
+try:
+    from ui_theme import base_page_css, nav_html
+except ImportError:  # Allows importing as app.frontend.school_step2 in tests.
+    from app.frontend.ui_theme import base_page_css, nav_html
 
 
 def _user_email() -> str | None:
@@ -23,8 +28,16 @@ def _go(page: str) -> None:
     st.rerun()
 
 
+def _html(html: str, height: int = 260) -> None:
+    html = dedent(html).strip()
+    if hasattr(st, "html"):
+        st.html(html)
+    else:
+        components.html(html, height=height, scrolling=False)
+
+
 def _chrome() -> None:
-    st.markdown(
+    _html(
         base_page_css()
         + nav_html("school", _user_email())
         + """
@@ -52,7 +65,7 @@ def _chrome() -> None:
             <div class="step-pill">3<br/>申请偏好</div>
         </div>
         """,
-        unsafe_allow_html=True,
+        height=260,
     )
 
 
@@ -104,4 +117,3 @@ def render() -> None:
 if __name__ == "__main__":
     st.set_page_config(page_title="轻留学 | 申请能力", page_icon="🎓", layout="wide")
     render()
-

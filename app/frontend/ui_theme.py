@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import base64
 from pathlib import Path
+from textwrap import dedent
 
 
 ASSET_DIR = Path(__file__).resolve().parent / "assets"
@@ -27,7 +28,7 @@ def home_image_uri() -> str:
 
 
 def global_css() -> str:
-    return """
+    return dedent("""
     <style>
         [data-testid="stHeader"],
         [data-testid="stToolbar"],
@@ -53,11 +54,11 @@ def global_css() -> str:
             gap: 0 !important;
         }
     </style>
-    """
+    """).strip()
 
 
 def base_page_css() -> str:
-    return """
+    return dedent("""
     <style>
         :root {
             --coral-900: #7c2f22;
@@ -429,7 +430,7 @@ def base_page_css() -> str:
             }
         }
     </style>
-    """
+    """).strip()
 
 
 def nav_html(active: str = "home", user_email: str | None = None) -> str:
@@ -454,7 +455,7 @@ def nav_html(active: str = "home", user_email: str | None = None) -> str:
                 <a class="ql-auth-link" href="?page=login">登录</a>
                 <a class="ql-auth-link primary" href="?page=register">注册</a>
         """
-    return f"""
+    return dedent(f"""
     <div class="ql-nav">
         <div class="ql-nav-inner">
             <a class="ql-brand" href="?page=home" aria-label="轻留学">
@@ -469,14 +470,14 @@ def nav_html(active: str = "home", user_email: str | None = None) -> str:
             </div>
         </div>
     </div>
-    """
+    """).strip()
 
 
 def page_shell(active: str, inner_html: str, user_email: str | None = None) -> str:
-    return f"""
+    return dedent(f"""
     {base_page_css()}
     <div class="ql-page">
         {nav_html(active, user_email)}
         {inner_html}
     </div>
-    """
+    """).strip()

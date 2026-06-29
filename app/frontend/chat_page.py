@@ -6,6 +6,7 @@ from __future__ import annotations
 import tempfile
 import uuid
 from pathlib import Path
+from textwrap import dedent
 from typing import Any
 
 import streamlit as st
@@ -203,12 +204,12 @@ def _render_sidebar(entry: str) -> None:
     logo = logo_uri()
     with st.sidebar:
         st.markdown(
-            f"""
+            dedent(f"""
             <div class="side-brand">
                 <span class="side-logo"><img src="{logo}" alt="轻留学" /></span>
                 <span>轻留学</span>
             </div>
-            """,
+            """).strip(),
             unsafe_allow_html=True,
         )
         if _user_email():
@@ -270,7 +271,7 @@ def _render_agent_trace() -> None:
 
 
 def _styles() -> str:
-    return """
+    return dedent("""
         <style>
             :root {
                 --coral-900: #7c2f22;
@@ -385,7 +386,7 @@ def _styles() -> str:
                 word-break: break-word !important;
             }
         </style>
-        """
+        """).strip()
 
 
 def render(entry: str = "direct") -> None:
@@ -399,12 +400,12 @@ def render(entry: str = "direct") -> None:
 
     config = ENTRY_CONFIG[entry]
     st.markdown(
-        f"""
+        dedent(f"""
         <div class="chat-head">
             <h1>{config["title"]}</h1>
             <p>{config["description"]}</p>
         </div>
-        """,
+        """).strip(),
         unsafe_allow_html=True,
     )
 

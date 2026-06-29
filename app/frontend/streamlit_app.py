@@ -9,11 +9,18 @@ from textwrap import dedent
 import streamlit as st
 import streamlit.components.v1 as components
 
-from api_client import ApiClientError, login_user, register_user
-from school_step1 import render as render_step1
-from school_step2 import render as render_step2
-from school_step3 import render as render_step3
-from ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
+try:
+    from api_client import ApiClientError, login_user, register_user
+    from school_step1 import render as render_step1
+    from school_step2 import render as render_step2
+    from school_step3 import render as render_step3
+    from ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
+except ImportError:  # Allows AppTest/package imports from the project root.
+    from app.frontend.api_client import ApiClientError, login_user, register_user
+    from app.frontend.school_step1 import render as render_step1
+    from app.frontend.school_step2 import render as render_step2
+    from app.frontend.school_step3 import render as render_step3
+    from app.frontend.ui_theme import base_page_css, global_css, home_image_uri, nav_html, page_shell
 
 
 st.set_page_config(
@@ -23,7 +30,10 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.markdown(global_css(), unsafe_allow_html=True)
+if hasattr(st, "html"):
+    st.html(global_css())
+else:
+    st.markdown(global_css(), unsafe_allow_html=True)
 
 
 def current_user_email() -> str | None:
@@ -32,7 +42,11 @@ def current_user_email() -> str | None:
 
 
 def render_html(html: str, height: int = 920, scrolling: bool = True) -> None:
-    st.markdown(html, unsafe_allow_html=True)
+    html = dedent(html).strip()
+    if hasattr(st, "html"):
+        st.html(html)
+    else:
+        components.html(html, height=height, scrolling=scrolling)
 
 
 def render_home() -> None:
@@ -351,7 +365,7 @@ def render_materials() -> None:
 
 
 def render_auth_frame(title: str, subtitle: str) -> None:
-    st.markdown(
+    render_html(
         base_page_css()
         + nav_html("home", current_user_email())
         + f"""
@@ -393,7 +407,8 @@ def render_auth_frame(title: str, subtitle: str) -> None:
             <p>{subtitle}</p>
         </div>
         """,
-        unsafe_allow_html=True,
+        height=260,
+        scrolling=False,
     )
 
 
