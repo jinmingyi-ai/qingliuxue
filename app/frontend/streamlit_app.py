@@ -44,7 +44,6 @@ def render_html(html: str, height: int = 920, scrolling: bool = True) -> None:
         components.html(html, height=height, scrolling=scrolling)
 
 
-@st.cache_resource(show_spinner=False)
 def get_page_renderer(module_name: str):
     try:
         module = __import__(module_name, fromlist=["render"])

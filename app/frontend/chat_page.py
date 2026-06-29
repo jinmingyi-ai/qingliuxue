@@ -15,10 +15,10 @@ import streamlit as st
 
 try:
     from api_client import chat_message, create_conversation, list_conversations
-    from ui_theme import base_page_css, logo_uri
+    from ui_theme import logo_uri
 except ImportError:  # Allows importing as app.frontend.chat_page in tests.
     from app.frontend.api_client import chat_message, create_conversation, list_conversations
-    from app.frontend.ui_theme import base_page_css, logo_uri
+    from app.frontend.ui_theme import logo_uri
 
 
 ENTRY_CONFIG = {
@@ -120,6 +120,7 @@ def _ensure_state() -> None:
     st.session_state.setdefault("last_route", [])
     st.session_state.setdefault("last_agent_results", [])
     st.session_state.setdefault("entry_initialized", {})
+    st.session_state.setdefault("last_call_status", {})
 
 
 def _token() -> str | None:
@@ -174,10 +175,12 @@ def _call_agent(message: str, entry: str, requested_agents: list[str] | None = N
         st.session_state["conversation_id"] = result.get("conversation_id")
         if result.get("guest_session_id"):
             st.session_state["guest_session_id"] = result["guest_session_id"]
+        result["transport"] = "api"
         return result
     except Exception as exc:
         result = _local_supervisor_call(message, entry, requested_agents, questionnaire)
         result["api_warning"] = str(exc)
+        result["transport"] = "local_fallback"
         return result
 
 
@@ -185,6 +188,11 @@ def _store_result(result: dict[str, Any]) -> None:
     st.session_state["last_route"] = result.get("route") or []
     st.session_state["last_agent_results"] = result.get("agent_results") or []
     st.session_state["profile_snapshot"] = result.get("profile") or {}
+    st.session_state["last_call_status"] = {
+        "transport": result.get("transport") or ("local_fallback" if result.get("local_fallback") else "api"),
+        "answer_source": result.get("answer_source") or result.get("llm_source"),
+        "api_warning": result.get("api_warning"),
+    }
 
 
 def _append_turn(user_message: str, result: dict[str, Any]) -> None:
@@ -296,26 +304,17 @@ def _render_sidebar(entry: str) -> None:
 
 
 def _render_agent_trace() -> None:
-    route = st.session_state.get("last_route") or []
-    results = st.session_state.get("last_agent_results") or []
-    if route or results:
-        label_map = {
-            "profile": "画像更新",
-            "case": "真实案例",
-            "timeline": "时间线",
-            "essay": "文书策略",
-            "comparison": "方案对比",
-            "materials": "材料清单",
-            "visa": "签证规划",
-        }
-        route_text = " · ".join(label_map.get(item, item) for item in route)
-        with st.expander(f"参考来源与处理模块{f'：{route_text}' if route_text else ''}", expanded=False):
-            for result in results:
-                st.markdown(f"**{result.get('task')}**")
-                st.write(result.get("answer", ""))
-                sources = result.get("sources") or []
-                if sources:
-                    st.caption("来源/召回：" + "；".join(str(source.get("id") or source.get("type")) for source in sources[:4]))
+    status = st.session_state.get("last_call_status") or {}
+    if status.get("transport") == "local_fallback":
+        warning = html.escape(str(status.get("api_warning") or "后端 API 暂时不可用"))
+        st.markdown(
+            dedent(f"""
+            <div class="api-warning">
+                后端 API 没连上，当前是本地模块兜底回答。原因：{warning}
+            </div>
+            """).strip(),
+            unsafe_allow_html=True,
+        )
 
 
 def _message_html(content: str) -> str:
@@ -357,18 +356,14 @@ def _starter_prompts(entry: str) -> list[tuple[str, str]]:
 def _render_starters(entry: str) -> None:
     st.markdown(
         dedent("""
-        <section class="starter-panel">
-            <span class="starter-eyebrow">快速开始</span>
-            <h2>你可以先从这些问题开始</h2>
-            <p>每个入口只保留最相关的几个方向，点一下就会作为第一条追问发送。</p>
-        </section>
+        <div class="quick-title">可以直接问</div>
         """).strip(),
         unsafe_allow_html=True,
     )
-    cols = st.columns(2, gap="medium")
+    cols = st.columns(4, gap="small")
     for index, (title, prompt) in enumerate(_starter_prompts(entry)):
-        with cols[index % 2]:
-            if st.button(f"{title}\n{prompt}", key=f"starter_{entry}_{index}", use_container_width=True):
+        with cols[index % 4]:
+            if st.button(title, key=f"starter_{entry}_{index}", use_container_width=True, help=prompt):
                 with st.spinner("正在生成回答..."):
                     result = _call_agent(prompt, entry)
                 _append_turn(prompt, result)
@@ -393,7 +388,10 @@ def _styles() -> str:
             [data-testid="stHeader"],
             [data-testid="stToolbar"],
             [data-testid="stDecoration"],
-            [data-testid="stStatusWidget"] {
+            [data-testid="stStatusWidget"],
+            [data-testid="stSidebarCollapsedControl"],
+            [data-testid="stSidebarHeader"],
+            [data-testid="collapsedControl"] {
                 display: none !important;
             }
             .stApp {
@@ -419,24 +417,23 @@ def _styles() -> str:
                 font-family: Inter, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
             }
             [data-testid="stSidebarContent"] {
-                padding: 18px 16px 16px !important;
+                padding: 0 16px 16px !important;
                 display: flex;
                 flex-direction: column;
                 min-height: 100vh;
             }
-            [data-testid="collapsedControl"] {
-                display: block !important;
-                color: #9a3d2c;
+            [data-testid="stSidebarUserContent"] {
+                padding-top: 14px !important;
             }
             .main .block-container {
                 max-width: 1120px !important;
-                padding: 28px 40px 124px !important;
+                padding: 8px 40px 128px !important;
             }
             .side-brand {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                margin: 4px 0 18px;
+                margin: 0 0 12px;
                 color: #9a3d2c;
                 font-size: 22px;
                 font-weight: 950;
@@ -545,67 +542,15 @@ def _styles() -> str:
                 font-weight: 800;
                 text-decoration: none !important;
             }
-            .chat-head {
-                width: min(900px, 100%);
-                margin: 0 auto 26px;
-                padding: 8px 0 18px;
-                border-bottom: 1px solid rgba(234, 217, 210, 0.9);
-                position: sticky;
-                top: 0;
-                z-index: 5;
-                background: linear-gradient(180deg, rgba(255, 250, 248, 0.96), rgba(255, 250, 248, 0.86));
-                backdrop-filter: blur(10px);
-            }
-            .chat-head h1 {
-                margin: 0;
-                color: #2b2724;
-                font-size: 31px;
-                font-weight: 950;
-            }
-            .chat-head p {
-                margin: 8px 0 0;
-                color: #7c716b;
-                font-size: 17px;
-                line-height: 1.7;
-                font-weight: 650;
-            }
-            .starter-panel {
-                width: min(900px, 100%);
-                margin: 22px auto 14px;
-                padding: 18px 20px;
-                border-radius: 20px;
-                border: 1px solid rgba(240, 230, 217, 0.95);
-                background: rgba(255, 255, 255, 0.70);
-                box-shadow: 0 14px 34px rgba(73, 42, 33, 0.045);
-            }
-            .starter-eyebrow {
-                color: #b94f3b;
-                font-size: 13px;
-                font-weight: 900;
-            }
-            .starter-panel h2 {
-                margin: 5px 0 4px;
-                color: #2c2c2c;
-                font-size: 19px;
-                font-weight: 850;
-                line-height: 1.35;
-            }
-            .starter-panel p {
-                margin: 0;
-                color: #736760;
-                font-size: 14px;
-                line-height: 1.65;
-                font-weight: 600;
-            }
             .ql-message-list {
-                width: min(900px, 100%);
-                margin: 24px auto 12px;
+                width: min(980px, 100%);
+                margin: 0 auto 16px;
             }
             .ql-msg-row {
                 display: flex;
                 gap: 12px;
                 align-items: flex-start;
-                margin: 18px 0;
+                margin: 16px 0;
             }
             .ql-msg-row.user {
                 justify-content: flex-end;
@@ -634,7 +579,7 @@ def _styles() -> str:
                 font-weight: 900;
             }
             .ql-msg-stack {
-                max-width: 72%;
+                max-width: 76%;
                 display: flex;
                 flex-direction: column;
                 gap: 6px;
@@ -646,25 +591,25 @@ def _styles() -> str:
                 padding: 0 6px;
             }
             .ql-msg-bubble {
-                padding: 18px 21px;
-                border-radius: 20px;
-                border: 1px solid #f0e6d9;
-                background: #fffbf5;
+                padding: 16px 20px;
+                border-radius: 18px;
+                border: 1px solid rgba(240, 230, 217, 0.90);
+                background: rgba(255, 253, 249, 0.92);
                 color: #2f2b28;
-                box-shadow: 0 12px 28px rgba(73, 42, 33, 0.05);
+                box-shadow: 0 10px 24px rgba(73, 42, 33, 0.045);
                 overflow-wrap: anywhere;
                 word-break: break-word;
             }
             .ql-msg-row.user .ql-msg-bubble {
-                color: #ffffff;
-                background: #b94f3b;
-                border-color: #b94f3b;
-                box-shadow: 0 14px 28px rgba(185, 79, 59, 0.18);
+                color: #3a2520;
+                background: #f8ded6;
+                border-color: #efc4b8;
+                box-shadow: none;
             }
             .ql-msg-bubble p {
                 margin: 0 0 12px;
-                font-size: 15.5px;
-                line-height: 1.75;
+                font-size: 16px;
+                line-height: 1.78;
                 font-weight: 540;
             }
             .ql-msg-bubble p:last-child {
@@ -716,41 +661,70 @@ def _styles() -> str:
                 background: rgba(255, 252, 250, 0.62) !important;
             }
             .quick-title {
-                max-width: min(900px, 100%);
-                margin: 28px auto 12px;
+                max-width: min(980px, 100%);
+                margin: 18px auto 10px;
                 color: #7c2f22;
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: 900;
             }
             .main div[data-testid="stHorizontalBlock"] .stButton button {
-                min-height: 104px !important;
-                padding: 16px 18px !important;
-                justify-content: flex-start !important;
-                text-align: left !important;
-                white-space: pre-line !important;
-                line-height: 1.55 !important;
-                background: rgba(255, 252, 250, 0.84) !important;
-                border-radius: 16px !important;
-                box-shadow: 0 8px 22px rgba(73, 42, 33, 0.045) !important;
+                min-height: 48px !important;
+                padding: 10px 16px !important;
+                justify-content: center !important;
+                text-align: center !important;
+                white-space: normal !important;
+                line-height: 1.25 !important;
+                color: #8a3427 !important;
+                background: rgba(255, 252, 250, 0.88) !important;
+                border-radius: 999px !important;
+                border-color: rgba(231, 185, 170, 0.90) !important;
+                box-shadow: 0 8px 20px rgba(73, 42, 33, 0.035) !important;
+                font-size: 15px !important;
             }
             [data-testid="stChatInput"] textarea {
-                border-color: #e7b9aa !important;
-                box-shadow: 0 0 0 1px rgba(237, 118, 93, 0.08);
+                border: 0 !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                min-height: 44px !important;
+                padding: 12px 4px !important;
+                color: #2b2724 !important;
+                font-size: 15px !important;
             }
             [data-testid="stChatInput"] {
-                max-width: 900px;
+                max-width: 820px;
                 margin: 0 auto;
             }
             [data-testid="stChatInput"] > div {
-                min-height: 56px !important;
-                border-radius: 999px !important;
-                background: rgba(255, 255, 255, 0.88) !important;
-                box-shadow: 0 16px 38px rgba(124, 47, 34, 0.10);
+                min-height: 64px !important;
+                border-radius: 20px !important;
+                border: 1px solid rgba(240, 230, 217, 0.95) !important;
+                background: rgba(255, 255, 255, 0.96) !important;
+                box-shadow: 0 16px 42px rgba(73, 42, 33, 0.09);
+                padding: 8px 10px 8px 18px !important;
             }
             [data-testid="stChatInput"] button {
-                border-radius: 999px !important;
-                background: #b94f3b !important;
-                color: #fff !important;
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 12px !important;
+                background: #f0dfd8 !important;
+                color: #9a3d2c !important;
+                border: 0 !important;
+                box-shadow: none !important;
+            }
+            [data-testid="stChatInput"] button:hover {
+                background: #e8cabf !important;
+            }
+            .api-warning {
+                width: min(980px, 100%);
+                margin: 8px auto 16px;
+                padding: 10px 14px;
+                border-radius: 12px;
+                border: 1px solid rgba(205, 122, 94, 0.35);
+                background: rgba(255, 245, 240, 0.88);
+                color: #8a3427;
+                font-size: 13px;
+                line-height: 1.5;
+                font-weight: 700;
             }
             div[data-testid="stHorizontalBlock"] button {
                 white-space: normal !important;
@@ -769,13 +743,19 @@ def _styles() -> str:
                     width: 252px;
                 }
                 .main .block-container {
-                    padding: 22px 18px 108px !important;
+                    padding: 6px 18px 112px !important;
                 }
                 .ql-msg-stack {
                     max-width: 82%;
                 }
+                .ql-msg-avatar,
+                .ql-msg-label {
+                    display: none;
+                }
                 .main div[data-testid="stHorizontalBlock"] .stButton button {
-                    min-height: 92px !important;
+                    min-height: 44px !important;
+                    padding: 9px 12px !important;
+                    font-size: 14px !important;
                 }
             }
         </style>
@@ -791,22 +771,8 @@ def render(entry: str = "direct") -> None:
         st.markdown(_styles(), unsafe_allow_html=True)
     _render_sidebar(entry)
 
-    config = ENTRY_CONFIG[entry]
-    st.markdown(
-        dedent(f"""
-        <div class="chat-head">
-            <h1>{config["title"]}</h1>
-            <p>{config["description"]}</p>
-        </div>
-        """).strip(),
-        unsafe_allow_html=True,
-    )
-
     if not st.session_state.get("chat_messages"):
         _initialise_entry(entry)
-
-    if not _has_user_turn():
-        _render_starters(entry)
 
     st.markdown('<div class="ql-message-list">', unsafe_allow_html=True)
     for message in st.session_state.get("chat_messages", []):
@@ -814,6 +780,9 @@ def render(entry: str = "direct") -> None:
     st.markdown("</div>", unsafe_allow_html=True)
 
     _render_agent_trace()
+
+    if not _has_user_turn():
+        _render_starters(entry)
 
     if user_input := st.chat_input("告诉我你的 GPA、专业、目标，或继续问我..."):
         with st.spinner("正在生成回答..."):

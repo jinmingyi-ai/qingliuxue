@@ -19,6 +19,7 @@ agent result, but the graph is deterministic and testable without network.
 from __future__ import annotations
 
 import re
+import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
@@ -35,6 +36,7 @@ try:
     )
     from app.backend.memory.memory_manager import MemoryManager
     from app.backend.rag.retriever import build_rag_context
+    from app.backend.tools.llm_client import compact_profile, try_llm
 except ImportError:  # Allows direct execution from app/backend/agents.
     import sys
 
@@ -51,6 +53,7 @@ except ImportError:  # Allows direct execution from app/backend/agents.
     )
     from app.backend.memory.memory_manager import MemoryManager
     from app.backend.rag.retriever import build_rag_context
+    from app.backend.tools.llm_client import compact_profile, try_llm
 
 
 SYSTEM_INSTRUCTION = """你是轻留学 AI 留学中介/助手的 supervisor。
@@ -123,13 +126,13 @@ class StudyAbroadSupervisor:
         )
 
         all_results = [profile_result] + specialist_results
-        final_answer = self._synthesize_answer(query, all_results)
+        final_answer, answer_source = self._synthesize_answer(query, all_results, profile)
         self.memory_manager.append_message(
             user_id=user_id,
             conversation_id=conversation_id,
             role="assistant",
             content=final_answer,
-            metadata={"agent": "supervisor", "route": route},
+            metadata={"agent": "supervisor", "route": route, "answer_source": answer_source},
         )
 
         return {
@@ -138,6 +141,7 @@ class StudyAbroadSupervisor:
             "conversation_id": conversation_id,
             "route": ["profile"] + route,
             "answer": final_answer,
+            "answer_source": answer_source,
             "agent_results": all_results,
             "profile": profile,
             "confidence": self._aggregate_confidence(all_results),
@@ -220,7 +224,14 @@ class StudyAbroadSupervisor:
                 seen.add(value)
         return result
 
-    def _synthesize_answer(self, query: str, results: list[dict[str, Any]]) -> str:
+    def _synthesize_answer(self, query: str, results: list[dict[str, Any]], profile: dict[str, Any]) -> tuple[str, str]:
+        fallback = self._deterministic_answer(results)
+        llm_answer = self._llm_synthesize_answer(query=query, results=results, profile=profile, fallback=fallback)
+        if llm_answer:
+            return llm_answer, "llm"
+        return fallback, "deterministic_fallback"
+
+    def _deterministic_answer(self, results: list[dict[str, Any]]) -> str:
         lines = ["我按你的问题拆给对应的专业模块处理了。"]
         for result in results:
             if result["agent"] == "profile_agent":
@@ -234,6 +245,58 @@ class StudyAbroadSupervisor:
                 lines.append(f"\n为了让后续推荐更准，建议补充：{', '.join(missing[:5])}。")
         lines.append("\n涉及官网截止日期、签证政策和费用的内容，我会把它标记为需要实时核对。")
         return "\n".join(lines)
+
+    def _llm_synthesize_answer(
+        self,
+        query: str,
+        results: list[dict[str, Any]],
+        profile: dict[str, Any],
+        fallback: str,
+    ) -> str | None:
+        module_summaries = []
+        for result in results:
+            if result.get("agent") == "profile_agent":
+                continue
+            structured = result.get("structured") or {}
+            module_summaries.append(
+                {
+                    "task": result.get("task"),
+                    "answer": result.get("answer"),
+                    "structured": self._compact_json(structured),
+                    "sources": (result.get("sources") or [])[:5],
+                    "confidence": result.get("confidence"),
+                }
+            )
+
+        profile_result = next((item for item in results if item.get("agent") == "profile_agent"), None)
+        missing_fields = []
+        if profile_result:
+            missing_fields = (profile_result.get("structured") or {}).get("missing_fields") or []
+
+        messages = [
+            {"role": "system", "content": SYSTEM_INSTRUCTION},
+            {
+                "role": "user",
+                "content": "\n\n".join(
+                    [
+                        "请把下面的专业模块结果整合成一条自然、真实、有针对性的中文回答。",
+                        "要求：直接回答用户，不要说“我按模块处理了”；不要编造未出现在模块结果里的录取、政策、截止日期或费用；信息不足时先给可执行假设，并提出最多 3 个追问；涉及动态政策和官网数据要提示实时核对。",
+                        f"【用户问题】\n{query}",
+                        f"【用户画像摘要】\n{compact_profile(profile)}",
+                        "【模块结果】\n" + json.dumps(module_summaries, ensure_ascii=False, indent=2),
+                        "【待补充字段】\n" + ("、".join(missing_fields[:6]) if missing_fields else "暂无"),
+                        "【本地兜底草稿】\n" + fallback,
+                    ]
+                ),
+            },
+        ]
+        return try_llm(messages, temperature=0.35)
+
+    def _compact_json(self, value: Any, max_chars: int = 1800) -> Any:
+        text = json.dumps(value, ensure_ascii=False)
+        if len(text) <= max_chars:
+            return value
+        return text[: max_chars - 1].rstrip() + "..."
 
     def _aggregate_confidence(self, results: list[dict[str, Any]]) -> float:
         scores = [float(item.get("confidence", 0.0)) for item in results]
