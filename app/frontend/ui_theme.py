@@ -12,6 +12,7 @@ import streamlit as st
 
 ASSET_DIR = Path(__file__).resolve().parent / "assets"
 LOGO_PATH = ASSET_DIR / "qingliuxue-logo.png"
+LOGO_MARK_PATH = ASSET_DIR / "qingliuxue-logo-mark.png"
 HOME_IMAGE_PATH = ASSET_DIR / "home-collaboration.png"
 
 
@@ -24,6 +25,10 @@ def image_data_uri(path: Path) -> str:
 
 def logo_uri() -> str:
     return image_data_uri(LOGO_PATH)
+
+
+def logo_mark_uri() -> str:
+    return image_data_uri(LOGO_MARK_PATH if LOGO_MARK_PATH.exists() else LOGO_PATH)
 
 
 def home_image_uri() -> str:

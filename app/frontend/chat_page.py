@@ -14,11 +14,11 @@ import streamlit as st
 try:
     from api_client import ApiClientError
     from api_client import chat_message, create_conversation, list_conversations
-    from ui_theme import logo_uri
+    from ui_theme import logo_mark_uri
 except ImportError:  # Allows importing as app.frontend.chat_page in tests.
     from app.frontend.api_client import ApiClientError
     from app.frontend.api_client import chat_message, create_conversation, list_conversations
-    from app.frontend.ui_theme import logo_uri
+    from app.frontend.ui_theme import logo_mark_uri
 
 
 ENTRY_CONFIG = {
@@ -183,6 +183,39 @@ def _load_conversations() -> list[dict[str, Any]]:
         return []
 
 
+def _conversation_label(item: dict[str, Any]) -> str:
+    messages = item.get("messages") or []
+    source = ""
+    for message in messages:
+        if message.get("role") == "user" and message.get("content"):
+            source = str(message["content"])
+            break
+    if not source:
+        source = str(item.get("title") or "")
+
+    compact = re.sub(r"\s+", "", source)
+    lowered = compact.lower()
+    label_rules = [
+        (("预算", "性价比", "英国", "加拿大", "澳洲", "国家"), "国家对比"),
+        (("gpa", "cs", "ds", "ai", "实习", "案例"), "CS申请路线"),
+        (("不确定", "先问", "画像", "关键问题"), "补全画像"),
+        (("时间线", "月份", "2027", "任务", "规划"), "时间规划"),
+        (("sop", "ps", "文书", "素材", "主线"), "文书主线"),
+        (("材料", "推荐信", "成绩单", "简历"), "材料清单"),
+        (("签证", "住宿", "行前", "毕业后"), "签证规划"),
+    ]
+    for keywords, label in label_rules:
+        if any(keyword in lowered or keyword in compact for keyword in keywords):
+            return label
+
+    source = re.sub(r"[，。！？、,.!?;；:：\"'“”‘’（）()【】\[\]]+", "", compact)
+    source = re.sub(r"^(请|帮我|麻烦|我想|我还|如果|关于|生成|分析)+", "", source)
+    fallback = "留学咨询"
+    if not source or source == "新的留学咨询":
+        return fallback
+    return source[:8]
+
+
 def _new_chat(entry: str) -> None:
     st.session_state["chat_messages"] = []
     st.session_state["last_route"] = []
@@ -200,7 +233,7 @@ def _new_chat(entry: str) -> None:
 
 
 def _render_sidebar(entry: str) -> None:
-    logo = logo_uri()
+    logo = logo_mark_uri()
     display_name = _user_email() or "访客"
     user_hint = "长期记忆已开启" if _user_email() else "访客模式，本次关闭后不保留长期记忆"
     with st.sidebar:
@@ -211,6 +244,7 @@ def _render_sidebar(entry: str) -> None:
                     <span class="side-logo"><img src="{logo}" alt="轻留学" /></span>
                     <span>轻留学</span>
                 </div>
+                <div class="side-brand-spacer" aria-hidden="true">&nbsp;</div>
             </div>
             """).strip(),
             unsafe_allow_html=True,
@@ -228,7 +262,7 @@ def _render_sidebar(entry: str) -> None:
         if not conversations:
             st.caption("暂无历史对话。")
         for item in conversations[:10]:
-            title = item.get("title") or "新的留学咨询"
+            title = _conversation_label(item)
             if st.button(title, key=f"conv_{item['conversation_id']}", use_container_width=True):
                 st.session_state["conversation_id"] = item["conversation_id"]
                 st.session_state["chat_messages"] = [
@@ -286,13 +320,11 @@ def _render_message(role: str, content: str) -> None:
     is_error = role == "system"
     role_class = "user" if is_user else ("system" if is_error else "assistant")
     avatar = "你" if is_user else "留"
-    label = "你" if is_user else ("系统" if is_error else "轻留学")
     st.markdown(
         dedent(f"""
         <div class="ql-msg-row {role_class}">
             <div class="ql-msg-avatar" aria-hidden="true">{avatar}</div>
             <div class="ql-msg-stack">
-                <div class="ql-msg-label">{label}</div>
                 <div class="ql-msg-bubble">{_message_html(content)}</div>
             </div>
         </div>
@@ -390,27 +422,43 @@ def _styles() -> str:
                 max-width: 1120px !important;
                 padding: 8px 40px 128px !important;
             }
+            .side-shell {
+                display: block;
+            }
             .side-brand {
                 display: flex;
                 align-items: center;
-                gap: 10px;
-                margin: 0 0 12px;
+                gap: 12px;
+                margin: 0;
                 color: #9a3d2c;
-                font-size: 22px;
+                font-size: 23px;
                 font-weight: 950;
             }
             .side-logo {
-                width: 42px;
-                height: 42px;
-                padding: 5px;
+                width: 54px;
+                height: 54px;
+                padding: 0;
                 display: inline-grid;
                 place-items: center;
-                border-radius: 12px;
-                background: rgba(255, 255, 255, 0.82);
-                border: 1px solid rgba(255, 255, 255, 0.92);
-                box-shadow: 0 10px 20px rgba(124, 47, 34, 0.12);
+                border-radius: 0;
+                background: transparent;
+                border: 0;
+                box-shadow: none;
+                overflow: visible;
             }
-            .side-logo img { width: 32px; height: 32px; object-fit: contain; }
+            .side-logo img {
+                width: 54px;
+                height: 54px;
+                object-fit: contain;
+                display: block;
+            }
+            .side-brand-spacer {
+                height: 14px;
+                line-height: 14px;
+                font-size: 1px;
+                color: transparent;
+                overflow: hidden;
+            }
             [data-testid="stSidebar"] .stButton button,
             [data-testid="stSidebar"] .stLinkButton a {
                 height: 42px;
@@ -419,6 +467,12 @@ def _styles() -> str:
                 color: #7c2f22 !important;
                 background: rgba(255, 255, 255, 0.58) !important;
                 box-shadow: none !important;
+            }
+            [data-testid="stSidebar"] [data-testid="stLayoutWrapper"]:has([data-testid="stHorizontalBlock"]) {
+                margin-top: 16px !important;
+            }
+            [data-testid="stSidebar"] [data-testid="stHorizontalBlock"] {
+                margin-top: 0 !important;
             }
             .side-action-link {
                 height: 42px;
@@ -439,7 +493,7 @@ def _styles() -> str:
                 box-shadow: 0 12px 28px rgba(124, 47, 34, 0.08);
             }
             [data-testid="stSidebar"] h4 {
-                margin-top: 18px !important;
+                margin-top: 22px !important;
                 color: #7c2f22 !important;
                 font-size: 14px !important;
                 letter-spacing: 0;
@@ -554,13 +608,10 @@ def _styles() -> str:
                 max-width: 76%;
                 display: flex;
                 flex-direction: column;
-                gap: 6px;
+                gap: 0;
             }
             .ql-msg-label {
-                color: #8a756c;
-                font-size: 12px;
-                font-weight: 800;
-                padding: 0 6px;
+                display: none;
             }
             .ql-msg-bubble {
                 padding: 16px 20px;
