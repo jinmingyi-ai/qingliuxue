@@ -3,6 +3,8 @@ set -e
 
 echo "🚀 Starting Qingliuxue services..."
 
+python scripts/patch_streamlit_shell.py
+
 # 启动 FastAPI 后端（后台运行，固定 8000 端口）
 python -m uvicorn app.backend.api.main:app --host 0.0.0.0 --port 8000 &
 

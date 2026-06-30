@@ -5,7 +5,10 @@ from __future__ import annotations
 
 import streamlit as st
 import streamlit.components.v1 as components
+from pathlib import Path
 from textwrap import dedent
+
+PAGE_ICON = Path(__file__).resolve().parent / "assets" / "qingliuxue-logo-mark.png"
 
 try:
     from ui_theme import base_page_css, nav_html
@@ -115,5 +118,5 @@ def render() -> None:
 
 
 if __name__ == "__main__":
-    st.set_page_config(page_title="轻留学 | 申请能力", page_icon="🎓", layout="wide")
+    st.set_page_config(page_title="轻留学 | 申请能力", page_icon=str(PAGE_ICON), layout="wide")
     render()

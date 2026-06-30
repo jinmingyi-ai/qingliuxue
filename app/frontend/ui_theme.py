@@ -48,11 +48,27 @@ def global_css(hide_sidebar: bool = True) -> str:
     )
     return dedent("""
     <style>
+        #MainMenu,
+        header,
+        footer,
         [data-testid="stHeader"],
         [data-testid="stToolbar"],
         [data-testid="stDecoration"],
-        [data-testid="stStatusWidget"] {
+        [data-testid="stStatusWidget"],
+        [data-testid="stDeployButton"],
+        [data-testid="stMainMenu"],
+        [data-testid="stActionButton"],
+        [data-testid="stToolbarActions"],
+        .stAppToolbar,
+        .viewerBadge_container__1QSob,
+        .viewerBadge_link__1S137 {
             display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            max-height: 0 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
         }
     """).strip() + "\n\n" + sidebar_hide_css + "\n\n" + dedent("""
 
@@ -60,6 +76,7 @@ def global_css(hide_sidebar: bool = True) -> str:
         body,
         #root,
         .stApp,
+        .st-emotion-cache-uf99v8,
         [data-testid="stAppViewContainer"] {
             background: #fff8f5 !important;
         }

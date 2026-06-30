@@ -3,10 +3,14 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from textwrap import dedent
 
 import streamlit as st
 import streamlit.components.v1 as components
+
+FRONTEND_DIR = Path(__file__).resolve().parent
+PAGE_ICON = FRONTEND_DIR / "assets" / "qingliuxue-logo-mark.png"
 
 try:
     from api_client import ApiClientError, login_user, register_user
@@ -18,7 +22,7 @@ except ImportError:  # Allows AppTest/package imports from the project root.
 
 st.set_page_config(
     page_title="轻留学 | AI 留学助手",
-    page_icon="🎓",
+    page_icon=str(PAGE_ICON),
     layout="wide",
     initial_sidebar_state="expanded",
 )

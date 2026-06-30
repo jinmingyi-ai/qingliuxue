@@ -16,9 +16,9 @@ COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . .
-RUN chmod +x scripts/start.sh
+RUN python scripts/patch_streamlit_shell.py --strict \
+    && chmod +x scripts/start.sh
 
 EXPOSE 8501 8000
 
 CMD ["bash", "scripts/start.sh"]
-
