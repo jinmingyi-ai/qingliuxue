@@ -104,6 +104,16 @@ def main() -> None:
     expect(at.session_state["chat_messages"] == [], "chat_fresh_clears_messages")
     expect(at.query_params.get("fresh") is None, "chat_fresh_param_consumed")
 
+    at = AppTest.from_file(APP, default_timeout=30)
+    at.query_params["page"] = "chat"
+    at.query_params["entry"] = "direct"
+    at.session_state["chat_active_entry"] = "direct"
+    at.session_state["chat_messages"] = [{"role": "user", "content": "测试头像"}]
+    at.run(timeout=30)
+    message_text = collect_visible_text(at)
+    expect('<div class="ql-msg-avatar" aria-hidden="true">我</div>' in message_text, "chat_user_avatar_is_me")
+    expect('<div class="ql-msg-avatar" aria-hidden="true">你</div>' not in message_text, "chat_user_avatar_not_you")
+
     print("ALL PASSED")
 
 

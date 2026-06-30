@@ -389,7 +389,7 @@ def _render_message(role: str, content: str) -> None:
     is_user = role == "user"
     is_error = role == "system"
     role_class = "user" if is_user else ("system" if is_error else "assistant")
-    avatar = "你" if is_user else "留"
+    avatar = "我" if is_user else "留"
     st.markdown(
         dedent(f"""
         <div class="ql-msg-row {role_class}">
@@ -459,7 +459,6 @@ def _render_welcome(entry: str) -> None:
                 <p>{description}</p>
             </div>
         </section>
-        <div class="quick-title">可以直接问</div>
         """).strip(),
         unsafe_allow_html=True,
     )
@@ -468,6 +467,7 @@ def _render_welcome(entry: str) -> None:
 def _render_starters(entry: str) -> None:
     st.markdown(
         dedent("""
+        <div class="quick-title">可以直接问</div>
         <div class="ql-starter-grid" aria-label="推荐问题">
         """).strip(),
         unsafe_allow_html=True,
@@ -548,8 +548,8 @@ def _styles() -> str:
                 padding-top: 14px !important;
             }
             .main .block-container {
-                max-width: 1120px !important;
-                padding: 8px 40px 124px !important;
+                max-width: none !important;
+                padding: 8px clamp(32px, 4.8vw, 86px) 124px !important;
             }
             .side-shell {
                 display: block;
@@ -687,12 +687,12 @@ def _styles() -> str:
                 text-decoration: none !important;
             }
             .ql-message-list {
-                width: min(980px, 100%);
-                margin: 0 auto 16px;
+                width: min(1040px, calc(100% - 72px));
+                margin: 0 auto 18px;
             }
             .ql-empty-state {
-                min-height: min(58vh, 560px);
-                width: min(900px, 100%);
+                min-height: min(56vh, 540px);
+                width: min(900px, calc(100% - 80px));
                 margin: 0 auto;
                 display: grid;
                 place-items: center;
@@ -740,12 +740,18 @@ def _styles() -> str:
             }
             .ql-msg-row {
                 display: flex;
-                gap: 12px;
+                gap: 16px;
                 align-items: flex-start;
-                margin: 16px 0;
+                margin: 18px clamp(20px, 3vw, 56px);
             }
             .ql-msg-row.user {
                 justify-content: flex-end;
+                margin-left: clamp(36px, 6vw, 96px);
+                margin-right: clamp(20px, 3vw, 56px);
+            }
+            .ql-msg-row.assistant {
+                margin-left: clamp(20px, 3vw, 56px);
+                margin-right: clamp(36px, 6vw, 96px);
             }
             .ql-msg-row.system {
                 justify-content: center;
@@ -782,7 +788,7 @@ def _styles() -> str:
                 font-weight: 900;
             }
             .ql-msg-stack {
-                max-width: 76%;
+                max-width: min(76%, 780px);
                 display: flex;
                 flex-direction: column;
                 gap: 0;
@@ -909,29 +915,39 @@ def _styles() -> str:
                 background: rgba(255, 252, 250, 0.62) !important;
             }
             .quick-title {
-                max-width: min(980px, 100%);
-                margin: 0 auto 10px;
+                width: min(900px, calc(100% - 112px));
+                margin: 0 auto 14px;
                 color: #7c2f22;
-                font-size: 14px;
-                font-weight: 850;
-                opacity: 0.86;
+                text-align: center;
+                font-size: 15px;
+                font-weight: 900;
+                opacity: 0.9;
             }
-            .main div[data-testid="stHorizontalBlock"] .stButton button {
-                min-height: 62px !important;
-                padding: 12px 15px !important;
+            .ql-starter-grid {
+                width: min(900px, calc(100% - 112px));
+                margin: 0 auto 24px;
+            }
+            .main:has(.quick-title) div[data-testid="stHorizontalBlock"] {
+                width: min(900px, calc(100% - 112px)) !important;
+                margin: 0 auto 16px !important;
+                gap: 18px !important;
+            }
+            .main:has(.quick-title) div[data-testid="stHorizontalBlock"] .stButton button {
+                min-height: 76px !important;
+                padding: 16px 20px !important;
                 justify-content: flex-start !important;
-                text-align: left !important;
+                text-align: center !important;
                 white-space: normal !important;
-                line-height: 1.45 !important;
+                line-height: 1.5 !important;
                 color: #5c514c !important;
                 background: rgba(255, 255, 255, 0.70) !important;
-                border-radius: 12px !important;
-                border-color: rgba(170, 151, 143, 0.32) !important;
+                border-radius: 13px !important;
+                border-color: rgba(184, 79, 59, 0.28) !important;
                 box-shadow: none !important;
-                font-size: 14px !important;
-                font-weight: 760 !important;
+                font-size: 15.5px !important;
+                font-weight: 780 !important;
             }
-            .main div[data-testid="stHorizontalBlock"] .stButton button:hover {
+            .main:has(.quick-title) div[data-testid="stHorizontalBlock"] .stButton button:hover {
                 color: #7c2f22 !important;
                 background: rgba(255, 255, 255, 0.94) !important;
                 border-color: rgba(184, 79, 59, 0.34) !important;
@@ -947,7 +963,7 @@ def _styles() -> str:
                 font-size: 15px !important;
             }
             [data-testid="stChatInput"] {
-                max-width: 820px;
+                max-width: 860px;
                 margin: 0 auto;
             }
             [data-testid="stChatInput"] > div {
@@ -1007,6 +1023,22 @@ def _styles() -> str:
                 .main .block-container {
                     padding: 6px 18px 112px !important;
                 }
+                .ql-message-list,
+                .ql-empty-state,
+                .quick-title,
+                .ql-starter-grid,
+                .main:has(.quick-title) div[data-testid="stHorizontalBlock"] {
+                    width: 100% !important;
+                }
+                .ql-empty-state {
+                    min-height: 46vh;
+                }
+                .ql-msg-row,
+                .ql-msg-row.user,
+                .ql-msg-row.assistant {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
                 .ql-msg-stack {
                     max-width: 82%;
                 }
@@ -1017,10 +1049,10 @@ def _styles() -> str:
                 .ql-msg-row.thinking .ql-msg-avatar {
                     display: grid;
                 }
-                .main div[data-testid="stHorizontalBlock"] .stButton button {
-                    min-height: 44px !important;
-                    padding: 9px 12px !important;
-                    font-size: 14px !important;
+                .main:has(.quick-title) div[data-testid="stHorizontalBlock"] .stButton button {
+                    min-height: 64px !important;
+                    padding: 12px 14px !important;
+                    font-size: 14.5px !important;
                 }
             }
         </style>
