@@ -84,6 +84,7 @@ def main() -> None:
             expect(len(at.chat_input) >= 1, f"{label}_chat_input")
             expect("ql-empty-state" in text, f"{label}_empty_welcome_state")
             expect("Agent" in text, f"{label}_agent_description")
+            expect("ql-starter-card" in text, f"{label}_starter_cards")
             expect("返回首页" in text, f"{label}_sidebar_home")
             expect("新对话" in text, f"{label}_sidebar_new_chat")
             expect("历史对话" in text, f"{label}_sidebar_history")
@@ -103,6 +104,15 @@ def main() -> None:
     expect(len(at.exception) == 0, "chat_fresh_no_exception")
     expect(at.session_state["chat_messages"] == [], "chat_fresh_clears_messages")
     expect(at.query_params.get("fresh") is None, "chat_fresh_param_consumed")
+
+    at = AppTest.from_file(APP, default_timeout=30)
+    at.query_params["page"] = "chat"
+    at.query_params["entry"] = "direct"
+    at.query_params["starter"] = "0"
+    at.run(timeout=30)
+    expect(len(at.exception) == 0, "chat_starter_query_no_exception")
+    expect(at.session_state["chat_messages"][0]["role"] == "user", "chat_starter_query_adds_user_message")
+    expect(at.query_params.get("starter") is None, "chat_starter_query_consumed")
 
     at = AppTest.from_file(APP, default_timeout=30)
     at.query_params["page"] = "chat"

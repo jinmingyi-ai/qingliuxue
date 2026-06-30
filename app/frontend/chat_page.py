@@ -465,31 +465,50 @@ def _render_welcome(entry: str) -> None:
 
 
 def _render_starters(entry: str) -> None:
+    prompts = _starter_prompts(entry)
+    cards = []
+    for index, prompt in enumerate(prompts[:4]):
+        prompt_html = html.escape(prompt)
+        href = f"?page=chat&entry={html.escape(entry)}&starter={index}"
+        cards.append(
+            f"""
+            <a class="ql-starter-card" href="{href}">
+                <span>{prompt_html}</span>
+            </a>
+            """
+        )
     st.markdown(
-        dedent("""
+        dedent(f"""
         <div class="quick-title">可以直接问</div>
         <div class="ql-starter-grid" aria-label="推荐问题">
+            {''.join(cards)}
+        </div>
         """).strip(),
         unsafe_allow_html=True,
     )
+
+
+def _process_starter_query(entry: str) -> None:
+    starter = st.query_params.get("starter")
+    if starter is None:
+        return
+    try:
+        index = int(starter)
+    except (TypeError, ValueError):
+        st.query_params.pop("starter", None)
+        st.rerun()
+        return
+
     prompts = _starter_prompts(entry)
-    for row in range(2):
-        cols = st.columns(2, gap="small")
-        for col_index, col in enumerate(cols):
-            index = row * 2 + col_index
-            if index >= len(prompts):
-                continue
-            prompt = prompts[index]
-            with col:
-                if st.button(prompt, key=f"starter_{entry}_{index}", use_container_width=True):
-                    _queue_chat_request(
-                        prompt,
-                        entry,
-                        requested_agents=_entry_agents(entry),
-                        questionnaire=_pending_questionnaire(entry),
-                    )
-                    st.rerun()
-    st.markdown("</div>", unsafe_allow_html=True)
+    if 0 <= index < len(prompts):
+        _queue_chat_request(
+            prompts[index],
+            entry,
+            requested_agents=_entry_agents(entry),
+            questionnaire=_pending_questionnaire(entry),
+        )
+    st.query_params.pop("starter", None)
+    st.rerun()
 
 
 def _styles() -> str:
@@ -691,7 +710,7 @@ def _styles() -> str:
                 margin: 0 auto 18px;
             }
             .ql-empty-state {
-                min-height: min(56vh, 540px);
+                min-height: min(54vh, 520px);
                 width: min(900px, calc(100% - 80px));
                 margin: 0 auto;
                 display: grid;
@@ -701,29 +720,29 @@ def _styles() -> str:
             .ql-empty-center {
                 display: grid;
                 justify-items: center;
-                gap: 10px;
-                padding-top: 44px;
+                gap: 0;
+                padding-top: 40px;
             }
             .ql-empty-logo {
-                width: 82px;
-                height: 82px;
+                width: 152px;
+                height: 152px;
                 display: grid;
                 place-items: center;
-                margin-bottom: 2px;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.74);
-                border: 1px solid rgba(234, 217, 210, 0.86);
-                box-shadow: 0 16px 34px rgba(73, 42, 33, 0.08);
-                overflow: hidden;
+                margin: 0 0 18px;
+                border-radius: 0;
+                background: transparent;
+                border: 0;
+                box-shadow: none;
+                overflow: visible;
             }
             .ql-empty-logo img {
-                width: 78px;
-                height: 78px;
+                width: 100%;
+                height: 100%;
                 object-fit: contain;
                 display: block;
             }
             .ql-empty-center h1 {
-                margin: 0;
+                margin: 0 0 18px;
                 color: #2b2724;
                 font-size: 28px;
                 line-height: 1.22;
@@ -915,8 +934,8 @@ def _styles() -> str:
                 background: rgba(255, 252, 250, 0.62) !important;
             }
             .quick-title {
-                width: min(900px, calc(100% - 112px));
-                margin: 0 auto 14px;
+                width: min(1040px, calc(100% - 240px));
+                margin: 0 auto 22px;
                 color: #7c2f22;
                 text-align: center;
                 font-size: 15px;
@@ -924,34 +943,39 @@ def _styles() -> str:
                 opacity: 0.9;
             }
             .ql-starter-grid {
-                width: min(900px, calc(100% - 112px));
-                margin: 0 auto 24px;
+                width: min(1040px, calc(100% - 240px));
+                margin: 0 auto 38px;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 26px 36px;
             }
-            .main:has(.quick-title) div[data-testid="stHorizontalBlock"] {
-                width: min(900px, calc(100% - 112px)) !important;
-                margin: 0 auto 16px !important;
-                gap: 18px !important;
-            }
-            .main:has(.quick-title) div[data-testid="stHorizontalBlock"] .stButton button {
-                min-height: 76px !important;
-                padding: 16px 20px !important;
-                justify-content: flex-start !important;
-                text-align: center !important;
-                white-space: normal !important;
-                line-height: 1.5 !important;
+            .ql-starter-card {
+                min-height: 90px;
+                padding: 20px 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 color: #5c514c !important;
                 background: rgba(255, 255, 255, 0.70) !important;
-                border-radius: 13px !important;
-                border-color: rgba(184, 79, 59, 0.28) !important;
+                border: 1px solid rgba(184, 79, 59, 0.30);
+                border-radius: 14px;
                 box-shadow: none !important;
-                font-size: 15.5px !important;
+                text-align: center;
+                font-size: 16px !important;
+                line-height: 1.55;
                 font-weight: 780 !important;
+                text-decoration: none !important;
+                transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
             }
-            .main:has(.quick-title) div[data-testid="stHorizontalBlock"] .stButton button:hover {
+            .ql-starter-card:hover {
+                transform: translateY(-1px);
                 color: #7c2f22 !important;
                 background: rgba(255, 255, 255, 0.94) !important;
-                border-color: rgba(184, 79, 59, 0.34) !important;
+                border-color: rgba(184, 79, 59, 0.42) !important;
                 box-shadow: 0 12px 26px rgba(73, 42, 33, 0.07) !important;
+            }
+            .ql-starter-card span {
+                max-width: 95%;
             }
             [data-testid="stChatInput"] textarea {
                 border: 0 !important;
@@ -1026,12 +1050,26 @@ def _styles() -> str:
                 .ql-message-list,
                 .ql-empty-state,
                 .quick-title,
-                .ql-starter-grid,
-                .main:has(.quick-title) div[data-testid="stHorizontalBlock"] {
+                .ql-starter-grid {
                     width: 100% !important;
                 }
                 .ql-empty-state {
                     min-height: 46vh;
+                }
+                .ql-empty-center {
+                    gap: 0;
+                    padding-top: 26px;
+                }
+                .ql-empty-logo,
+                .ql-empty-logo img {
+                    width: 108px;
+                    height: 108px;
+                }
+                .ql-empty-logo {
+                    margin-bottom: 12px;
+                }
+                .ql-empty-center h1 {
+                    margin-bottom: 12px;
                 }
                 .ql-msg-row,
                 .ql-msg-row.user,
@@ -1049,9 +1087,14 @@ def _styles() -> str:
                 .ql-msg-row.thinking .ql-msg-avatar {
                     display: grid;
                 }
-                .main:has(.quick-title) div[data-testid="stHorizontalBlock"] .stButton button {
-                    min-height: 64px !important;
-                    padding: 12px 14px !important;
+                .ql-starter-grid {
+                    grid-template-columns: 1fr;
+                    gap: 14px;
+                    margin: 0 auto 24px;
+                }
+                .ql-starter-card {
+                    min-height: 68px;
+                    padding: 13px 16px;
                     font-size: 14.5px !important;
                 }
             }
@@ -1070,6 +1113,7 @@ def render(entry: str = "direct") -> None:
             st.rerun()
     else:
         st.session_state["chat_active_entry"] = entry
+    _process_starter_query(entry)
     if hasattr(st, "html"):
         st.html(_styles())
     else:
