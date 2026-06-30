@@ -120,6 +120,7 @@ def _ensure_state() -> None:
     st.session_state.setdefault("last_route", [])
     st.session_state.setdefault("last_agent_results", [])
     st.session_state.setdefault("last_call_status", {})
+    st.session_state.setdefault("pending_chat_request", None)
 
 
 def _token() -> str | None:
@@ -173,6 +174,35 @@ def _append_assistant_result(result: dict[str, Any]) -> None:
 def _append_error(message: str) -> None:
     st.session_state["chat_messages"].append({"role": "system", "content": message})
     st.session_state["last_call_status"] = {"transport": "api_error", "api_warning": message}
+
+
+def _queue_chat_request(message: str, entry: str, requested_agents: list[str] | None = None) -> None:
+    st.session_state["chat_messages"].append({"role": "user", "content": message})
+    st.session_state["pending_chat_request"] = {
+        "message": message,
+        "entry": entry,
+        "requested_agents": requested_agents,
+    }
+
+
+def _process_pending_chat(entry: str) -> None:
+    pending = st.session_state.get("pending_chat_request")
+    if not pending:
+        return
+
+    try:
+        result = _call_agent(
+            pending["message"],
+            pending.get("entry") or entry,
+            requested_agents=pending.get("requested_agents"),
+        )
+        st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
+        _store_result(result)
+    except ApiClientError as exc:
+        _append_error(str(exc))
+    finally:
+        st.session_state["pending_chat_request"] = None
+    st.rerun()
 
 
 def _load_conversations() -> list[dict[str, Any]]:
@@ -333,6 +363,20 @@ def _render_message(role: str, content: str) -> None:
     )
 
 
+def _render_thinking_message() -> None:
+    st.markdown(
+        dedent("""
+        <div class="ql-msg-row assistant thinking">
+            <div class="ql-msg-avatar" aria-hidden="true">留</div>
+            <div class="ql-thinking-inline" aria-live="polite">
+                <span>正在思考</span><span class="ql-thinking-dots"><i></i><i></i><i></i></span>
+            </div>
+        </div>
+        """).strip(),
+        unsafe_allow_html=True,
+    )
+
+
 def _has_user_turn() -> bool:
     return any(message.get("role") == "user" for message in st.session_state.get("chat_messages", []))
 
@@ -352,14 +396,7 @@ def _render_starters(entry: str) -> None:
     for index, (title, prompt) in enumerate(_starter_prompts(entry)):
         with cols[index % 4]:
             if st.button(title, key=f"starter_{entry}_{index}", use_container_width=True, help=prompt):
-                st.session_state["chat_messages"].append({"role": "user", "content": prompt})
-                try:
-                    with st.spinner("正在调用真实 LLM..."):
-                        result = _call_agent(prompt, entry)
-                    st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
-                    _store_result(result)
-                except ApiClientError as exc:
-                    _append_error(str(exc))
+                _queue_chat_request(prompt, entry)
                 st.rerun()
 
 
@@ -648,6 +685,48 @@ def _styles() -> str:
                 font-weight: 850;
                 color: inherit;
             }
+            .ql-msg-row.thinking {
+                align-items: center;
+                margin-top: 16px;
+            }
+            .ql-thinking-inline {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                color: #6f625d;
+                font-size: 15px;
+                font-weight: 750;
+            }
+            .ql-thinking-dots {
+                display: inline-flex;
+                gap: 4px;
+                transform: translateY(1px);
+            }
+            .ql-thinking-dots i {
+                width: 4px;
+                height: 4px;
+                border-radius: 999px;
+                background: #b94f3b;
+                opacity: 0.35;
+                animation: qlThinkingPulse 1.15s infinite ease-in-out;
+            }
+            .ql-thinking-dots i:nth-child(2) {
+                animation-delay: 0.16s;
+            }
+            .ql-thinking-dots i:nth-child(3) {
+                animation-delay: 0.32s;
+            }
+            @keyframes qlThinkingPulse {
+                0%, 80%, 100% {
+                    opacity: 0.28;
+                    transform: translateY(0);
+                }
+                40% {
+                    opacity: 0.88;
+                    transform: translateY(-3px);
+                }
+            }
             .stButton button,
             .stLinkButton a {
                 border-radius: 14px !important;
@@ -781,6 +860,9 @@ def _styles() -> str:
                 .ql-msg-label {
                     display: none;
                 }
+                .ql-msg-row.thinking .ql-msg-avatar {
+                    display: grid;
+                }
                 .main div[data-testid="stHorizontalBlock"] .stButton button {
                     min-height: 44px !important;
                     padding: 9px 12px !important;
@@ -803,20 +885,17 @@ def render(entry: str = "direct") -> None:
     st.markdown('<div class="ql-message-list">', unsafe_allow_html=True)
     for message in st.session_state.get("chat_messages", []):
         _render_message(message.get("role", "assistant"), message.get("content", ""))
+    if st.session_state.get("pending_chat_request"):
+        _render_thinking_message()
     st.markdown("</div>", unsafe_allow_html=True)
 
     _render_agent_trace()
 
-    if not _has_user_turn():
+    if not _has_user_turn() and not st.session_state.get("pending_chat_request"):
         _render_starters(entry)
 
     if user_input := st.chat_input("告诉我你的 GPA、专业、目标，或继续问我..."):
-        st.session_state["chat_messages"].append({"role": "user", "content": user_input})
-        try:
-            with st.spinner("正在调用真实 LLM..."):
-                result = _call_agent(user_input, entry)
-            st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
-            _store_result(result)
-        except ApiClientError as exc:
-            _append_error(str(exc))
+        _queue_chat_request(user_input, entry)
         st.rerun()
+
+    _process_pending_chat(entry)

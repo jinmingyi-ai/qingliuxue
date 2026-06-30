@@ -166,20 +166,21 @@ def base_page_css() -> str:
         }
 
         .ql-logo-wrap {
-            width: 52px;
-            height: 52px;
-            padding: 5px;
+            width: 54px;
+            height: 54px;
+            padding: 0;
             display: inline-grid;
             place-items: center;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.82);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 12px 22px rgba(124, 47, 34, 0.12);
+            border-radius: 0;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            overflow: visible;
         }
 
         .ql-logo {
-            width: 41px;
-            height: 41px;
+            width: 54px;
+            height: 54px;
             object-fit: contain;
             display: block;
         }
@@ -479,7 +480,7 @@ def base_page_css() -> str:
 
 
 def nav_html(active: str = "home", user_email: str | None = None) -> str:
-    logo = logo_uri()
+    logo = logo_mark_uri()
     items = [
         ("home", "首页", "?page=home"),
         ("school", "智能选校", "?page=school"),
