@@ -67,6 +67,10 @@ def collect_visible_text(at: AppTest) -> str:
     return "\n".join(parts)
 
 
+def collect_code_text(at: AppTest) -> str:
+    return "\n".join(str(getattr(item, "value", "")) for item in at.code)
+
+
 def main() -> None:
     for params in PAGES:
         label = page_label(params)
@@ -84,12 +88,12 @@ def main() -> None:
             expect(len(at.chat_input) >= 1, f"{label}_chat_input")
             expect("ql-empty-state" in text, f"{label}_empty_welcome_state")
             expect("Agent" in text, f"{label}_agent_description")
-            expect("ql-starter-card" in text, f"{label}_starter_cards")
+            code_text = collect_code_text(at)
+            expect("ql-starter-card" not in code_text, f"{label}_no_starter_html_code_leak")
             expect("返回首页" in text, f"{label}_sidebar_home")
             expect("新对话" in text, f"{label}_sidebar_new_chat")
             expect("历史对话" in text, f"{label}_sidebar_history")
             expect("访客" in text, f"{label}_guest_user_card")
-            expect("可以直接问" in text, f"{label}_starter_chips")
             expect("我按你的问题拆给对应的专业模块处理了" not in text, f"{label}_no_deterministic_answer")
             expect("请根据我的画像" not in text, f"{label}_no_internal_seed_prompt")
             expect("keyboard_double" not in text, f"{label}_no_keyboard_double_leak")

@@ -470,22 +470,14 @@ def _render_starters(entry: str) -> None:
     for index, prompt in enumerate(prompts[:4]):
         prompt_html = html.escape(prompt)
         href = f"?page=chat&entry={html.escape(entry)}&starter={index}"
-        cards.append(
-            f"""
-            <a class="ql-starter-card" href="{href}">
-                <span>{prompt_html}</span>
-            </a>
-            """
-        )
-    st.markdown(
-        dedent(f"""
-        <div class="quick-title">可以直接问</div>
-        <div class="ql-starter-grid" aria-label="推荐问题">
-            {''.join(cards)}
-        </div>
-        """).strip(),
-        unsafe_allow_html=True,
+        cards.append(f'<a class="ql-starter-card" href="{href}"><span>{prompt_html}</span></a>')
+    markup = (
+        '<div class="quick-title">可以直接问</div>'
+        '<div class="ql-starter-grid" aria-label="推荐问题">'
+        f"{''.join(cards)}"
+        "</div>"
     )
+    st.markdown(markup, unsafe_allow_html=True)
 
 
 def _process_starter_query(entry: str) -> None:
