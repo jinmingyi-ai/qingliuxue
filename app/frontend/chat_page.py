@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import html
+import random
 import re
 import uuid
 from textwrap import dedent
@@ -23,92 +24,106 @@ except ImportError:  # Allows importing as app.frontend.chat_page in tests.
 
 ENTRY_CONFIG = {
     "direct": {
-        "title": "真实案例路线推荐",
+        "title": "真实案例路线 Agent",
         "seed": "请基于真实案例库，给我生成一条当前比较热门且可执行的留学路线。",
         "agents": ["case"],
-        "description": "先用案例库给一条可参考路线，再根据聊天继续收集画像。",
+        "description": "先参考真实申请案例给出路线，再通过对话补全背景、目标和风险点。",
     },
     "personalized": {
-        "title": "个性化智能选校",
+        "title": "智能选校 Agent",
         "seed": "请根据我已经填写的问卷和现有用户画像，生成一版个性化智能选校路线。",
         "agents": ["case"],
-        "description": "结合问卷、长期记忆和真实案例做选校路线。",
+        "description": "结合问卷、用户画像和案例库，生成冲刺、匹配、保底的选校路线。",
     },
     "timeline": {
-        "title": "时间线和任务规划",
+        "title": "时间线规划 Agent",
         "seed": "请根据我的画像生成申请时间线和任务规划；如果信息不足，请先给一条常见路线。",
         "agents": ["timeline"],
-        "description": "按国家、项目和入学季生成阶段性任务表。",
+        "description": "按入学季、国家和申请阶段，把考试、文书、网申和签证拆成任务。",
     },
     "essay": {
-        "title": "文书策略和指导",
+        "title": "文书指导 Agent",
         "seed": "请根据我的画像和文书知识库，生成 SOP/PS 文书策略和素材准备方向。",
         "agents": ["essay"],
-        "description": "结合你的经历和目标项目，梳理文书主线、素材和表达重点。",
+        "description": "根据经历、专业方向和目标项目，梳理 SOP/PS 主线、素材和表达重点。",
     },
     "comparison": {
-        "title": "多方案对比",
+        "title": "多方案对比 Agent",
         "seed": "请结合我的画像，比较几个适合我的留学国家、专业或项目方案。",
         "agents": ["comparison"],
-        "description": "把国家、专业、预算、就业和申请难度放在同一张表里比较。",
+        "description": "把国家、专业、费用、签证、就业和申请难度放在同一张表里比较。",
     },
     "materials": {
-        "title": "材料准备指导",
+        "title": "材料准备 Agent",
         "seed": "请根据我的画像和材料知识库，生成申请材料准备清单和注意事项。",
         "agents": ["materials"],
-        "description": "生成申请材料清单、准备顺序和容易遗漏的细节。",
+        "description": "生成材料 checklist、准备顺序、推荐信重点和容易遗漏的提交细节。",
     },
     "visa": {
-        "title": "签证和毕业后规划",
+        "title": "签证规划 Agent",
         "seed": "请根据我的画像，生成签证、入学后准备和毕业后路径规划。",
         "agents": ["visa"],
-        "description": "规划签证、入学衔接、工签窗口和毕业后发展路径。",
+        "description": "梳理签证、资金证明、行前准备、工签窗口和毕业后发展路径。",
     },
 }
 
 
 STARTER_PROMPTS = {
     "direct": [
-        ("真实案例路线", "GPA 3.55，有 AI 产品实习，想申请美国 CS/DS 硕士，请按真实案例给路线。"),
-        ("补全我的画像", "我还不确定国家和预算，请先问我 3 个关键问题再给方向。"),
-        ("国家对比", "预算有限，更看重就业和性价比，英国、加拿大、澳洲怎么选？"),
-        ("下一步计划", "如果我想 2027 年秋季入学，接下来 3 个月应该做什么？"),
+        "帮我按真实案例生成一条美国 CS/DS 硕士路线，说明冲刺、匹配、保底。",
+        "我还没确定国家和预算，请先问我 3 个关键问题再给方向。",
+        "预算 35-45 万，更看重就业，英国、加拿大、澳洲怎么选？",
+        "我想 2027 秋入学，请列出接下来 3 个月的优先任务。",
+        "本科 GPA 3.3，实习普通，想申请教育学硕士，怎么包装优势？",
+        "请找一条适合普通背景学生的稳妥留学路线，并说明关键取舍。",
     ],
     "personalized": [
-        ("生成选校路线", "请根据我刚填写的信息，给我冲刺、匹配、保底三档路线。"),
-        ("补全风险点", "我的背景里哪些地方最影响申请结果？请优先指出。"),
-        ("案例参考", "请找和我最像的真实案例，并解释为什么相似。"),
-        ("调整偏好", "请更重视就业导向和预算稳定，重新推荐路线。"),
+        "根据我刚填的信息，给我一版冲刺、匹配、保底选校路线。",
+        "请指出我背景里最影响录取的 3 个风险点和补强办法。",
+        "帮我找相似案例，并说明我该参考哪些做法。",
+        "在就业和预算优先的前提下，重新排序申请国家和项目。",
+        "如果我的科研不强，请推荐更适合普通背景的项目组合。",
+        "请基于我的偏好，列出最需要马上确认的 3 个申请条件。",
     ],
     "timeline": [
-        ("按月拆任务", "帮我生成 2027 年秋季入学申请时间线，按月份拆任务。"),
-        ("先做什么", "我现在信息不完整，请先给一条通用但可执行的申请节奏。"),
-        ("考试规划", "把语言考试、GRE/GMAT、选校和文书节点放在同一条线上。"),
-        ("风险提醒", "申请时间线里最容易拖延和返工的环节有哪些？"),
+        "我计划 2027 秋入学，请按月份生成申请时间线。",
+        "请把语言考试、选校、文书、网申拆成阶段任务。",
+        "我现在准备晚了，请列出未来 8 周必须完成的事。",
+        "帮我标出申请季最容易拖延和返工的节点。",
+        "我大三下才开始准备，请生成一条尽量稳妥的节奏。",
+        "请按英国申请季，列出每个月的材料和提交重点。",
     ],
     "essay": [
-        ("SOP 主线", "SOP 怎么写才能突出实习、项目和职业目标？"),
-        ("素材清单", "请给我一份文书素材收集清单，按重要性排序。"),
-        ("中英差异", "美国 SOP 和英国 PS 写法有什么不同？"),
-        ("避免踩坑", "中国学生写文书最常见的问题有哪些？"),
+        "我的经历比较普通，SOP 怎样写出清晰主线？",
+        "帮我整理文书素材清单，按重要性排序。",
+        "美国 SOP 和英国 PS 的写法差异，请用教育学方向举例。",
+        "请指出中国学生文书常见空泛表达，并给替换思路。",
+        "我只有普通实习和课程项目，PS 该突出哪些细节？",
+        "帮我把科研、实习和职业目标连成一条文书逻辑。",
     ],
     "comparison": [
-        ("三国对比", "预算有限，更看重就业和性价比，英国、加拿大、澳洲怎么选？"),
-        ("专业对比", "CS、DS、BA 三个方向从申请难度和就业看怎么选？"),
-        ("项目路线", "比较美国 MSBA、英国 Business Analytics 和新加坡数据相关项目。"),
-        ("决策矩阵", "请把费用、时长、就业、移民可能性做成对比矩阵。"),
+        "教育学、心理学、TESOL、社工这几个方向该怎么选？",
+        "英国 vs 加拿大教育学硕士，请从费用、签证和就业对比。",
+        "CS、DS、BA 三个方向，从申请难度和就业做矩阵。",
+        "我预算有限，请比较 3 个性价比更高的国家方案。",
+        "美国一年制项目和英国授课型硕士，适合哪些学生？",
+        "请把费用、时长、就业、留下工作的可能性做成对比表。",
     ],
     "materials": [
-        ("材料清单", "申请研究生需要准备哪些材料？推荐信、成绩单、简历有什么坑？"),
-        ("推荐信计划", "我应该找什么样的推荐人？每封信重点写什么？"),
-        ("提交顺序", "请按时间顺序列出材料准备和提交检查表。"),
-        ("认证细节", "成绩单、在读证明、翻译件和公证认证要注意什么？"),
+        "申请教育学硕士，请生成材料 checklist 和准备顺序。",
+        "推荐信找谁更合适？请分别设计每封信重点。",
+        "成绩单、在读证明、翻译和认证要按什么顺序做？",
+        "简历和文书素材怎样准备，才不会后期返工？",
+        "申请英国和美国项目，材料准备上最容易混淆什么？",
+        "请列出网申提交前必须二次检查的材料细节。",
     ],
     "visa": [
-        ("签证路径", "拿到录取后签证、住宿、行前和毕业后求职怎么规划？"),
-        ("资金证明", "请解释资金证明、存款时间和常见风险点。"),
-        ("毕业后规划", "如果目标是毕业后留当地工作，我该提前准备什么？"),
-        ("行前清单", "请生成一份入学前 60 天行前清单。"),
+        "拿到录取后，请生成签证、住宿、行前的 60 天清单。",
+        "资金证明需要注意什么？请列出常见风险点。",
+        "目标毕业后留当地工作，我现在该准备哪些能力？",
+        "英国、加拿大、澳洲毕业后工签路径有什么差异？",
+        "请按时间顺序列出录取后到入学前的关键事项。",
+        "如果担心签证被卡，需要提前准备哪些解释材料？",
     ],
 }
 
@@ -121,6 +136,9 @@ def _ensure_state() -> None:
     st.session_state.setdefault("last_agent_results", [])
     st.session_state.setdefault("last_call_status", {})
     st.session_state.setdefault("pending_chat_request", None)
+    st.session_state.setdefault("starter_prompt_entry", None)
+    st.session_state.setdefault("starter_prompt_sample", [])
+    st.session_state.setdefault("chat_active_entry", None)
 
 
 def _token() -> str | None:
@@ -176,12 +194,33 @@ def _append_error(message: str) -> None:
     st.session_state["last_call_status"] = {"transport": "api_error", "api_warning": message}
 
 
-def _queue_chat_request(message: str, entry: str, requested_agents: list[str] | None = None) -> None:
+def _reset_chat_view(entry: str, keep_questionnaire: bool = True) -> None:
+    questionnaire = st.session_state.get("pending_questionnaire") if keep_questionnaire else None
+    st.session_state["chat_messages"] = []
+    st.session_state["conversation_id"] = None
+    st.session_state["last_route"] = []
+    st.session_state["last_agent_results"] = []
+    st.session_state["last_call_status"] = {}
+    st.session_state["pending_chat_request"] = None
+    st.session_state["starter_prompt_entry"] = None
+    st.session_state["starter_prompt_sample"] = []
+    st.session_state["chat_active_entry"] = entry
+    if keep_questionnaire and questionnaire is not None:
+        st.session_state["pending_questionnaire"] = questionnaire
+
+
+def _queue_chat_request(
+    message: str,
+    entry: str,
+    requested_agents: list[str] | None = None,
+    questionnaire: dict[str, Any] | None = None,
+) -> None:
     st.session_state["chat_messages"].append({"role": "user", "content": message})
     st.session_state["pending_chat_request"] = {
         "message": message,
         "entry": entry,
         "requested_agents": requested_agents,
+        "questionnaire": questionnaire,
     }
 
 
@@ -195,9 +234,12 @@ def _process_pending_chat(entry: str) -> None:
             pending["message"],
             pending.get("entry") or entry,
             requested_agents=pending.get("requested_agents"),
+            questionnaire=pending.get("questionnaire"),
         )
         st.session_state["chat_messages"].append({"role": "assistant", "content": result.get("answer", "我暂时没有生成结果。")})
         _store_result(result)
+        if pending.get("questionnaire") is not None:
+            st.session_state.pop("pending_questionnaire", None)
     except ApiClientError as exc:
         _append_error(str(exc))
     finally:
@@ -247,9 +289,7 @@ def _conversation_label(item: dict[str, Any]) -> str:
 
 
 def _new_chat(entry: str) -> None:
-    st.session_state["chat_messages"] = []
-    st.session_state["last_route"] = []
-    st.session_state["last_agent_results"] = []
+    _reset_chat_view(entry)
     try:
         data = create_conversation(
             token=_token(),
@@ -381,23 +421,75 @@ def _has_user_turn() -> bool:
     return any(message.get("role") == "user" for message in st.session_state.get("chat_messages", []))
 
 
-def _starter_prompts(entry: str) -> list[tuple[str, str]]:
-    return STARTER_PROMPTS.get(entry) or STARTER_PROMPTS["direct"]
+def _entry_agents(entry: str) -> list[str] | None:
+    agents = ENTRY_CONFIG.get(entry, {}).get("agents") or []
+    return list(agents) if agents else None
+
+
+def _pending_questionnaire(entry: str) -> dict[str, Any] | None:
+    if entry != "personalized":
+        return None
+    questionnaire = st.session_state.get("pending_questionnaire")
+    return questionnaire if isinstance(questionnaire, dict) and questionnaire else None
+
+
+def _starter_prompts(entry: str) -> list[str]:
+    prompt_pool = STARTER_PROMPTS.get(entry) or STARTER_PROMPTS["direct"]
+    if (
+        st.session_state.get("starter_prompt_entry") != entry
+        or not st.session_state.get("starter_prompt_sample")
+    ):
+        count = min(4, len(prompt_pool))
+        st.session_state["starter_prompt_entry"] = entry
+        st.session_state["starter_prompt_sample"] = random.sample(prompt_pool, count)
+    return list(st.session_state["starter_prompt_sample"])
+
+
+def _render_welcome(entry: str) -> None:
+    config = ENTRY_CONFIG.get(entry, ENTRY_CONFIG["direct"])
+    logo = logo_mark_uri()
+    title = html.escape(str(config.get("title") or "轻留学 Agent"))
+    description = html.escape(str(config.get("description") or "告诉我你的背景和目标，我会先给一版可执行方案。"))
+    st.markdown(
+        dedent(f"""
+        <section class="ql-empty-state">
+            <div class="ql-empty-center">
+                <span class="ql-empty-logo"><img src="{logo}" alt="轻留学" /></span>
+                <h1>{title}</h1>
+                <p>{description}</p>
+            </div>
+        </section>
+        <div class="quick-title">可以直接问</div>
+        """).strip(),
+        unsafe_allow_html=True,
+    )
 
 
 def _render_starters(entry: str) -> None:
     st.markdown(
         dedent("""
-        <div class="quick-title">可以直接问</div>
+        <div class="ql-starter-grid" aria-label="推荐问题">
         """).strip(),
         unsafe_allow_html=True,
     )
-    cols = st.columns(4, gap="small")
-    for index, (title, prompt) in enumerate(_starter_prompts(entry)):
-        with cols[index % 4]:
-            if st.button(title, key=f"starter_{entry}_{index}", use_container_width=True, help=prompt):
-                _queue_chat_request(prompt, entry)
-                st.rerun()
+    prompts = _starter_prompts(entry)
+    for row in range(2):
+        cols = st.columns(2, gap="small")
+        for col_index, col in enumerate(cols):
+            index = row * 2 + col_index
+            if index >= len(prompts):
+                continue
+            prompt = prompts[index]
+            with col:
+                if st.button(prompt, key=f"starter_{entry}_{index}", use_container_width=True):
+                    _queue_chat_request(
+                        prompt,
+                        entry,
+                        requested_agents=_entry_agents(entry),
+                        questionnaire=_pending_questionnaire(entry),
+                    )
+                    st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def _styles() -> str:
@@ -426,7 +518,7 @@ def _styles() -> str:
             }
             .stApp {
                 background:
-                    radial-gradient(circle at 62% 10%, rgba(237, 118, 93, 0.10), transparent 34%),
+                    radial-gradient(circle at 50% 18%, rgba(237, 118, 93, 0.08), transparent 34%),
                     linear-gradient(180deg, #fffaf8 0%, #fff7f3 100%) !important;
             }
             html,
@@ -457,7 +549,7 @@ def _styles() -> str:
             }
             .main .block-container {
                 max-width: 1120px !important;
-                padding: 8px 40px 128px !important;
+                padding: 8px 40px 124px !important;
             }
             .side-shell {
                 display: block;
@@ -597,6 +689,54 @@ def _styles() -> str:
             .ql-message-list {
                 width: min(980px, 100%);
                 margin: 0 auto 16px;
+            }
+            .ql-empty-state {
+                min-height: min(58vh, 560px);
+                width: min(900px, 100%);
+                margin: 0 auto;
+                display: grid;
+                place-items: center;
+                text-align: center;
+            }
+            .ql-empty-center {
+                display: grid;
+                justify-items: center;
+                gap: 10px;
+                padding-top: 44px;
+            }
+            .ql-empty-logo {
+                width: 82px;
+                height: 82px;
+                display: grid;
+                place-items: center;
+                margin-bottom: 2px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.74);
+                border: 1px solid rgba(234, 217, 210, 0.86);
+                box-shadow: 0 16px 34px rgba(73, 42, 33, 0.08);
+                overflow: hidden;
+            }
+            .ql-empty-logo img {
+                width: 78px;
+                height: 78px;
+                object-fit: contain;
+                display: block;
+            }
+            .ql-empty-center h1 {
+                margin: 0;
+                color: #2b2724;
+                font-size: 28px;
+                line-height: 1.22;
+                font-weight: 930;
+                letter-spacing: 0;
+            }
+            .ql-empty-center p {
+                max-width: 560px;
+                margin: 0;
+                color: #6f625d;
+                font-size: 17px;
+                line-height: 1.65;
+                font-weight: 650;
             }
             .ql-msg-row {
                 display: flex;
@@ -770,29 +910,37 @@ def _styles() -> str:
             }
             .quick-title {
                 max-width: min(980px, 100%);
-                margin: 18px auto 10px;
+                margin: 0 auto 10px;
                 color: #7c2f22;
-                font-size: 16px;
-                font-weight: 900;
+                font-size: 14px;
+                font-weight: 850;
+                opacity: 0.86;
             }
             .main div[data-testid="stHorizontalBlock"] .stButton button {
-                min-height: 48px !important;
-                padding: 10px 16px !important;
-                justify-content: center !important;
-                text-align: center !important;
+                min-height: 62px !important;
+                padding: 12px 15px !important;
+                justify-content: flex-start !important;
+                text-align: left !important;
                 white-space: normal !important;
-                line-height: 1.25 !important;
-                color: #8a3427 !important;
-                background: rgba(255, 252, 250, 0.88) !important;
-                border-radius: 999px !important;
-                border-color: rgba(231, 185, 170, 0.90) !important;
-                box-shadow: 0 8px 20px rgba(73, 42, 33, 0.035) !important;
-                font-size: 15px !important;
+                line-height: 1.45 !important;
+                color: #5c514c !important;
+                background: rgba(255, 255, 255, 0.70) !important;
+                border-radius: 12px !important;
+                border-color: rgba(170, 151, 143, 0.32) !important;
+                box-shadow: none !important;
+                font-size: 14px !important;
+                font-weight: 760 !important;
+            }
+            .main div[data-testid="stHorizontalBlock"] .stButton button:hover {
+                color: #7c2f22 !important;
+                background: rgba(255, 255, 255, 0.94) !important;
+                border-color: rgba(184, 79, 59, 0.34) !important;
+                box-shadow: 0 12px 26px rgba(73, 42, 33, 0.07) !important;
             }
             [data-testid="stChatInput"] textarea {
                 border: 0 !important;
                 box-shadow: none !important;
-                background: transparent !important;
+                background: #ffffff !important;
                 min-height: 44px !important;
                 padding: 12px 4px !important;
                 color: #2b2724 !important;
@@ -805,10 +953,16 @@ def _styles() -> str:
             [data-testid="stChatInput"] > div {
                 min-height: 64px !important;
                 border-radius: 20px !important;
-                border: 1px solid rgba(240, 230, 217, 0.95) !important;
-                background: rgba(255, 255, 255, 0.96) !important;
-                box-shadow: 0 16px 42px rgba(73, 42, 33, 0.09);
+                border: 1px solid rgba(206, 194, 187, 0.72) !important;
+                background: #ffffff !important;
+                box-shadow: 0 16px 42px rgba(73, 42, 33, 0.08);
                 padding: 8px 10px 8px 18px !important;
+            }
+            [data-testid="stChatInput"] > div > div,
+            [data-testid="stChatInput"] > div > div > div,
+            [data-testid="stChatInput"] div:has(> [data-testid="stChatInputTextArea"]) {
+                background: #ffffff !important;
+                border-color: transparent !important;
             }
             [data-testid="stChatInput"] button {
                 width: 40px !important;
@@ -876,6 +1030,14 @@ def _styles() -> str:
 def render(entry: str = "direct") -> None:
     _ensure_state()
     entry = entry if entry in ENTRY_CONFIG else "direct"
+    fresh_requested = st.query_params.get("fresh") == "1"
+    if fresh_requested or st.session_state.get("chat_active_entry") not in {None, entry}:
+        _reset_chat_view(entry)
+        if fresh_requested:
+            st.query_params.pop("fresh", None)
+            st.rerun()
+    else:
+        st.session_state["chat_active_entry"] = entry
     if hasattr(st, "html"):
         st.html(_styles())
     else:
@@ -892,10 +1054,16 @@ def render(entry: str = "direct") -> None:
     _render_agent_trace()
 
     if not _has_user_turn() and not st.session_state.get("pending_chat_request"):
+        _render_welcome(entry)
         _render_starters(entry)
 
     if user_input := st.chat_input("告诉我你的 GPA、专业、目标，或继续问我..."):
-        _queue_chat_request(user_input, entry)
+        _queue_chat_request(
+            user_input,
+            entry,
+            requested_agents=_entry_agents(entry),
+            questionnaire=_pending_questionnaire(entry),
+        )
         st.rerun()
 
     _process_pending_chat(entry)

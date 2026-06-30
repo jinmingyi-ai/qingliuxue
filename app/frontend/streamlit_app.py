@@ -245,7 +245,7 @@ def render_school() -> None:
                         <li>后续会根据对话自动形成你的用户画像。</li>
                     </ul>
                     <div class="ql-spacer"></div>
-                    <a class="ql-button secondary" href="?page=chat&entry=direct">直接推荐</a>
+                    <a class="ql-button secondary" href="?page=chat&entry=direct&fresh=1">直接推荐</a>
                 </article>
             </section>
         </main>
@@ -278,7 +278,7 @@ def render_planning() -> None:
                         <li>缺少画像时先给常见路线，再通过聊天补全。</li>
                     </ul>
                     <div class="ql-spacer"></div>
-                    <a class="ql-button" href="?page=chat&entry=timeline">生成时间线</a>
+                    <a class="ql-button" href="?page=chat&entry=timeline&fresh=1">生成时间线</a>
                 </article>
 
                 <article class="ql-card">
@@ -295,7 +295,7 @@ def render_planning() -> None:
                         <li>提醒中国学生常见误区和素材准备方向。</li>
                     </ul>
                     <div class="ql-spacer"></div>
-                    <a class="ql-button secondary" href="?page=chat&entry=essay">生成文书策略</a>
+                    <a class="ql-button secondary" href="?page=chat&entry=essay&fresh=1">生成文书策略</a>
                 </article>
 
                 <article class="ql-card">
@@ -312,7 +312,7 @@ def render_planning() -> None:
                         <li>动态信息会提示以官网为准。</li>
                     </ul>
                     <div class="ql-spacer"></div>
-                    <a class="ql-button secondary" href="?page=chat&entry=comparison">开始对比</a>
+                    <a class="ql-button secondary" href="?page=chat&entry=comparison&fresh=1">开始对比</a>
                 </article>
             </section>
         </main>
@@ -345,7 +345,7 @@ def render_materials() -> None:
                         <li>按提交前时间窗口给出准备顺序。</li>
                     </ul>
                     <div class="ql-spacer"></div>
-                    <a class="ql-button" href="?page=chat&entry=materials">生成材料清单</a>
+                    <a class="ql-button" href="?page=chat&entry=materials&fresh=1">生成材料清单</a>
                 </article>
 
                 <article class="ql-card">
@@ -362,7 +362,7 @@ def render_materials() -> None:
                         <li>政策类信息标记为需要官网实时核对。</li>
                     </ul>
                     <div class="ql-spacer"></div>
-                    <a class="ql-button secondary" href="?page=chat&entry=visa">查看规划</a>
+                    <a class="ql-button secondary" href="?page=chat&entry=visa&fresh=1">查看规划</a>
                 </article>
             </section>
         </main>

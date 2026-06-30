@@ -127,6 +127,7 @@ def render() -> None:
         st.session_state["conversation_id"] = None
         st.query_params["page"] = "chat"
         st.query_params["entry"] = "personalized"
+        st.query_params["fresh"] = "1"
         st.rerun()
 
 

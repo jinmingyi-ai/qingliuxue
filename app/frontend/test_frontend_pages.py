@@ -82,6 +82,8 @@ def main() -> None:
         if params["page"] == "chat":
             expect("轻留学" in text, f"{label}_custom_chat_shell")
             expect(len(at.chat_input) >= 1, f"{label}_chat_input")
+            expect("ql-empty-state" in text, f"{label}_empty_welcome_state")
+            expect("Agent" in text, f"{label}_agent_description")
             expect("返回首页" in text, f"{label}_sidebar_home")
             expect("新对话" in text, f"{label}_sidebar_new_chat")
             expect("历史对话" in text, f"{label}_sidebar_history")
@@ -90,6 +92,17 @@ def main() -> None:
             expect("我按你的问题拆给对应的专业模块处理了" not in text, f"{label}_no_deterministic_answer")
             expect("请根据我的画像" not in text, f"{label}_no_internal_seed_prompt")
             expect("keyboard_double" not in text, f"{label}_no_keyboard_double_leak")
+
+    at = AppTest.from_file(APP, default_timeout=30)
+    at.query_params["page"] = "chat"
+    at.query_params["entry"] = "timeline"
+    at.query_params["fresh"] = "1"
+    at.session_state["chat_messages"] = [{"role": "user", "content": "旧对话"}]
+    at.session_state["chat_active_entry"] = "timeline"
+    at.run(timeout=30)
+    expect(len(at.exception) == 0, "chat_fresh_no_exception")
+    expect(at.session_state["chat_messages"] == [], "chat_fresh_clears_messages")
+    expect(at.query_params.get("fresh") is None, "chat_fresh_param_consumed")
 
     print("ALL PASSED")
 
