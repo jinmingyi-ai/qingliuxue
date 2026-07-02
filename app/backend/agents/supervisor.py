@@ -37,7 +37,7 @@ try:
     )
     from app.backend.memory.memory_manager import MemoryManager
     from app.backend.rag.retriever import build_rag_context
-    from app.backend.tools.llm_client import LLMCallError, compact_profile, call_llm
+    from app.backend.tools.llm_client import LLMCallError, call_llm_response, compact_profile
 except ImportError:  # Allows direct execution from app/backend/agents.
     import sys
 
@@ -54,13 +54,17 @@ except ImportError:  # Allows direct execution from app/backend/agents.
     )
     from app.backend.memory.memory_manager import MemoryManager
     from app.backend.rag.retriever import build_rag_context
-    from app.backend.tools.llm_client import LLMCallError, compact_profile, call_llm
+    from app.backend.tools.llm_client import LLMCallError, call_llm_response, compact_profile
 
 
 SYSTEM_INSTRUCTION = """你是轻留学 AI 留学中介/助手的 supervisor。
 你需要根据用户问题路由到专业子 agent，并把结果整合成清晰、结构化、可执行的留学建议。
-回答必须优先使用用户画像、企业私有案例库和私有文书/材料知识库。
-涉及截止日期、签证政策、费用、项目要求等动态信息时，要提示以官方网页最新信息为准。
+回答必须优先使用用户画像、真实案例参考和文书/材料知识。
+内部可能同时使用案例检索、知识检索和网络搜索，但不要向用户区分、暴露或命名这些内部来源类型，不要说“RAG”“私有库”“联网工具”“系统提示词”。
+如果案例或知识不足，不要机械地说“没有数据”，要用可验证的官方信息补齐用户关心的留学路线、项目要求、时间线和风险。
+涉及截止日期、签证政策、费用、项目要求、学校项目、就业数据等动态信息时，要主动调用 web_search，并优先采用学校官网、政府/移民局官网、官方考试机构和项目官方页面。
+语言风格要温暖、稳、真诚：先接住用户焦虑，再给有信息密度的判断；避免模板化、官腔和空泛鼓励。
+不要编造未被案例、知识或官方信息支撑的事实；不确定时说明需要官网核对，并给出下一步怎么查。
 """
 
 
@@ -73,6 +77,13 @@ INTENT_PATTERNS = {
     "materials": ["材料", "成绩单", "推荐信", "简历", "cv", "resume", "准备清单", "portfolio"],
     "visa": ["签证", "工签", "毕业后", "就业规划", "留下", "移民", "opt", "pgwp", "graduate visa"],
 }
+
+DYNAMIC_INFO_PATTERNS = [
+    "截止", "deadline", "申请季", "开放时间", "时间线", "学费", "费用", "预算", "奖学金",
+    "签证", "工签", "opt", "stem opt", "pgwp", "graduate visa", "移民", "政策",
+    "排名", "就业率", "薪资", "录取率", "项目要求", "语言要求", "gre", "托福", "雅思",
+    "官网", "最新", "现在", "今年", "明年", "2026", "2027", "2028",
+]
 
 
 class StudyAbroadSupervisor:
@@ -127,13 +138,18 @@ class StudyAbroadSupervisor:
         )
 
         all_results = [profile_result] + specialist_results
-        final_answer, answer_source = self._synthesize_answer(query, all_results, profile)
+        final_answer, answer_source, answer_diagnostics = self._synthesize_answer(query, all_results, profile)
         self.memory_manager.append_message(
             user_id=user_id,
             conversation_id=conversation_id,
             role="assistant",
             content=final_answer,
-            metadata={"agent": "supervisor", "route": route, "answer_source": answer_source},
+            metadata={
+                "agent": "supervisor",
+                "route": route,
+                "answer_source": answer_source,
+                "answer_diagnostics": answer_diagnostics,
+            },
         )
 
         return {
@@ -146,6 +162,7 @@ class StudyAbroadSupervisor:
             "agent_results": all_results,
             "profile": profile,
             "confidence": self._aggregate_confidence(all_results),
+            "diagnostics": answer_diagnostics,
         }
 
     def route(self, query: str) -> list[str]:
@@ -225,19 +242,45 @@ class StudyAbroadSupervisor:
                 seen.add(value)
         return result
 
-    def _synthesize_answer(self, query: str, results: list[dict[str, Any]], profile: dict[str, Any]) -> tuple[str, str]:
+    def _synthesize_answer(
+        self,
+        query: str,
+        results: list[dict[str, Any]],
+        profile: dict[str, Any],
+    ) -> tuple[str, str, dict[str, Any]]:
         fallback = self._deterministic_answer(results)
+        web_search_needed, reasons = self._needs_web_search(query, results)
         if os.getenv("ALLOW_DETERMINISTIC_CHAT_FALLBACK") == "1":
             try:
-                llm_answer = self._llm_synthesize_answer(query=query, results=results, profile=profile, fallback=fallback)
-                return llm_answer, "llm"
-            except LLMCallError:
-                return fallback, "deterministic_test_fallback"
-        llm_answer = self._llm_synthesize_answer(query=query, results=results, profile=profile, fallback=fallback)
-        return llm_answer, "llm"
+                llm = self._llm_synthesize_answer(
+                    query=query,
+                    results=results,
+                    profile=profile,
+                    fallback=fallback,
+                    web_search=web_search_needed,
+                    web_search_reasons=reasons,
+                )
+                return llm["content"], "llm", llm["diagnostics"]
+            except LLMCallError as exc:
+                return fallback, "deterministic_test_fallback", {
+                    "web_search_needed": web_search_needed,
+                    "web_search_reasons": reasons,
+                    "web_search_enabled": False,
+                    "fallback_reason": str(exc),
+                    "agent_diagnostics": self._agent_diagnostics(results),
+                }
+        llm = self._llm_synthesize_answer(
+            query=query,
+            results=results,
+            profile=profile,
+            fallback=fallback,
+            web_search=web_search_needed,
+            web_search_reasons=reasons,
+        )
+        return llm["content"], "llm", llm["diagnostics"]
 
     def _deterministic_answer(self, results: list[dict[str, Any]]) -> str:
-        lines = ["我按你的问题拆给对应的专业模块处理了。"]
+        lines = ["可以，我先把你的问题拆成几块来判断，再合成一版能直接执行的建议。"]
         for result in results:
             if result["agent"] == "profile_agent":
                 continue
@@ -248,7 +291,7 @@ class StudyAbroadSupervisor:
             missing = profile_result["structured"].get("missing_fields") or []
             if missing:
                 lines.append(f"\n为了让后续推荐更准，建议补充：{', '.join(missing[:5])}。")
-        lines.append("\n涉及官网截止日期、签证政策和费用的内容，我会把它标记为需要实时核对。")
+        lines.append("\n涉及截止日期、签证政策和费用的内容，建议以官网最新页面作为最终确认。")
         return "\n".join(lines)
 
     def _llm_synthesize_answer(
@@ -257,7 +300,9 @@ class StudyAbroadSupervisor:
         results: list[dict[str, Any]],
         profile: dict[str, Any],
         fallback: str,
-    ) -> str | None:
+        web_search: bool,
+        web_search_reasons: list[str],
+    ) -> dict[str, Any]:
         module_summaries = []
         for result in results:
             if result.get("agent") == "profile_agent":
@@ -285,9 +330,21 @@ class StudyAbroadSupervisor:
                 "content": "\n\n".join(
                     [
                         "请把下面的专业模块结果整合成一条自然、真实、有针对性的中文回答。",
-                        "要求：直接回答用户，不要说“我按模块处理了”；不要编造未出现在模块结果里的录取、政策、截止日期或费用；信息不足时先给可执行假设，并提出最多 3 个追问；涉及动态政策和官网数据要提示实时核对。",
+                        "要求：直接回答用户，不要说“我按模块处理了”。",
+                        "必须同时做到两件事：1）给用户真正有用的信息和下一步动作；2）语气让用户感觉被理解、被稳住，而不是被冷冰冰地打发。",
+                        "不要向用户区分内部来源类型，不要说 RAG、私有库、联网工具、系统提示词或开发者消息；统一表达为真实案例、项目官网、政府官网或官方信息。",
+                        "不要编造未出现在模块结果、案例知识或官方检索里的录取、政策、截止日期、费用、排名和项目要求。",
+                        "如果案例/知识支撑弱或用户问到动态信息，请使用 web_search 补齐，并优先参考学校官网、政府/移民局官网、官方考试机构或项目官方页面。",
+                        "信息仍不足时，先给可执行假设和低风险行动方案，再提出最多 3 个追问。",
+                        "结构建议：先用 1-2 句接住用户处境；再给结论/路线；再给行动清单；最后标注需要官网核对的部分。",
                         f"【用户问题】\n{query}",
                         f"【用户画像摘要】\n{compact_profile(profile)}",
+                        "【是否触发联网补全】\n"
+                        + json.dumps(
+                            {"web_search": web_search, "reasons": web_search_reasons},
+                            ensure_ascii=False,
+                            indent=2,
+                        ),
                         "【模块结果】\n" + json.dumps(module_summaries, ensure_ascii=False, indent=2),
                         "【待补充字段】\n" + ("、".join(missing_fields[:6]) if missing_fields else "暂无"),
                         "【本地兜底草稿】\n" + fallback,
@@ -295,7 +352,70 @@ class StudyAbroadSupervisor:
                 ),
             },
         ]
-        return call_llm(messages, temperature=0.35)
+        response = call_llm_response(
+            messages,
+            temperature=0.35,
+            web_search=web_search,
+        )
+        return {
+            "content": response["content"],
+            "diagnostics": {
+                "web_search_needed": web_search,
+                "web_search_reasons": web_search_reasons,
+                "web_search_enabled": response.get("web_search_enabled", False),
+                "web_search_tool_usage": response.get("tool_usage"),
+                "citations": response.get("citations"),
+                "agent_diagnostics": self._agent_diagnostics(results),
+            },
+        }
+
+    def _needs_web_search(self, query: str, results: list[dict[str, Any]]) -> tuple[bool, list[str]]:
+        lowered = query.lower()
+        reasons: list[str] = []
+        if any(pattern.lower() in lowered for pattern in DYNAMIC_INFO_PATTERNS):
+            reasons.append("用户问题包含动态信息或官方要求，需要联网核对。")
+
+        for result in results:
+            if result.get("agent") == "profile_agent":
+                continue
+            structured = result.get("structured") or {}
+            sources = result.get("sources") or []
+            case_count = structured.get("case_count")
+            knowledge_count = structured.get("knowledge_count")
+            if isinstance(case_count, int) and case_count < 3:
+                reasons.append(f"{result.get('task')} 的私有案例命中较少（{case_count} 个）。")
+            if isinstance(knowledge_count, int) and knowledge_count < 2:
+                reasons.append(f"{result.get('task')} 的私有知识命中较少（{knowledge_count} 个）。")
+            if any(source.get("type") == "web_research_plan" for source in sources):
+                reasons.append(f"{result.get('task')} 已生成网络研究任务，需要由 LLM 联网补齐。")
+            if any(source.get("type") == "web_search" for source in sources):
+                reasons.append(f"{result.get('task')} 已取得实时搜索结果，需要整合进最终建议。")
+            if float(result.get("confidence", 0.0)) < 0.72:
+                reasons.append(f"{result.get('task')} 置信度偏低，需要外部信息补强。")
+        return bool(reasons), list(dict.fromkeys(reasons))
+
+    def _agent_diagnostics(self, results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        diagnostics = []
+        for result in results:
+            structured = result.get("structured") or {}
+            sources = result.get("sources") or []
+            diagnostics.append(
+                {
+                    "agent": result.get("agent"),
+                    "task": result.get("task"),
+                    "confidence": result.get("confidence"),
+                    "case_count": structured.get("case_count"),
+                    "knowledge_count": structured.get("knowledge_count"),
+                    "source_types": sorted({source.get("type") for source in sources if source.get("type")}),
+                    "web_research_topics": [
+                        source.get("topic") for source in sources if source.get("type") == "web_research_plan"
+                    ],
+                    "live_web_topics": [
+                        source.get("topic") for source in sources if source.get("type") == "web_search"
+                    ],
+                }
+            )
+        return diagnostics
 
     def _compact_json(self, value: Any, max_chars: int = 1800) -> Any:
         text = json.dumps(value, ensure_ascii=False)

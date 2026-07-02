@@ -449,7 +449,6 @@ def render_register() -> None:
         st.markdown('<div class="auth-form-host">', unsafe_allow_html=True)
         with st.form("register_form"):
             email = st.text_input("邮箱")
-            display_name = st.text_input("昵称（可选）")
             password = st.text_input("密码", type="password")
             password2 = st.text_input("确认密码", type="password")
             submitted = st.form_submit_button("注册并登录", use_container_width=True)
@@ -459,7 +458,7 @@ def render_register() -> None:
             st.error("两次输入的密码不一致")
             return
         try:
-            response = register_user(email, password, display_name or None)
+            response = register_user(email, password)
         except ApiClientError as exc:
             st.error(str(exc))
             st.caption("如果后端还没启动，请先运行：uvicorn app.backend.api.main:app --host 0.0.0.0 --port 8000")

@@ -32,7 +32,7 @@ def main() -> None:
     email = f"student_{uuid.uuid4().hex[:8]}@example.com"
     password = "demo12345"
 
-    register = client.post("/auth/register", json={"email": email, "password": password, "display_name": "Demo"})
+    register = client.post("/auth/register", json={"email": email, "password": password})
     expect(register.status_code == 200, "register")
     token = register.json()["access_token"]
 
@@ -62,6 +62,8 @@ def main() -> None:
     expect(q_resp.status_code == 200, "questionnaire")
     profile = q_resp.json()["profile"]
     expect(profile["academic"]["gpa"] == 3.55, "questionnaire_gpa_memory")
+    expect(profile["academic"]["school"] == "某 211 大学", "questionnaire_school_memory")
+    expect(profile["preferences"]["budget"] == ["50-70 万"], "questionnaire_budget_memory")
 
     chat = client.post(
         "/chat",
@@ -76,16 +78,33 @@ def main() -> None:
     expect(data["route"] == ["profile", "case", "timeline", "essay"], "agent_route")
     expect(len(data["agent_results"]) == 4, "agent_results")
     expect(data["conversations"], "conversation_saved")
+    serialized = str(data["agent_results"])
+    expect("memory_prompt_context" not in serialized, "api_sanitizes_memory_prompt")
+    expect("case_rag" not in serialized and "web_search" not in serialized, "api_sanitizes_source_types")
 
     conversations = client.get("/conversations", headers=headers)
     expect(conversations.status_code == 200 and conversations.json()["conversations"], "list_conversations")
     expect(conversations.json()["profile"]["academic"]["gpa"] == 3.55, "long_term_profile")
+
+    relogin = client.post("/auth/login", json={"email": email, "password": password})
+    relogin_headers = {"Authorization": f"Bearer {relogin.json()['access_token']}"}
+    persisted = client.get("/conversations", headers=relogin_headers)
+    expect(persisted.json()["profile"]["academic"]["gpa"] == 3.55, "long_term_profile_after_relogin")
 
     guest = client.post(
         "/chat",
         json={"message": "我想先看看英国商科路线", "guest_session_id": "guesttest123", "requested_agents": ["case"]},
     )
     expect(guest.status_code == 200 and guest.json()["guest_session_id"] == "guesttest123", "guest_chat")
+
+    percent_email = f"student_percent_{uuid.uuid4().hex[:8]}@example.com"
+    percent_register = client.post("/auth/register", json={"email": percent_email, "password": password})
+    percent_headers = {"Authorization": f"Bearer {percent_register.json()['access_token']}"}
+    percent_questionnaire = dict(questionnaire)
+    percent_questionnaire.update({"score_type": "均分（百分制）", "score_value": "88"})
+    percent_resp = client.post("/questionnaire", headers=percent_headers, json={"questionnaire": percent_questionnaire})
+    percent_profile = percent_resp.json()["profile"]
+    expect(percent_profile["academic"]["percentage_score"] == 88.0, "questionnaire_percentage_score")
 
     print("ALL PASSED")
 

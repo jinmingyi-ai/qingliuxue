@@ -97,6 +97,8 @@ def main() -> None:
             expect("我按你的问题拆给对应的专业模块处理了" not in text, f"{label}_no_deterministic_answer")
             expect("请根据我的画像" not in text, f"{label}_no_internal_seed_prompt")
             expect("keyboard_double" not in text, f"{label}_no_keyboard_double_leak")
+        if params["page"] == "register":
+            expect("昵称" not in text, f"{label}_no_display_name_field")
 
     at = AppTest.from_file(APP, default_timeout=30)
     at.query_params["page"] = "chat"
@@ -127,6 +129,16 @@ def main() -> None:
     message_text = collect_visible_text(at)
     expect('<div class="ql-msg-avatar" aria-hidden="true">我</div>' in message_text, "chat_user_avatar_is_me")
     expect('<div class="ql-msg-avatar" aria-hidden="true">你</div>' not in message_text, "chat_user_avatar_not_you")
+
+    at = AppTest.from_file(APP, default_timeout=30)
+    at.query_params["page"] = "chat"
+    at.query_params["entry"] = "direct"
+    at.session_state["current_user"] = {"email": "alice@example.com"}
+    at.session_state["chat_active_entry"] = "direct"
+    at.session_state["chat_messages"] = [{"role": "user", "content": "测试邮箱头像"}]
+    at.run(timeout=30)
+    logged_in_text = collect_visible_text(at)
+    expect('<div class="ql-msg-avatar" aria-hidden="true">A</div>' in logged_in_text, "chat_user_avatar_email_initial")
 
     print("ALL PASSED")
 

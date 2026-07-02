@@ -5,6 +5,9 @@ __pycache__
 .pytest_cache
 .mypy_cache
 .DS_Store
+.env
+.env.*
+!.env.example
 app/data/auth/*.db
 app/data/memory/users/*.json
 app/data/memory/guests/*.json

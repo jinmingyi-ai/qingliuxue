@@ -44,11 +44,11 @@ def _request(method: str, path: str, token: str | None = None, **kwargs: Any) ->
         raise ApiClientError("后端返回了无法解析的数据") from exc
 
 
-def register_user(email: str, password: str, display_name: str | None = None) -> dict[str, Any]:
+def register_user(email: str, password: str) -> dict[str, Any]:
     return _request(
         "POST",
         "/auth/register",
-        json={"email": email, "password": password, "display_name": display_name},
+        json={"email": email, "password": password},
     )
 
 

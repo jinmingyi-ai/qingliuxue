@@ -25,7 +25,7 @@ except ImportError:  # Allows importing as app.frontend.chat_page in tests.
 ENTRY_CONFIG = {
     "direct": {
         "title": "真实案例路线 Agent",
-        "seed": "请基于真实案例库，给我生成一条当前比较热门且可执行的留学路线。",
+        "seed": "请基于真实案例，给我生成一条当前比较热门且可执行的留学路线。",
         "agents": ["case"],
         "description": "先参考真实申请案例给出路线，再通过对话补全背景、目标和风险点。",
     },
@@ -33,7 +33,7 @@ ENTRY_CONFIG = {
         "title": "智能选校 Agent",
         "seed": "请根据我已经填写的问卷和现有用户画像，生成一版个性化智能选校路线。",
         "agents": ["case"],
-        "description": "结合问卷、用户画像和案例库，生成冲刺、匹配、保底的选校路线。",
+        "description": "结合问卷、用户画像和真实案例，生成冲刺、匹配、保底的选校路线。",
     },
     "timeline": {
         "title": "时间线规划 Agent",
@@ -148,6 +148,11 @@ def _token() -> str | None:
 def _user_email() -> str | None:
     user = st.session_state.get("current_user") or {}
     return user.get("email")
+
+
+def _user_initial() -> str:
+    email = _user_email()
+    return (email[:1] if email else "我").upper()
 
 
 def _call_agent(message: str, entry: str, requested_agents: list[str] | None = None, questionnaire: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -305,6 +310,7 @@ def _new_chat(entry: str) -> None:
 def _render_sidebar(entry: str) -> None:
     logo = logo_mark_uri()
     display_name = _user_email() or "访客"
+    avatar = _user_initial() if _user_email() else "访"
     user_hint = "长期记忆已开启" if _user_email() else "访客模式，本次关闭后不保留长期记忆"
     with st.sidebar:
         st.markdown(
@@ -350,7 +356,7 @@ def _render_sidebar(entry: str) -> None:
         st.markdown(
             dedent(f"""
             <div class="side-user-card">
-                <div class="side-avatar">{display_name[:1].upper()}</div>
+                <div class="side-avatar">{avatar}</div>
                 <div class="side-user-meta">
                     <strong>{display_name}</strong>
                     <span>{user_hint}</span>
@@ -389,7 +395,7 @@ def _render_message(role: str, content: str) -> None:
     is_user = role == "user"
     is_error = role == "system"
     role_class = "user" if is_user else ("system" if is_error else "assistant")
-    avatar = "我" if is_user else "留"
+    avatar = _user_initial() if is_user else "留"
     st.markdown(
         dedent(f"""
         <div class="ql-msg-row {role_class}">

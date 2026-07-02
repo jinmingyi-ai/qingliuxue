@@ -31,6 +31,10 @@ def _go(page: str) -> None:
     st.rerun()
 
 
+def _index(options: list[str], value: str | None) -> int:
+    return options.index(value) if value in options else 0
+
+
 def _html(html: str, height: int = 260) -> None:
     html = dedent(html).strip()
     if hasattr(st, "html"):
@@ -79,7 +83,12 @@ def render() -> None:
     with st.form("step2_form"):
         col1, col2 = st.columns(2)
         with col1:
-            language_type = st.selectbox("语言/标化类型", ["", "IELTS", "TOEFL", "GRE", "GMAT", "暂未考试"], index=0)
+            language_options = ["", "IELTS", "TOEFL", "GRE", "GMAT", "暂未考试"]
+            language_type = st.selectbox(
+                "语言/标化类型",
+                language_options,
+                index=_index(language_options, q.get("language_type", "")),
+            )
         with col2:
             language_score = st.text_input("分数或备注", value=q.get("language_score", ""))
         experiences = st.multiselect(
@@ -87,7 +96,12 @@ def render() -> None:
             ["实习", "科研项目", "比赛/竞赛", "奖项", "发表论文", "志愿活动", "工作经历", "产品/项目落地", "暂时没有"],
             default=q.get("experiences", []),
         )
-        application_year = st.selectbox("计划入学年份", ["", "2026", "2027", "2028 及以后"], index=0)
+        year_options = ["", "2026", "2027", "2028 及以后"]
+        application_year = st.selectbox(
+            "计划入学年份",
+            year_options,
+            index=_index(year_options, q.get("application_year", "")),
+        )
         col_prev, col_next = st.columns(2)
         with col_prev:
             prev = st.form_submit_button("上一步", use_container_width=True)

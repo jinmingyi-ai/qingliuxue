@@ -269,14 +269,18 @@ def base_page_css() -> str:
         }
 
         .ql-user-pill {
-            max-width: 180px;
+            width: 40px;
+            padding: 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 950;
         }
 
         .ql-main {
-            max-width: 1180px;
+            max-width: min(1360px, 100%);
             margin: 0 auto;
             padding: 64px 24px 88px;
         }
@@ -312,21 +316,21 @@ def base_page_css() -> str:
         }
 
         .ql-grid-2 {
-            grid-template-columns: repeat(2, minmax(320px, 360px));
-            max-width: 760px;
+            grid-template-columns: repeat(2, minmax(430px, 1fr));
+            max-width: 1120px;
             margin: 0 auto;
         }
 
         .ql-grid-3 {
-            grid-template-columns: repeat(3, minmax(320px, 360px));
-            max-width: 1120px;
+            grid-template-columns: repeat(3, minmax(330px, 1fr));
+            max-width: 1260px;
             margin: 0 auto;
         }
 
         .ql-card {
             width: 100%;
-            min-height: 420px;
-            padding: 28px 24px;
+            min-height: min(540px, 54vh);
+            padding: 34px 30px;
             border-radius: 20px;
             background: var(--card);
             border: 1px solid var(--line);
@@ -484,7 +488,7 @@ def base_page_css() -> str:
             .ql-grid-2,
             .ql-grid-3 {
                 grid-template-columns: 1fr;
-                max-width: min(360px, 100%);
+                max-width: min(560px, 100%);
             }
 
             .ql-card {
@@ -509,8 +513,9 @@ def nav_html(active: str = "home", user_email: str | None = None) -> str:
         for key, label, href in items
     )
     if user_email:
+        initial = user_email[:1].upper()
         right_html = f"""
-                <span class="ql-pill ql-user-pill">{user_email}</span>
+                <span class="ql-pill ql-user-pill" title="{user_email}">{initial}</span>
                 <a class="ql-auth-link" href="?page=logout">退出</a>
         """
     else:

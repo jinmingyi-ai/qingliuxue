@@ -231,6 +231,28 @@ def _extract_language_scores(text: str) -> dict[str, Any]:
     return scores
 
 
+def _language_key(label: str | None) -> str | None:
+    normalized = (label or "").strip().lower()
+    if not normalized or "暂未" in normalized:
+        return None
+    if "ielts" in normalized or "雅思" in normalized:
+        return "ielts"
+    if "toefl" in normalized or "托福" in normalized:
+        return "toefl"
+    if "gre" in normalized:
+        return "gre"
+    if "gmat" in normalized:
+        return "gmat"
+    return normalized
+
+
+def _numeric_score(value: Any) -> float | None:
+    if value in (None, "", []):
+        return None
+    match = re.search(r"\d+(?:\.\d+)?", str(value))
+    return float(match.group(0)) if match else None
+
+
 def _detect_preferences(text: str) -> list[str]:
     lowered = text.lower()
     preferences = []
@@ -238,6 +260,15 @@ def _detect_preferences(text: str) -> list[str]:
         if any(alias.lower() in lowered for alias in aliases):
             preferences.append(preference)
     return preferences
+
+
+def _detect_preferences_from_labels(labels: list[str]) -> list[str]:
+    preferences: list[str] = []
+    for label in labels:
+        preferences.extend(_detect_preferences(label))
+        if "综合平衡" in label:
+            preferences.extend(["career_outcome", "budget_sensitive", "safety"])
+    return list(dict.fromkeys(preferences))
 
 
 def _preference_labels(preferences: list[str]) -> list[str]:
@@ -276,6 +307,8 @@ def _default_profile(display_name: str = "访客") -> dict[str, Any]:
             "school": None,
             "major": None,
             "gpa": None,
+            "percentage_score": None,
+            "score_scale": None,
             "language_scores": {},
         },
         "goals": {
@@ -479,6 +512,140 @@ class MemoryManager:
         self.save()
         return deepcopy(message)
 
+    def ingest_questionnaire(self, user_id: str, conversation_id: str, questionnaire: dict[str, Any]) -> None:
+        """Persist structured questionnaire data without relying only on text extraction."""
+        if not questionnaire:
+            return
+
+        user = self.get_or_create_user(user_id)
+        conversation = self.get_conversation(user_id, conversation_id)
+        updates = self._questionnaire_profile_updates(questionnaire)
+        self._merge_profile_updates(user["profile"], updates)
+
+        note = self._questionnaire_note(questionnaire)
+        if note:
+            user["profile"].setdefault("notes", [])
+            if note not in user["profile"]["notes"]:
+                user["profile"]["notes"].append(note)
+
+        for item in self._extract_memory_items(note or "用户提交了选校问卷", updates, conversation["conversation_id"]):
+            self._upsert_memory(user, item)
+        self._touch_conversation_order(user, conversation["conversation_id"])
+        user["updated_at"] = _now()
+        self.save()
+
+    def _questionnaire_profile_updates(self, questionnaire: dict[str, Any]) -> dict[str, Any]:
+        def value(key: str) -> Any:
+            item = questionnaire.get(key)
+            if item in (None, "", []):
+                return None
+            return item
+
+        updates: dict[str, Any] = {}
+        academic: dict[str, Any] = {}
+        goals: dict[str, Any] = {}
+        experiences: dict[str, Any] = {}
+        preferences: dict[str, Any] = {}
+
+        if current_level := value("current_level"):
+            academic["current_level"] = str(current_level)
+            if "本科" in str(current_level) or "硕士" in str(current_level):
+                goals["target_level"] = "graduate"
+        if school := value("undergraduate_school"):
+            academic["school"] = str(school)
+        if major := value("undergraduate_major"):
+            academic["major"] = str(major)
+
+        score_type = str(value("score_type") or "")
+        score_value = _numeric_score(value("score_value"))
+        if score_value is not None:
+            if "均分" in score_type or score_value > 4.3:
+                academic["percentage_score"] = score_value
+                academic["score_scale"] = "percentage"
+            else:
+                academic["gpa"] = score_value
+                academic["score_scale"] = "4.0"
+
+        language_key = _language_key(str(value("language_type") or ""))
+        language_score = _numeric_score(value("language_score"))
+        if language_key and language_score is not None:
+            academic["language_scores"] = {
+                language_key: int(language_score) if language_key in {"toefl", "gre", "gmat"} else language_score
+            }
+
+        for item in value("experiences") or []:
+            label = str(item)
+            if "暂时没有" in label:
+                continue
+            flags = _detect_experience_flags(label)
+            for key, flag in flags.items():
+                experiences[key] = experiences.get(key, False) or flag
+            if "工作经历" in label:
+                experiences["has_work"] = True
+
+        if application_year := value("application_year"):
+            year = _extract_application_year(str(application_year))
+            if year:
+                goals["application_year"] = year
+
+        countries = []
+        for item in value("target_countries") or []:
+            countries.extend(_detect_countries(str(item)))
+        if countries:
+            goals["target_countries"] = list(dict.fromkeys(countries))
+
+        majors = []
+        for item in value("target_majors") or []:
+            majors.extend(_detect_majors(str(item)))
+        if majors:
+            goals["target_majors"] = list(dict.fromkeys(majors))
+            academic.setdefault("major", majors[0])
+            goals.setdefault("target_level", "graduate")
+
+        budget = value("budget")
+        if budget:
+            preferences["budget"] = list(budget) if isinstance(budget, list) else [str(budget)]
+            preferences.setdefault("priorities", [])
+            if any("暂不确定" not in str(item) for item in preferences["budget"]):
+                preferences["priorities"].append("budget_sensitive")
+
+        priority_labels = [str(item) for item in (value("priorities") or [])]
+        priorities = _detect_preferences_from_labels(priority_labels)
+        if priorities:
+            preferences.setdefault("priorities", [])
+            preferences["priorities"].extend(priorities)
+
+        if notes := value("extra_notes"):
+            text_updates = self._extract_profile_updates(str(notes))
+            for section, payload in text_updates.items():
+                if section == "academic":
+                    academic.update(payload)
+                elif section == "goals":
+                    goals.update(payload)
+                elif section == "experiences":
+                    experiences.update(payload)
+                elif section == "preferences":
+                    preferences.setdefault("priorities", [])
+                    preferences["priorities"].extend(payload.get("priorities") or [])
+
+        if academic:
+            updates["academic"] = academic
+        if goals:
+            updates["goals"] = goals
+        if experiences:
+            updates["experiences"] = experiences
+        if preferences:
+            if preferences.get("priorities"):
+                preferences["priorities"] = list(dict.fromkeys(preferences["priorities"]))
+            updates["preferences"] = preferences
+        return updates
+
+    def _questionnaire_note(self, questionnaire: dict[str, Any]) -> str:
+        visible = {key: value for key, value in questionnaire.items() if value not in (None, "", [])}
+        if not visible:
+            return ""
+        return "问卷信息：" + json.dumps(visible, ensure_ascii=False, sort_keys=True)
+
     def record_turn(
         self,
         user_id: str,
@@ -587,6 +754,9 @@ class MemoryManager:
         priorities = (updates.get("preferences") or {}).get("priorities") or []
         if priorities:
             _unique_extend(profile["preferences"].setdefault("priorities", []), priorities)
+        budget = (updates.get("preferences") or {}).get("budget")
+        if budget not in (None, "", []):
+            profile["preferences"]["budget"] = budget
 
     def _extract_memory_items(
         self,
@@ -620,6 +790,12 @@ class MemoryManager:
         academic = updates.get("academic") or {}
         if academic.get("gpa") is not None:
             add("academic", f"用户 GPA/绩点为 {academic['gpa']}", 0.9, ["academic"])
+        if academic.get("percentage_score") is not None:
+            add("academic", f"用户百分制成绩为 {academic['percentage_score']}", 0.86, ["academic"])
+        if academic.get("school"):
+            add("academic", f"用户本科或当前院校为 {academic['school']}", 0.74, ["academic"])
+        if academic.get("current_level"):
+            add("academic", f"用户当前最高学历为 {academic['current_level']}", 0.72, ["academic"])
         if academic.get("major"):
             add("academic", f"用户关注或背景专业为 {academic['major']}", 0.78, ["major"])
         for test_name, score in (academic.get("language_scores") or {}).items():
@@ -652,6 +828,10 @@ class MemoryManager:
         priorities = (updates.get("preferences") or {}).get("priorities") or []
         if priorities:
             add("preference", f"用户偏好/关注点包括 {', '.join(_preference_labels(priorities))}", 0.76, ["preference"])
+        budget = (updates.get("preferences") or {}).get("budget")
+        if budget:
+            rendered_budget = "、".join(str(item) for item in budget) if isinstance(budget, list) else str(budget)
+            add("preference", f"用户预算范围为 {rendered_budget}", 0.8, ["preference", "budget"])
 
         if not items and len(content) >= 18:
             add("note", f"用户补充：{_clip(content, 140)}", 0.42, ["note"])
@@ -885,8 +1065,14 @@ class MemoryManager:
 
         if academic.get("major"):
             lines.append(f"- 背景/关注专业: {academic['major']}")
+        if academic.get("school"):
+            lines.append(f"- 本科/当前院校: {academic['school']}")
+        if academic.get("current_level"):
+            lines.append(f"- 当前最高学历: {academic['current_level']}")
         if academic.get("gpa") is not None:
             lines.append(f"- GPA/绩点: {academic['gpa']}")
+        if academic.get("percentage_score") is not None:
+            lines.append(f"- 百分制成绩: {academic['percentage_score']}")
         if academic.get("language_scores"):
             rendered = ", ".join(f"{key.upper()} {value}" for key, value in academic["language_scores"].items())
             lines.append(f"- 语言/标化: {rendered}")
@@ -918,6 +1104,10 @@ class MemoryManager:
             lines.append(f"- 经历标签: {', '.join(flags)}")
         if preferences.get("priorities"):
             lines.append(f"- 偏好重点: {', '.join(_preference_labels(preferences['priorities']))}")
+        if preferences.get("budget"):
+            budget = preferences["budget"]
+            rendered_budget = "、".join(str(item) for item in budget) if isinstance(budget, list) else str(budget)
+            lines.append(f"- 预算范围: {rendered_budget}")
         return lines
 
 

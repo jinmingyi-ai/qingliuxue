@@ -17,4 +17,4 @@ exec python -m streamlit run app/frontend/streamlit_app.py \
     --server.headless true \
     --server.address 0.0.0.0 \
     --server.enableCORS false \
-    --server.enableXsrfProtection false
+    --server.enableXsrfProtection true

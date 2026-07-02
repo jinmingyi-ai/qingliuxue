@@ -31,6 +31,10 @@ def _go(page: str) -> None:
     st.rerun()
 
 
+def _index(options: list[str], value: str | None) -> int:
+    return options.index(value) if value in options else 0
+
+
 def _html(html: str, height: int = 260) -> None:
     html = dedent(html).strip()
     if hasattr(st, "html"):
@@ -114,18 +118,21 @@ def render() -> None:
     _chrome(1)
     st.markdown('<div class="form-card"><h2>学术背景</h2>', unsafe_allow_html=True)
     with st.form("step1_form"):
+        level_options = ["", "本科在读", "本科毕业", "硕士在读（申请第二硕士）", "硕士毕业", "其他"]
         current_level = st.selectbox(
             "当前最高学历",
-            ["", "本科在读", "本科毕业", "硕士在读（申请第二硕士）", "硕士毕业", "其他"],
-            index=["", "本科在读", "本科毕业", "硕士在读（申请第二硕士）", "硕士毕业", "其他"].index(q.get("current_level", "")) if q.get("current_level", "") in ["", "本科在读", "本科毕业", "硕士在读（申请第二硕士）", "硕士毕业", "其他"] else 0,
+            level_options,
+            index=_index(level_options, q.get("current_level", "")),
         )
         undergraduate_school = st.text_input("本科/当前院校名称", value=q.get("undergraduate_school", ""))
         undergraduate_major = st.text_input("本科/当前专业名称", value=q.get("undergraduate_major", ""))
         col1, col2 = st.columns(2)
         with col1:
-            score_type = st.selectbox("成绩类型", ["", "绩点（4.0 制）", "均分（百分制）"], index=0)
+            score_options = ["", "绩点（4.0 制）", "均分（百分制）"]
+            score_type = st.selectbox("成绩类型", score_options, index=_index(score_options, q.get("score_type", "")))
         with col2:
-            score_value = st.text_input("成绩数值", value=q.get("score_value", ""))
+            score_label = "GPA（4.0 制）" if score_type == "绩点（4.0 制）" else "均分（百分制）" if score_type == "均分（百分制）" else "成绩数值"
+            score_value = st.text_input(score_label, value=q.get("score_value", ""))
         submitted = st.form_submit_button("下一步", use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 

@@ -65,6 +65,7 @@ class ProfileAgent:
                 content=questionnaire_text,
                 metadata={"source": "questionnaire", "agent": self.name},
             )
+        self.memory_manager.ingest_questionnaire(user_id, conversation_id, questionnaire)
 
     def _questionnaire_to_text(self, questionnaire: dict[str, Any]) -> str:
         if not questionnaire:
@@ -117,7 +118,7 @@ class ProfileAgent:
         academic = profile.get("academic") or {}
         goals = profile.get("goals") or {}
         missing = []
-        if academic.get("gpa") is None:
+        if academic.get("gpa") is None and academic.get("percentage_score") is None:
             missing.append("GPA/均分")
         if not goals.get("target_countries"):
             missing.append("目标国家/地区")
@@ -138,10 +139,14 @@ class ProfileAgent:
         experiences = profile.get("experiences") or {}
         target = ", ".join(goals.get("target_countries") or []) or "未明确国家"
         majors = ", ".join(goals.get("target_majors") or []) or academic.get("major") or "未明确专业"
+        score = academic.get("gpa")
+        if score is None:
+            score = academic.get("percentage_score")
+        score_label = "未填写" if score is None else str(score)
         known = [
             f"目标国家/地区: {target}",
             f"目标专业: {majors}",
-            f"GPA/成绩: {academic.get('gpa') or '未填写'}",
+            f"GPA/成绩: {score_label}",
             f"工作/项目年限: {experiences.get('work_years') or '未填写'}",
         ]
         if missing:

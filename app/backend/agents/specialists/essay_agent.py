@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from app.backend.agents.specialists.base import AgentResult, profile_goal, source_from_rag_item
+from app.backend.agents.specialists.base import AgentResult, goal_from_query, query_focus_line, source_from_rag_item
 from app.backend.rag.knowledge_base import build_knowledge_context
 from app.backend.rag.retriever import build_rag_context
 
@@ -15,7 +15,7 @@ class EssayAgent:
 
     def run(self, query: str, profile: dict[str, Any] | None = None, **_: Any) -> dict[str, Any]:
         profile = profile or {}
-        goal = profile_goal(profile)
+        goal = goal_from_query(query, profile)
         document_type = self._document_type(goal["country"], query)
         knowledge = build_knowledge_context(
             "essay",
@@ -29,7 +29,7 @@ class EssayAgent:
             filters={"country": goal["country"], "level": goal["level"], "major": goal["major"]},
         )
         strategy = self._build_strategy(goal, document_type, knowledge["results"], cases["cases"])
-        answer = self._answer(goal, document_type, strategy)
+        answer = self._answer(query, goal, document_type, strategy)
         sources = [source_from_rag_item(item, "essay_knowledge") for item in knowledge["results"]]
         sources.extend(source_from_rag_item(item, "case_rag") for item in cases["cases"])
         return AgentResult(
@@ -112,12 +112,35 @@ class EssayAgent:
             "profile_signals_used": experiences,
         }
 
-    def _answer(self, goal: dict[str, Any], document_type: str, strategy: dict[str, Any]) -> str:
+    def _answer(self, query: str, goal: dict[str, Any], document_type: str, strategy: dict[str, Any]) -> str:
         lines = [
-            f"{goal['country_label']} {goal['level_label']} 的 {document_type} 建议主线：{strategy['main_thesis']}",
+            f"这类 {goal['country_label']} {goal['level_label']} {document_type} 最怕写成经历堆砌；你的重点应该是把经历写成一条能证明申请动机和能力成长的主线。",
+            f"建议主线：{strategy['main_thesis']}",
             "推荐结构：",
         ]
+        focus = query_focus_line(
+            query,
+            ["转专业", "数据科学", "个人陈述", "推荐信", "SOP", "配合", "BA", "定量", "证明", "文书", "素材", "清单"],
+            "我会把它作为文书主线和素材筛选的重点。",
+        )
+        if focus:
+            lines.insert(1, focus)
+        if any(token in query for token in ["低GPA", "低 GPA", "绩点", "GPA", "成绩一般"]):
+            lines.insert(
+                1,
+                "关于低GPA/绩点一般：文书里可以解释，但不要大段辩解。更好的写法是用1-2句说明客观原因或上升趋势，然后立刻用项目、科研、实习或后续高分课程证明你已经补上能力缺口。",
+            )
         lines.extend(f"- {item}" for item in strategy["recommended_structure"])
+        if strategy["materials_to_collect"]:
+            lines.append("现在先收集素材：" + "；".join(strategy["materials_to_collect"][:3]))
+        if "清单" in query:
+            lines.append("文书素材清单建议按四类建表：学术课程/项目、实习或工作成果、转折与困难、目标项目匹配证据。")
+        if "推荐信" in query:
+            lines.append("推荐信和 SOP 的配合方式：SOP 讲你的动机和选择逻辑，推荐信用第三方细节证明你的能力，不要逐段重复同一件事。")
+        if "定量" in query or "BA" in query:
+            lines.append("BA/商科转向要证明定量能力：用统计、编程、建模、数据分析项目和量化结果替代空泛的“我数学不错”。")
+        if strategy["case_strategies_to_borrow"]:
+            lines.append("可借鉴的真实案例写法：" + "；".join(strategy["case_strategies_to_borrow"][:2]))
         if strategy["common_mistakes_to_avoid"]:
             lines.append("需要避免：" + "；".join(strategy["common_mistakes_to_avoid"][:3]))
         return "\n".join(lines)

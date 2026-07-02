@@ -58,10 +58,31 @@ def profile_goal(profile: dict[str, Any]) -> dict[str, Any]:
         "level_label": LEVEL_LABELS.get(level, level),
         "major": major,
         "gpa": academic.get("gpa"),
+        "percentage_score": academic.get("percentage_score"),
+        "score_scale": academic.get("score_scale"),
         "work_years": experiences.get("work_years"),
         "application_year": goals.get("application_year"),
         "preferences": (profile.get("preferences") or {}).get("priorities") or [],
+        "budget": (profile.get("preferences") or {}).get("budget"),
     }
+
+
+def goal_from_query(query: str, profile: dict[str, Any]) -> dict[str, Any]:
+    """Prefer explicit constraints in the current user question over memory."""
+    goal = profile_goal(profile)
+    country = infer_country_from_query(query, fallback=goal["country"])
+    level = infer_level_from_query(query, fallback=goal["level"])
+    major = infer_major_from_query(query, fallback=goal["major"])
+    goal.update(
+        {
+            "country": country,
+            "country_label": COUNTRY_LABELS.get(country, country),
+            "level": level,
+            "level_label": LEVEL_LABELS.get(level, level),
+            "major": major,
+        }
+    )
+    return goal
 
 
 def infer_country_from_query(query: str, fallback: str = "US") -> str:
@@ -82,12 +103,31 @@ def infer_country_from_query(query: str, fallback: str = "US") -> str:
 
 def infer_level_from_query(query: str, fallback: str = "graduate") -> str:
     lowered = query.lower()
-    if any(token in lowered for token in ["本科", "本申", "undergrad", "bachelor"]):
-        return "undergrad"
     if any(token in lowered for token in ["博士", "phd"]):
         return "phd"
     if any(token in lowered for token in ["硕士", "硕申", "研究生", "master", "msc", "graduate"]):
         return "graduate"
+    if any(token in lowered for token in ["本科申请", "申请本科", "读本科", "本科项目", "本申", "undergrad", "bachelor"]):
+        return "undergrad"
+    return fallback
+
+
+def infer_major_from_query(query: str, fallback: str = "Computer Science") -> str:
+    lowered = query.lower()
+    patterns = [
+        ("Business Analytics", [r"\bba\b", r"business analytics", r"商业分析", r"商分"]),
+        ("Data Science", [r"data science", r"\bds\b", r"数据科学", r"数据分析", r"analytics"]),
+        ("Computer Science", [r"\bcs\b", r"computer science", r"计算机", r"转码", r"软件", r"人工智能", r"\bai\b"]),
+        ("Human-Computer Interaction", [r"\bhci\b", r"人机交互", r"用户研究", r"\bux\b"]),
+        ("Information Systems", [r"information systems", r"\bis\b", r"信息系统"]),
+        ("Information Technology", [r"\bit\b", r"信息技术"]),
+        ("Robotics", [r"robotics", r"机器人"]),
+        ("Finance", [r"finance", r"金融"]),
+        ("Business", [r"business", r"商科", r"管理"]),
+    ]
+    for major, regexes in patterns:
+        if any(re.search(pattern, lowered, re.I) for pattern in regexes):
+            return major
     return fallback
 
 
@@ -108,3 +148,29 @@ def source_from_rag_item(item: dict[str, Any], source_type: str) -> dict[str, An
         "score": item.get("score"),
         "reasons": item.get("reasons") or [],
     }
+
+
+def web_source_from_result(web: dict[str, Any], topic: str) -> dict[str, Any]:
+    return {
+        "type": "web_search" if web.get("status") == "live_search" else "web_research_plan",
+        "topic": topic,
+        "status": web.get("status"),
+        "provider": web.get("provider"),
+        "source_hints": web.get("source_hints") or [],
+        "results": [
+            {"title": item.get("title"), "url": item.get("url"), "score": item.get("score")}
+            for item in (web.get("results") or [])[:5]
+        ],
+        "error": web.get("error"),
+    }
+
+
+def query_focus_line(query: str, keywords: list[str], suffix: str = "我会把这些作为判断重点。") -> str:
+    lowered = query.lower()
+    hits = []
+    for keyword in keywords:
+        if keyword.lower() in lowered and keyword not in hits:
+            hits.append(keyword)
+    if not hits:
+        return ""
+    return "你提到的 " + "、".join(hits[:5]) + "，" + suffix

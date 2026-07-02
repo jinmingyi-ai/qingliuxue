@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 import uuid
+import os
 from pathlib import Path
 from typing import Any
 
@@ -18,6 +19,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.backend.agents.supervisor import StudyAbroadSupervisor
 from app.backend.api import db
 from app.backend.api.schemas import AuthRequest, AuthResponse, ChatRequest, ConversationCreateRequest, QuestionnaireRequest
+from app.backend.api.guardrails import (
+    SecurityHeadersAndRateLimitMiddleware,
+    blocked_chat_response,
+    inspect_chat_input,
+    sanitize_api_result,
+)
 from app.backend.api.security import (
     create_access_token,
     decode_access_token,
@@ -36,9 +43,15 @@ MEMORY_ROOT = BASE_DIR / "app" / "data" / "memory"
 
 
 app = FastAPI(title="轻留学 API", version="0.1.0")
+app.add_middleware(SecurityHeadersAndRateLimitMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        origin.strip()
+        for origin in os.getenv("CORS_ALLOW_ORIGINS", "http://127.0.0.1:8501,http://localhost:8501").split(",")
+        if origin.strip()
+    ],
+    allow_origin_regex=os.getenv("CORS_ALLOW_ORIGIN_REGEX", r"https://.*\.railway\.app|https://.*\.up\.railway\.app"),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -104,6 +117,15 @@ def _conversation_summaries(manager: MemoryManager, user_id: str) -> list[dict[s
     summaries = []
     for item in manager.list_conversations(user_id):
         messages = item.get("messages") or []
+        public_messages = [
+            {
+                "role": message.get("role"),
+                "content": message.get("content"),
+                "created_at": message.get("created_at"),
+            }
+            for message in messages[-20:]
+            if message.get("role") in {"user", "assistant", "system"}
+        ]
         summaries.append(
             {
                 "conversation_id": item["conversation_id"],
@@ -111,7 +133,7 @@ def _conversation_summaries(manager: MemoryManager, user_id: str) -> list[dict[s
                 "entry_point": item.get("entry_point") or "chat",
                 "updated_at": item.get("updated_at"),
                 "message_count": item.get("message_count", len(messages)),
-                "messages": messages[-20:],
+                "messages": public_messages,
             }
         )
     return summaries
@@ -170,6 +192,18 @@ def chat(payload: ChatRequest, user: dict[str, Any] | None = Depends(optional_us
     if not payload.message.strip():
         raise HTTPException(status_code=400, detail="消息不能为空")
     user_id, guest_session_id, manager = memory_for(user, payload.guest_session_id)
+    guardrail = inspect_chat_input(payload.message, payload.questionnaire)
+    if guardrail["blocked"]:
+        conversation = manager.get_conversation(user_id, payload.conversation_id)
+        result = blocked_chat_response(
+            query=payload.message.strip(),
+            conversation_id=conversation["conversation_id"],
+            profile=manager.export_user_profile(user_id),
+        )
+        result["guest_session_id"] = guest_session_id
+        result["conversations"] = _conversation_summaries(manager, user_id)
+        return sanitize_api_result(result)
+
     supervisor = StudyAbroadSupervisor(memory_manager=manager)
     try:
         result = supervisor.run(
@@ -190,7 +224,7 @@ def chat(payload: ChatRequest, user: dict[str, Any] | None = Depends(optional_us
         ) from exc
     result["guest_session_id"] = guest_session_id
     result["conversations"] = _conversation_summaries(manager, user_id)
-    return result
+    return sanitize_api_result(result)
 
 
 @app.get("/conversations")
@@ -223,6 +257,7 @@ def create_conversation(
 @app.post("/questionnaire")
 def questionnaire(payload: QuestionnaireRequest, user: dict[str, Any] | None = Depends(optional_user)) -> dict[str, Any]:
     user_id, guest_session_id, manager = memory_for(user, payload.guest_session_id)
+    inspect_chat_input("请根据问卷更新我的用户画像。", payload.questionnaire)
     result = StudyAbroadSupervisor(memory_manager=manager).run(
         query="请根据问卷更新我的用户画像。",
         user_id=user_id,

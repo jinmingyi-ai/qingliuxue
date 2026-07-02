@@ -6,7 +6,7 @@ from __future__ import annotations
 from datetime import date
 from typing import Any
 
-from app.backend.agents.specialists.base import AgentResult, profile_goal, source_from_rag_item
+from app.backend.agents.specialists.base import AgentResult, goal_from_query, query_focus_line, source_from_rag_item, web_source_from_result
 from app.backend.rag.retriever import build_rag_context
 from app.backend.tools.web_tools import web_research
 
@@ -16,7 +16,7 @@ class TimelineAgent:
 
     def run(self, query: str, profile: dict[str, Any] | None = None, **_: Any) -> dict[str, Any]:
         profile = profile or {}
-        goal = profile_goal(profile)
+        goal = goal_from_query(query, profile)
         web = web_research("timeline", query, country=goal["country"], level=goal["level"], program=goal["major"])
         rag = build_rag_context(
             f"{query} {goal['country_label']} {goal['level_label']} {goal['major']} 时间线 任务规划",
@@ -24,9 +24,9 @@ class TimelineAgent:
             filters={"country": goal["country"], "level": goal["level"], "major": goal["major"]},
         )
         plan = self._build_plan(goal, rag.get("cases") or [])
-        answer = self._answer(goal, plan)
+        answer = self._answer(query, goal, plan)
         sources = [source_from_rag_item(item, "case_rag") for item in rag.get("cases") or []]
-        sources.append({"type": "web_research_plan", "topic": "timeline", "source_hints": web["source_hints"]})
+        sources.append(web_source_from_result(web, "timeline"))
         return AgentResult(
             agent=self.name,
             task="时间线和任务规划",
@@ -114,8 +114,29 @@ class TimelineAgent:
             checks.append("每轮选校都要同步记录学费、生活费和奖学金可能性。")
         return checks
 
-    def _answer(self, goal: dict[str, Any], plan: list[dict[str, Any]]) -> str:
-        lines = [f"这是按 {goal['country_label']} {goal['level_label']} {goal['major']} 方向生成的任务时间线："]
+    def _answer(self, query: str, goal: dict[str, Any], plan: list[dict[str, Any]]) -> str:
+        lines = [
+            f"可以，先按 {goal.get('application_year') or '目标申请季'} 的 {goal['country_label']} {goal['level_label']} {goal['major']} 来排。"
+            "你现在最需要的是把准备事项前置，不要等项目开放后才补语言、推荐信和文书素材。",
+            "时间线建议：",
+        ]
+        focus = query_focus_line(
+            query,
+            ["澳洲", "S1", "S2", "入学", "材料", "托福", "来得及", "GRE", "节点", "香港", "新加坡", "轮次", "90天", "行动", "准备"],
+            "我会单独放进时间线和材料节点里。",
+        )
+        if focus:
+            lines.insert(1, focus)
         for item in plan[:5]:
-            lines.append(f"{item['window']}: {item['focus']}；交付物: {', '.join(item['deliverables'])}")
+            risk = "；风险检查: " + "；".join(item["risk_checks"]) if item.get("risk_checks") else ""
+            lines.append(
+                f"- {item['window']}（{item['target_year']}）：{item['focus']}；交付物: {', '.join(item['deliverables'])}{risk}"
+            )
+        lines.append("下一步先做两件事：列出10-15个项目长名单；逐个打开官网核对截止日期、推荐信和送分要求。")
+        if "90天" in query:
+            lines.append("前90天行动表可以按 30/60/90 天拆：30天定方向和考试；60天完成项目长名单和推荐人沟通；90天产出材料初稿。")
+        if "来得及" in query:
+            lines.append("如果托福还没考，通常仍有机会，但要马上锁定考试日期、备选可后补语言的项目，并把送分节点倒排。")
+        if "GRE" in query.upper():
+            lines.append("没有 GRE 时，项目筛选节点要先标出 optional、not required 和 required 三类，避免后期被硬性要求卡住。")
         return "\n".join(lines)

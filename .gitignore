@@ -12,6 +12,7 @@ app/data/memory/*.json
 app/data/memory/users/*.json
 app/data/memory/guests/*.json
 app/data/logs/*
+app/data/test_reports/*
 
 # Local env files
 .env
